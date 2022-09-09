@@ -6,13 +6,15 @@ import { ProgramComponent } from './program/program.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProgramComponent,
     DashboardComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

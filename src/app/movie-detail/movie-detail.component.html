@@ -1,1 +1,6 @@
-<p>movie-detail works!</p>
+<div *ngIf="movie">
+    <h2>{{movie.name | uppercase}} Details</h2>
+    <div>id: {{movie.id}}</div>
+    <div>length: {{movie.length}}</div>
+    <div>studio: {{movie.studio}}</div>
+</div>
