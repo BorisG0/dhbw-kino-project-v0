@@ -51,3 +51,16 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+  h1 {
+    color: rgb(155, 113, 28);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+  }
+  h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
