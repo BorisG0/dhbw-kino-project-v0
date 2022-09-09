@@ -22,7 +22,7 @@ export class MovieService {
 
   getMovie(id: number): Observable<Movie> {
     const movie = MOVIES.find(m => m.id === id)!;
-    this.messageService.add('MovieService: fetched Movie')
+    this.messageService.add(`MovieService: fetched Movie id=${id}`)
     return of(movie);
   }
 }
