@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MessagesComponent } from './messages/messages.component';
     ProgramComponent,
     DashboardComponent,
     MovieDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
