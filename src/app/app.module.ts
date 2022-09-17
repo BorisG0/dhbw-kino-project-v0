@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent } from './header/header.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HeaderComponent } from './header/header.component';
     DashboardComponent,
     MovieDetailComponent,
     MessagesComponent,
-    HeaderComponent
+    HeaderComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
