@@ -7,8 +7,9 @@
   
   .movies-menu {
     padding: 0;
+    padding-top: 5%;
     margin: auto;
-    max-width: 1000px;
+    max-width: 80%;
   
     /* flexbox */
     display: flex;
@@ -48,4 +49,10 @@
   
   a:hover {
     background-color: #000;
+  }
+
+  img{
+    width: 40vmin;
+    height: auto;
+    padding: 5vmin;
   }
