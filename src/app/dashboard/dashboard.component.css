@@ -20,7 +20,7 @@
     align-items: flex-start;
   }
   
-  a {
+  /*a {
     background-color: #3f525c;
     border-radius: 2px;
     padding: 1rem;
@@ -34,11 +34,11 @@
     margin: .5rem auto;
     box-sizing: border-box;
   
-    /* flexbox */
+
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
-  }
+  } */
   
   @media (min-width: 600px) {
     a {
@@ -46,13 +46,13 @@
       box-sizing: content-box;
     }
   }
-  
+  /*
   a:hover {
     background-color: #000;
-  }
+  }*/
 
   img{
     width: 40vmin;
     height: auto;
-    padding: 5vmin;
+    /*padding: 5vmin;*/
   }
