@@ -1,8 +1,28 @@
-<div *ngIf="movie">
-    <h2>{{movie.name | uppercase}} Details</h2>
-    <div>id: {{movie.id}}</div>
-    <div>length: {{movie.length}}</div>
-    <div>studio: {{movie.studio}}</div>
-</div>
+<main *ngIf="movie" class="detail">
+    <div >
+        <img id="left" src="\assets\images\movie{{movie.id}}.png"> 
+
+        <div class="filmhandlung">
+            <h2> Filmhandlung </h2>
+            <p> {{movie.discription}}</p>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div id="left">
+            <h2>{{movie.name | uppercase}} Details</h2>
+            <p> id: {{movie.id}} <br>
+                length: {{movie.length}} <br>
+                studio: {{movie.studio}} <br>
+            </p>
+        </div>
+
+        <div>
+            <h2> Cast & Crew </h2>
+            <p> {{movie.cast}} </p>
+        </div>
+    </div>
+</main>
+
 
 <button type="button" (click)="goBack()">zurück</button>

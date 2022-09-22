@@ -3,4 +3,6 @@ export interface Movie {
     name: string;
     studio: string;
     length: number;  //length in minutes
+    discription: string;
+    cast: string;
 }
