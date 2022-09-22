@@ -1,9 +1,35 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
-div{
-  background-color: grey;
+.container{
+  text-align: center;
 }
+.section{
+  float:left;
+  width:100%;
+}
+.section .content1{
+	float:left;
+	width: 100%;
+}
+.section .content1 .card{
+  width:20%;
+  float: left;
+  padding:0px 200px;
+  }
+.box{
+  background-color:gray;
+  }
+  .section .content2{
+    float:left;
+    width: 100%;
+  }
+  .section .content2 .card{
+    width:20%;
+    float: left;
+    padding:0px 125px;
+    }
+
 p{
   margin-top: 0;
 }
@@ -15,24 +41,6 @@ img{
   height: 400px;
   /*padding: 5vmin;*/
 }
-.detail {
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-  }
 
-.filmhandlung{
-padding-left: 500px;
-width:400px;
-}
-#left{
-float: left;
-width:400px;
-clear:both;
-}
-#right{
-  float:right;
-  width:400px;
-  clear:both;
 
-}
 

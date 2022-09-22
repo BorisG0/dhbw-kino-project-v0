@@ -1,28 +1,37 @@
-<main *ngIf="movie" class="detail">
-    <div >
-        <img id="left" src="\assets\images\movie{{movie.id}}.png"> 
-
-        <div class="filmhandlung">
-            <h2> Filmhandlung </h2>
-            <p> {{movie.discription}}</p>
-        </div>
+<body *ngIf="movie" class="detail">
+    <div class="container">
+        <section class="section">
+            <div class="content1">
+                <div class="card">
+                    <img  src="\assets\images\movie{{movie.id}}.png"> 
+                </div>
+                <div class="card">
+                    <h2 class="box"> Filmhandlung </h2>
+                    <p class="box"> {{movie.discription}}</p>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="content2" >
+                <div class="card">
+                    <h2 class="box">{{movie.name | uppercase}} Details</h2>
+                    <p class="box"> id: {{movie.id}} <br>
+                        length: {{movie.length}} <br>
+                        studio: {{movie.studio}} <br>
+                    </p>
+                </div>
+                <div class="card" >
+                    <h2 class="box"> Cast & Crew </h2>
+                    <p class="box"> {{movie.cast}} </p>
+                </div>
+                <div class="card">
+                    <h2 class="box"> Trailer</h2>
+                    <p class="box"> Hier wird mal der Trailer sein</p>
+                </div>
+            </div>
+        </section>
     </div>
-    <br>
-    <div>
-        <div id="left">
-            <h2>{{movie.name | uppercase}} Details</h2>
-            <p> id: {{movie.id}} <br>
-                length: {{movie.length}} <br>
-                studio: {{movie.studio}} <br>
-            </p>
-        </div>
-
-        <div>
-            <h2> Cast & Crew </h2>
-            <p> {{movie.cast}} </p>
-        </div>
-    </div>
-</main>
+</body>
 
 
 <button type="button" (click)="goBack()">zurück</button>
