@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { MovieService } from '../movie.service';
 
 import { Movie } from '../movie';
+import { MovieEvent } from '../MovieEvent';
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,6 +16,7 @@ import { Movie } from '../movie';
 export class MovieDetailComponent implements OnInit {
 
   movie: Movie | undefined;
+  movieEvents: MovieEvent[] = [];
 
   constructor(
     private route: ActivatedRoute,

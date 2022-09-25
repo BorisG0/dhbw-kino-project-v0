@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 
 import { Movie } from './movie';
+import { MovieEvent } from './MovieEvent';
 import { MOVIES } from './mock-movies';
 
 @Injectable({
@@ -28,5 +29,10 @@ export class MovieService {
 
     this.messageService.add(`MovieService: fetched Movie id=${id}`)
     return this.http.post<Movie>("/api/movie", id);
+  }
+
+  getEventsForMovie(movie: Movie){
+    this.messageService.add(`getting events for movie ${movie.id}`);
+    return this.http.post<MovieEvent[]>("/api/eventsformovie", movie);
   }
 }
