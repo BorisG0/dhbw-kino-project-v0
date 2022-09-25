@@ -15,7 +15,7 @@ import { MovieEvent } from '../MovieEvent';
 })
 export class MovieDetailComponent implements OnInit {
 
-  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0};
+  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: ''};
   movieEvents: MovieEvent[] = [];
 
   constructor(
