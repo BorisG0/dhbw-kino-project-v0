@@ -59,5 +59,13 @@
     </div>
 </body>
 
+<h2>Vorstellungen</h2>
+<button (click)="getMovieEvents(movie)">Laden</button>
+<ul>
+    <li *ngFor="let movieEvent of movieEvents">
+            {{movieEvent.date}} {{movieEvent.time}}
+    </li>
+</ul>
+
 
 <button type="button" (click)="goBack()">zurück</button>

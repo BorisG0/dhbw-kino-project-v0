@@ -15,7 +15,7 @@ import { MovieEvent } from '../MovieEvent';
 })
 export class MovieDetailComponent implements OnInit {
 
-  movie: Movie | undefined;
+  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0};
   movieEvents: MovieEvent[] = [];
 
   constructor(
@@ -35,6 +35,12 @@ export class MovieDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  getMovieEvents(movie: Movie): void{
+    this.movieService.getEventsForMovie(movie).subscribe(data =>{
+      this.movieEvents = data;
+    })
   }
 
 }
