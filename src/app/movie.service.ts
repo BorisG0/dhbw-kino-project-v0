@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 import { MessageService } from './message.service';
 
@@ -12,17 +13,20 @@ import { MOVIES } from './mock-movies';
 })
 export class MovieService {
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private http: HttpClient) { }
 
   getMovies(): Observable<Movie[]> {
-    const movies = of(MOVIES);
+    //const movies = of(MOVIES);
+
     this.messageService.add('MovieService: fetched Movies');
-    return movies;
+    return this.http.get<Movie[]>("/api/movies");
   }
 
   getMovie(id: number): Observable<Movie> {
-    const movie = MOVIES.find(m => m.id === id)!;
+    //const movie = MOVIES.find(m => m.id === id)!;
+    //return of(movie);
+
     this.messageService.add(`MovieService: fetched Movie id=${id}`)
-    return of(movie);
+    return this.http.post<Movie>("/api/movie", id);
   }
 }
