@@ -1,8 +1,10 @@
 export interface Movie {
     id: number;
-    name: string;
-    studio: string;
-    length: number;  //length in minutes
-    discription: string;
-    cast: string;
+    title: string;
+    duration: number;
+    ageRestriction: number;
+    
+    //studio: string;
+    //discription: string;
+    //cast: string;
 }
