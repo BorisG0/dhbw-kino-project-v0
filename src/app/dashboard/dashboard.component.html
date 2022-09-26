@@ -11,7 +11,7 @@
     
         <a *ngFor="let movie of movies" routerLink="/detail/{{movie.id}}">
             {{movie.title}}
-            <img src="\assets\images\movie{{movie.id}}.png">
+            <img src="\assets\images\{{movie.imageName}}">
         </a>
     
 </div>
