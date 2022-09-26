@@ -10,6 +10,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BookingComponent } from './booking/booking.component';
     MovieDetailComponent,
     MessagesComponent,
     HeaderComponent,
-    BookingComponent
+    BookingComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
