@@ -1,5 +1,8 @@
 <body *ngIf="movie" class="detail">
     <div class="container">
+        <div claas="myheader">
+            <h2 class="myheader"> {{movie.title}} </h2>
+        </div>
         <div class="rows">
             <div>
                 <img  src="\assets\images\{{movie.imageName}}"> 
@@ -26,9 +29,9 @@
                 <p class="object"> Hier wird mal der Trailer sein</p>
             </div>
         </div>
-        <div class="times">
+        <div class="header">
             <div class="timeBox">
-                <h2> The Batman</h2>
+                <h2> {{movie.title}}</h2>
                 <p> Hier stehen gleich die Infos dazu</p>
             </div>
         </div>
