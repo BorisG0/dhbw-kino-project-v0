@@ -1,6 +1,6 @@
 <body *ngIf="movie" class="detail">
     <div class="container">
-        <div claas="myheader">
+        <div >
             <h2 class="myheader"> {{movie.title}} </h2>
         </div>
         <div class="rows">
@@ -35,11 +35,11 @@
                 <p> Hier stehen gleich die Infos dazu</p>
             </div>
         </div>
-        <div class="timeSelectionRow">
+        <div class="timeSelectionRow" *ngFor="let movieEvent of movieEvents">
             <div class="timeRowBox">
-                hier box 1
+                {{movieEvent.date}} {{movieEvent.time}}
             </div>
-            <div class="timeRowBox">
+            <!--<div class="timeRowBox">
                 hier box 2
 
             </div>
@@ -57,13 +57,16 @@
                             <div class="timeRowBox">
                                 hier box 6
                 
-                            </div>
+                            </div>-->
         </div>
     </div>
 </body>
 
 <h2>Vorstellungen</h2>
 <button (click)="getMovieEvents(movie)">Laden</button>
+<div *ngFor="let movieEvent of movieEvents" >
+    <h3> {{movieEvent.date}} {{movieEvent.time}} </h3>
+</div>
 <ul>
     <li *ngFor="let movieEvent of movieEvents">
             {{movieEvent.date}} {{movieEvent.time}}
