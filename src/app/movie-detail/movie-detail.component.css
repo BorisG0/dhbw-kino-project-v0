@@ -16,11 +16,13 @@
   max-width: 400px;
 }
 .myheader{
-  background-color: black;
   color: white;
-  width: 150px;
   text-align: center;
 }
+.titleHeader{
+  background-color: black;
+}
+
 .header{
   background-color: black;
   color:white;
@@ -28,6 +30,9 @@
   margin-bottom: 0px;
   margin-top:150px
 }
+
+
+
 .timeBox{
   background-color: black;
 
@@ -40,6 +45,18 @@
 }
 .timeRowBox{
   min-width: 500px;
+}
+.movieEvents{
+  background-color: white;
+  color: black;
+  margin: 1%;
+  width: 20%;
+float: left;
+
+}
+
+footer{
+  background-color: black;
 }
 
 p{

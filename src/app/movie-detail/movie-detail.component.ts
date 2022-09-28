@@ -17,6 +17,7 @@ export class MovieDetailComponent implements OnInit {
 
   movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: ''};
   movieEvents: MovieEvent[] = [];
+  movieEventsPerDay: MovieEvent[][] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +42,30 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.getEventsForMovie(movie).subscribe(data =>{
       this.movieEvents = data;
     })
+
   }
+  loadMovieEventsperDay(): void{
+    let tempArray : MovieEvent[] = [];
+    this.movieEvents.forEach(movieEvent => {
+
+      if(tempArray.length>0){
+        if(tempArray[0].date == movieEvent.date){
+          tempArray.push(movieEvent)
+        }
+        else{
+          this.movieEventsPerDay.push(tempArray)
+          tempArray = [];
+          tempArray.push(movieEvent)
+        }
+      }else{
+        tempArray.push(movieEvent)
+      }
+
+    })
+    if(tempArray.length>0){
+      this.movieEventsPerDay.push(tempArray)
+    }
+  }
+
 
 }

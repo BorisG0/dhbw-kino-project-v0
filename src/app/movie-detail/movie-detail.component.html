@@ -1,7 +1,7 @@
 <body *ngIf="movie" class="detail">
     <div class="container">
-        <div >
-            <h2 class="myheader"> {{movie.title}} </h2>
+        <div class="myheader">
+            <p class="titleHeader"> {{movie.title}} </p>
         </div>
         <div class="rows">
             <div>
@@ -29,41 +29,31 @@
                 <p class="object"> Hier wird mal der Trailer sein</p>
             </div>
         </div>
-        <div class="header">
-            <div class="timeBox">
-                <h2> {{movie.title}}</h2>
-                <p> Hier stehen gleich die Infos dazu</p>
+        <footer >
+            <div class="header">
+                <div class="timeBox">
+                    <h2> {{movie.title}}</h2>
+                    <p> Hier stehen gleich die Infos dazu</p>
+                </div>
             </div>
-        </div>
-        <div class="timeSelectionRow" *ngFor="let movieEvent of movieEvents">
-            <div class="timeRowBox">
-                {{movieEvent.date}} {{movieEvent.time}}
-            </div>
-            <!--<div class="timeRowBox">
-                hier box 2
 
+            <div class="timeSelectionRow">
+                <div class="timeRowBox" *ngFor="let movieEventDay of movieEventsPerDay" >
+                    {{movieEventDay[0].date}}
+                    <div class="movieEvents" *ngFor="let movieEvent of movieEventDay">
+                        {{movieEvent.time}}
+                    </div>
+                </div>
             </div>
-            <div class="timeRowBox">
-                hier box 3
 
-            </div>
-            <div class="timeRowBox">
-                hier box 4
-                            </div>
-                            <div class="timeRowBox">
-                                hier box 5
-                
-                            </div>
-                            <div class="timeRowBox">
-                                hier box 6
-                
-                            </div>-->
-        </div>
+        </footer>
     </div>
 </body>
 
 <h2>Vorstellungen</h2>
 <button (click)="getMovieEvents(movie)">Laden</button>
+<button (click)="loadMovieEventsperDay()">Laden pro Tag</button>
+
 <div *ngFor="let movieEvent of movieEvents" >
     <h3> {{movieEvent.date}} {{movieEvent.time}} </h3>
 </div>
