@@ -27,6 +27,7 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovie();
+    this.getMovieEvents(this.movie);
   }
 
   getMovie(): void {
