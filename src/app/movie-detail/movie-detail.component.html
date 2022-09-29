@@ -1,4 +1,7 @@
 <body *ngIf="movie" class="detail">
+    <button (click)="tryAsync()">async versuchen</button>
+    <button (click)="loadData()"> Button testen</button>
+
     <div class="container">
         <div class="myheader">
             <a class="titleHeader"> {{movie.title}} </a>

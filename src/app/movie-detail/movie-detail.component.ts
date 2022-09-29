@@ -27,8 +27,45 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovie();
-    this.getMovieEvents(this.movie);
+    
   }
+
+  async loadData(){
+    let myTest = await this.getMovieEvents(this.movie);
+    await this.loadMovieEventsperDay();
+    console.log("nach zweiter in loadata")
+    console.log(this.movieEventsPerDay[1])
+    return 1
+  }
+
+  testButton(){
+    
+    let promise = this.loadData();
+    promise.then(result => console.log(result))
+    console.log("load dasta fertig")
+  }
+
+  async tryAsync(){
+    let startingValue = 2;
+    console.log("vor erstem aufruf")
+    let firstResult = await this.mySecondFunction(startingValue);
+    console.log("nach erstem aufruf")
+    let finalResult = await this.myThirdNestedFunction(firstResult);
+    console.log(finalResult)
+    return finalResult;
+  }
+  async  mySecondFunction(x: number) {
+    console.log("in erstem drin")
+    setTimeout(() => {}, 100);
+    return 2 ** x;
+  }
+  async  myThirdNestedFunction(x: number) {
+    console.log("im zweiten drin")
+    setTimeout(() => {}, 100);
+    return 3 ** x;
+  }
+
+
 
   getMovie(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -39,13 +76,18 @@ export class MovieDetailComponent implements OnInit {
     this.location.back();
   }
 
-  getMovieEvents(movie: Movie): void{
+  getMovieEvents(movie: Movie): Promise<any> {
     this.movieService.getEventsForMovie(movie).subscribe(data =>{
       this.movieEvents = data;
+      let T = data      
     })
-
+    return new Promise((resolve) => {
+      resolve(4);
+    });
   }
-  loadMovieEventsperDay(): void{
+  async loadMovieEventsperDay() {
+    console.log("in zweiter drin")
+    setTimeout(() => {}, 1000000);
     let tempArray : MovieEvent[] = [];
     this.movieEvents.forEach(movieEvent => {
 
@@ -66,6 +108,9 @@ export class MovieDetailComponent implements OnInit {
     if(tempArray.length>0){
       this.movieEventsPerDay.push(tempArray)
     }
+    console.log(this.movieEventsPerDay[1])
+    console.log("aus zweiter raus")
+
   }
 
 
