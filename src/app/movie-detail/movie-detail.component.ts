@@ -26,68 +26,38 @@ export class MovieDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getMovie();
-    
+    this.loadData();
   }
 
   async loadData(){
-    let myTest = await this.getMovieEvents(this.movie);
-    await this.loadMovieEventsperDay();
-    console.log("nach zweiter in loadata")
-    console.log(this.movieEventsPerDay[1])
-    return 1
+    await this.getMovie();
+    await this.getMovieEvents(this.movie);
+    this.loadMovieEventsperDay();
   }
 
-  testButton(){
-    
-    let promise = this.loadData();
-    promise.then(result => console.log(result))
-    console.log("load dasta fertig")
-  }
-
-  async tryAsync(){
-    let startingValue = 2;
-    console.log("vor erstem aufruf")
-    let firstResult = await this.mySecondFunction(startingValue);
-    console.log("nach erstem aufruf")
-    let finalResult = await this.myThirdNestedFunction(firstResult);
-    console.log(finalResult)
-    return finalResult;
-  }
-  async  mySecondFunction(x: number) {
-    console.log("in erstem drin")
-    setTimeout(() => {}, 100);
-    return 2 ** x;
-  }
-  async  myThirdNestedFunction(x: number) {
-    console.log("im zweiten drin")
-    setTimeout(() => {}, 100);
-    return 3 ** x;
-  }
-
-
-
-  getMovie(): void {
+  getMovie() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.movieService.getMovie(id).subscribe(movie => this.movie = movie);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {resolve(0)}, 3000)
+    })
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  getMovieEvents(movie: Movie): Promise<any> {
+  getMovieEvents(movie: Movie) {
     this.movieService.getEventsForMovie(movie).subscribe(data =>{
       this.movieEvents = data;
-      let T = data      
+      let T = data 
+           
     })
-    return new Promise((resolve) => {
-      resolve(4);
-    });
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {resolve(0)}, 3000)
+    })
   }
-  async loadMovieEventsperDay() {
-    console.log("in zweiter drin")
-    setTimeout(() => {}, 1000000);
+  loadMovieEventsperDay() {
     let tempArray : MovieEvent[] = [];
     this.movieEvents.forEach(movieEvent => {
 
@@ -108,8 +78,6 @@ export class MovieDetailComponent implements OnInit {
     if(tempArray.length>0){
       this.movieEventsPerDay.push(tempArray)
     }
-    console.log(this.movieEventsPerDay[1])
-    console.log("aus zweiter raus")
 
   }
 
