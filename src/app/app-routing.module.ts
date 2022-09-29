@@ -10,7 +10,7 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: 'program', component: ProgramComponent},
   { path: 'dashboard', component: DashboardComponent},
-  { path: 'booking', component: BookingComponent },
+  { path: 'booking/:id', component: BookingComponent },
   { path: 'detail/:id', component: MovieDetailComponent},
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   { path: 'login', component: LoginComponent }

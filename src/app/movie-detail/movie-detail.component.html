@@ -42,12 +42,16 @@
                     {{movieEventDay[0].date}}
                     <br>
                     <br>
-                    <div class="movieEvents" *ngFor="let movieEvent of movieEventDay">
+                    <a routerLink="/booking/{{movieEvent.id}}" class="movieEvents" *ngFor="let movieEvent of movieEventDay">
                         {{movieEvent.time}}
-                    </div>
+                    </a>
                 </div>
             </div>
-
+            <!--<li *ngFor="let movie of movies">
+                <a routerLink="/detail/{{movie.id}}">
+                    <span class="badge">{{movie.id}}</span>{{movie.title}}
+                </a>
+            </li>-->
         </footer>
     </div>
 </body>
