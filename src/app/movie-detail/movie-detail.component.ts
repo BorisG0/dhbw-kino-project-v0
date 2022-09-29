@@ -36,10 +36,14 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getMovie() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.movieService.getMovie(id).subscribe(movie => this.movie = movie);
     return new Promise((resolve, reject) => {
-      setTimeout(() => {resolve(0)}, 3000)
+      setTimeout(() => {
+        const id = Number(this.route.snapshot.paramMap.get('id'));
+        this.movieService.getMovie(id).subscribe(movie =>{
+          this.movie = movie;
+          resolve(0)
+          })
+      }, 0)
     })
   }
 
@@ -48,19 +52,19 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getMovieEvents(movie: Movie) {
-    this.movieService.getEventsForMovie(movie).subscribe(data =>{
-      this.movieEvents = data;
-      let T = data 
-           
-    })
     return new Promise((resolve, reject) => {
-      setTimeout(() => {resolve(0)}, 3000)
+      setTimeout(() => {
+        this.movieService.getEventsForMovie(movie).subscribe(data =>{
+          this.movieEvents = data;
+          resolve(0)
+        })
+      }, 0)
     })
   }
+
   loadMovieEventsperDay() {
     let tempArray : MovieEvent[] = [];
     this.movieEvents.forEach(movieEvent => {
-
       if(tempArray.length>0){
         if(tempArray[0].date == movieEvent.date){
           tempArray.push(movieEvent)
