@@ -1,0 +1,19 @@
+.main-div mat-card {
+    padding: 0px;
+    background-color: grey;
+}
+
+.login-form{
+    padding: 20px
+}
+
+
+.login-button{
+    background-color: green;
+
+}
+
+.mat-toolbar.mat-primary {
+    background: #3a3737;
+    color: white;
+  }
