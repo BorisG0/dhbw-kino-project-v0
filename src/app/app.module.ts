@@ -11,6 +11,17 @@ import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent } from './header/header.component';
 import { BookingComponent } from './booking/booking.component';
 import { LoginComponent } from './login/login.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatRadioModule} from '@angular/material/radio';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -21,12 +32,20 @@ import { LoginComponent } from './login/login.component';
     MessagesComponent,
     HeaderComponent,
     BookingComponent,
-    LoginComponent
+    LoginComponent,
+ 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
