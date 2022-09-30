@@ -1,8 +1,17 @@
 <h2>Programm</h2>
-<ul class="movies">
-    <li *ngFor="let movie of movies">
-        <a routerLink="/detail/{{movie.id}}">
-            <span class="badge">{{movie.id}}</span>{{movie.title}}
-        </a>
-    </li>
-</ul>
+
+<div class="filter_box">
+    <ul class="movies">
+        <li *ngFor="let movie of movies">
+            <a routerLink="/detail/{{movie.id}}">
+                <span class="badge">{{movie.id}}</span>{{movie.title}}
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="parent">
+    <a *ngFor="let movie of movies" routerLink="/detail/{{movie.id}}" class="child">
+        <img src="\assets\images\{{movie.imageName}}">
+    </a>
+</div>
