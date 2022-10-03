@@ -19,6 +19,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatRadioModule} from '@angular/material/radio';
 import { SeatComponent } from './seat/seat.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 
@@ -48,6 +49,7 @@ import { SeatComponent } from './seat/seat.component';
     MatCardModule,
     MatToolbarModule,
     MatRadioModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
