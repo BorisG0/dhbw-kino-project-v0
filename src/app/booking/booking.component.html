@@ -1,11 +1,10 @@
 <h2>Sitze</h2>
-<app-seat [seat]="seats[0][2]"></app-seat>
 <ul class="seats">
     <div class="row" *ngFor="let row of seats">
         <div>{{row[0].row}}</div>
         <div class="seatsInRow">
 
-            <app-seat *ngFor="let seat of row" [seat]="seat">
+            <app-seat class="seat" *ngFor="let seat of row" [seat]="seat" (click)="seatClicked(seat)">
 
             </app-seat>
 

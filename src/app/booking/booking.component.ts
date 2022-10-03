@@ -16,4 +16,8 @@ export class BookingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  seatClicked(seat: SeatInEvent){
+    seat.status = (seat.status - 1) * (seat.status - 1);
+  }
+
 }
