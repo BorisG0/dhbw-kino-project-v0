@@ -65,6 +65,10 @@ footer{
 
 }
 
+.movieEvents:hover{
+  background-color: #878787;
+}
+
 
 p{
   margin-top: 0;
