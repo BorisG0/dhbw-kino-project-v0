@@ -9,7 +9,7 @@
             </div>
             <div class="box">
                 <h2 class="object"> Filmhandlung </h2>
-                <p class="object" class="discription">{{movie.description}}</p>
+                <p class="object" class="description">{{movie.description}}</p>
             </div>
         </div>
         <div class="rows" >
@@ -44,6 +44,7 @@
                     <br>
                     <a routerLink="/booking/{{movieEvent.id}}" class="movieEvents" *ngFor="let movieEvent of movieEventDay">
                         {{movieEvent.time}}
+                        Saal {{movieEvent.roomId}}
                     </a>
                 </div>
             </div>
