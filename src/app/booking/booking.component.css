@@ -6,20 +6,28 @@ h2{
     color: white;
 }
 
+
 .seatsInRow{
-    display: flex;
+    height: 100px;
 }
 
+
 .seat{
-    /*display: inline-block;*/
-    width: 10%;
+    display: inline-block;
+    margin: 1%;
+    width: 100px;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
 }
 
 .freeSeat{
+    height: 100%;
     background-color: green;
 }
 
 .occupiedSeat{
+    height: 100%;
     background-color: red;
 }
 
