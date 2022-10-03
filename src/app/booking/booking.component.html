@@ -1,20 +1,28 @@
 <h2>Sitze</h2>
+<app-seat [seat]="seats[0][2]"></app-seat>
 <ul class="seats">
     <div class="row" *ngFor="let row of seats">
         <div>{{row[0].row}}</div>
         <div class="seatsInRow">
 
+            <app-seat *ngFor="let seat of row" [seat]="seat">
+
+            </app-seat>
+
+            <!--
             <div class="seat" *ngFor="let seat of row">
 
-                <div class="freeSeat" *ngIf="!seat.isOccupied">
-                    {{seat.row}} {{seat.numberInRow}} besetzt: {{seat.isOccupied}}
+                <div class="freeSeat" *ngIf="!seat.status">
+                    {{seat.row}} {{seat.numberInRow}} status: {{seat.status}}
                 </div>
 
-                <div class="occupiedSeat" *ngIf="seat.isOccupied">
-                    {{seat.row}} {{seat.numberInRow}} besetzt: {{seat.isOccupied}}
+                <div class="occupiedSeat" *ngIf="seat.status">
+                    {{seat.row}} {{seat.numberInRow}} status: {{seat.status}}
                 </div>
                 
             </div>
+
+            -->
         </div>
     </div>
 </ul>

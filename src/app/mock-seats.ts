@@ -1,15 +1,15 @@
-import { Seat } from "./seat";
+import { SeatInEvent } from "./seatInEvent";
 
-export const SEATS: Seat[][] = [[ 
-    {row: "a", numberInRow: 1, isOccupied: false},
-    {row: "a", numberInRow: 2, isOccupied: true},
-    {row: "a", numberInRow: 3, isOccupied: true},
-    {row: "a", numberInRow: 4, isOccupied: true}
+export const SEATS: SeatInEvent[][] = [[ 
+    {row: "a", numberInRow: 1, status: 0},
+    {row: "a", numberInRow: 2, status: 1},
+    {row: "a", numberInRow: 3, status: 1},
+    {row: "a", numberInRow: 4, status: 1}
 ],
 [
-    {row: "b", numberInRow: 1, isOccupied: false},
-    {row: "b", numberInRow: 2, isOccupied: false},
-    {row: "b", numberInRow: 3, isOccupied: false},
-    {row: "b", numberInRow: 4, isOccupied: false}
+    {row: "b", numberInRow: 1, status: 0},
+    {row: "b", numberInRow: 2, status: 0},
+    {row: "b", numberInRow: 3, status: 0},
+    {row: "b", numberInRow: 4, status: 0}
 ]
 ]

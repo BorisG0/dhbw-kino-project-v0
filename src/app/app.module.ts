@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatRadioModule} from '@angular/material/radio';
+import { SeatComponent } from './seat/seat.component';
 
 
 
@@ -33,6 +34,7 @@ import {MatRadioModule} from '@angular/material/radio';
     HeaderComponent,
     BookingComponent,
     LoginComponent,
+    SeatComponent,
  
   ],
   imports: [

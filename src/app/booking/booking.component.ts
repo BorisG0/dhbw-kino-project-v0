@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Seat } from '../seat';
+import { SeatInEvent } from '../seatInEvent';
 import { SEATS } from '../mock-seats';
 
 @Component({
@@ -9,7 +9,7 @@ import { SEATS } from '../mock-seats';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  seats: Seat[][] = SEATS;
+  seats: SeatInEvent[][] = SEATS;
 
   constructor() { }
 
