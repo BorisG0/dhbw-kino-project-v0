@@ -9,7 +9,7 @@ import { SEATS } from '../mock-seats';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
-  seats: Seat[] = SEATS;
+  seats: Seat[][] = SEATS;
 
   constructor() { }
 

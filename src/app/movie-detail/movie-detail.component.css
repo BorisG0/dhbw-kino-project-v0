@@ -50,8 +50,8 @@ footer{
   min-width: 500px;
   min-height: 400px;
   text-align: center;
-
 }
+
 .movieEvents{
   background-color: white;
   text-decoration: none;
@@ -64,7 +64,6 @@ footer{
   display: inline-table;
   text-align: left;
   float:left;
-
 }
 
 .movieEvents:hover{
