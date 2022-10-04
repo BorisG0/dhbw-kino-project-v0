@@ -23,4 +23,10 @@ export class ProgramComponent implements OnInit {
     this.movieService.getMovies().subscribe(movies => this.movies = movies);
   }
 
+  applyGenres(){
+    var selectedGenre = (document.getElementById("genre") as HTMLInputElement).value
+
+    alert(selectedGenre);
+  }
+
 }

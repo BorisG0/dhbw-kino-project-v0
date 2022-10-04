@@ -1,13 +1,15 @@
 <h2>Programm</h2>
 
 <div class="filter_box">
-    <ul class="movies">
-        <li *ngFor="let movie of movies">
-            <a routerLink="/detail/{{movie.id}}">
-                <span class="badge">{{movie.id}}</span>{{movie.title}}
-            </a>
-        </li>
-    </ul>
+    <div class="filter_box_background">
+        <h2 style="color:White">Genreauswahl</h2>
+        <br>
+        <select id="genre" (change)="applyGenres()">
+            <option value="none">None</option>
+            <option value="action">Action</option>
+            <option value="horror">Horror</option>
+        </select>
+    </div>
 </div>
 
 <div class="parent">
