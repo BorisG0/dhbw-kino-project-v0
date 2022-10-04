@@ -5,16 +5,18 @@
         <h2 style="color:White">Genreauswahl</h2>
         <br>
         <select id="genre" (change)="applyGenres()">
-            <option value="none">None</option>
-            <option value="action">Action</option>
-            <option value="horror">Horror</option>
+            <option value="">None</option>
+            <option value="Action">Action</option>
+            <option value="Horror">Horror</option>
         </select>
     </div>
 </div>
 
 <div class="parent">
-    <a *ngFor="let movie of movies" routerLink="/detail/{{movie.id}}" class="child">
-        {{movie.title}}
-        <img src="\assets\images\{{movie.imageName}}">
-    </a>
+    <div  *ngFor="let movie of movies">
+        <a  div *ngIf="compairGenre(movie.genre)" routerLink="/detail/{{movie.id}}" class="child">
+            {{movie.title}}
+            <img src="\assets\images\{{movie.imageName}}">
+        </a>
+    <div>
 </div>

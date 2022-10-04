@@ -12,6 +12,7 @@ import { Movie } from '../movie';
 })
 export class ProgramComponent implements OnInit {
   movies: Movie[] = [];
+  selectedGenre: any;
 
   constructor(private movieService: MovieService) { }
 
@@ -24,9 +25,21 @@ export class ProgramComponent implements OnInit {
   }
 
   applyGenres(){
-    var selectedGenre = (document.getElementById("genre") as HTMLInputElement).value
-
-    alert(selectedGenre);
+    this.selectedGenre = (document.getElementById("genre") as HTMLInputElement).value;
   }
 
+  compairGenre(genre: String): Boolean{
+
+    if(!this.selectedGenre || this.selectedGenre === ""){
+      console.log("true")
+
+      return true;
+    } else if(genre.includes(this.selectedGenre)){
+      console.log("true")
+      return true;
+    } else{
+      console.log("false")
+      return false;
+    }
+  }
 }
