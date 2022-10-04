@@ -12,6 +12,7 @@
 
 <div class="parent">
     <a *ngFor="let movie of movies" routerLink="/detail/{{movie.id}}" class="child">
+        {{movie.title}}
         <img src="\assets\images\{{movie.imageName}}">
     </a>
 </div>

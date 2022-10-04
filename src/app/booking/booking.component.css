@@ -1,0 +1,51 @@
+h2{
+    color:white;
+}
+
+.seats{
+    color: white;
+}
+
+
+.seatsInRow{
+    height: 100px;
+}
+
+
+.seat{
+    display: inline-block;
+    margin: 1%;
+    width: 10%;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.freeSeat{
+    height: 100%;
+    background-color: green;
+}
+
+.occupiedSeat{
+    height: 100%;
+    background-color: red;
+}
+
+/*
+
+.seat{
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    margin: 1%;
+    height: 30%;
+    font-size: 25px;
+    text-align: center;
+    width: 20%;
+    display: inline-table;
+    text-align: left;
+    float:left;
+  
+  }
+
+  */

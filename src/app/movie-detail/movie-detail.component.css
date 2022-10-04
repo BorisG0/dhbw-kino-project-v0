@@ -10,9 +10,10 @@
   margin-top: 100px;
 }
 .box{
-  background-color: grey;
+  background-color: rgb(102, 0, 0);
+  color: white;
 }
-.discription{
+.description{
   max-width: 400px;
 }
 
@@ -49,10 +50,11 @@ footer{
   min-width: 500px;
   min-height: 400px;
   text-align: center;
-
 }
+
 .movieEvents{
   background-color: white;
+  text-decoration: none;
   color: black;
   margin: 1%;
   height: 30%;
@@ -62,7 +64,10 @@ footer{
   display: inline-table;
   text-align: left;
   float:left;
+}
 
+.movieEvents:hover{
+  background-color: #878787;
 }
 
 

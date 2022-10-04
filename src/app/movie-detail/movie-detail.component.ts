@@ -15,7 +15,7 @@ import { MovieEvent } from '../MovieEvent';
 })
 export class MovieDetailComponent implements OnInit {
 
-  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: ''};
+  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: '', description: '', genre: '', startDate: new Date('0000-00-00')};
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
 
