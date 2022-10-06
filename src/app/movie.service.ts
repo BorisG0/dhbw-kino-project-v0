@@ -8,6 +8,7 @@ import { MessageService } from './message.service';
 import { Movie } from './movie';
 import { MovieEvent } from './MovieEvent';
 import { MOVIES } from './mock-movies';
+import { SeatInEvent } from './seatInEvent';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,9 @@ export class MovieService {
   getEventsForMovie(movie: Movie){
     this.messageService.add(`getting events for movie ${movie.id}`);
     return this.http.post<MovieEvent[]>("/api/eventsformovie", movie);
+  }
+
+  getSeatsInEventId(eventId: number){
+    return this.http.post<SeatInEvent[]>("/api/seatsInEvent", eventId);
   }
 }
