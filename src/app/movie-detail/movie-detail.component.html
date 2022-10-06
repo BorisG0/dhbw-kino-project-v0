@@ -17,7 +17,7 @@
                 <h2 class="object">{{movie.title | uppercase}} Details</h2>
                 <p class="object"> id: {{movie.id}} <br>
                     length: {{movie.duration}} <br>
-                    studio: hier kommt movie.studio hin <br>
+                    studio: hier kommt {{movie.duration}} hin <br>
                 </p>
             </div>
             <div class="box" >
@@ -26,16 +26,20 @@
             </div>
             <div class="box">
                 <h2 class="object"> Trailer</h2>
-                <p class="object"> Hier wird mal der Trailer sein</p>
+                <iframe width="420" height="315"
+                    src="https://www.youtube.com/embed/JfVOs4VSpmA">
+                </iframe>
             </div>
         </div>
         <footer >
+
             <div class="header">
                 <div>
                     <h2> {{movie.title}}</h2>
                     <p> Hier stehen gleich die Infos dazu</p>
                 </div>
             </div>
+
 
             <div class="timeSelectionRow">
                 <div class="timeRowBox" *ngFor="let movieEventDay of movieEventsPerDay">
@@ -48,13 +52,7 @@
                     </a>
                 </div>
             </div>
-            <!--<li *ngFor="let movie of movies">
-                <a routerLink="/detail/{{movie.id}}">
-                    <span class="badge">{{movie.id}}</span>{{movie.title}}
-                </a>
-            </li>-->
         </footer>
     </div>
 </body>
 
-<button type="button" (click)="goBack()">zurück</button>
