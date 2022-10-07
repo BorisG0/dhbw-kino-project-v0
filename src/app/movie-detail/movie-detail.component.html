@@ -1,7 +1,7 @@
 <body *ngIf="movie" class="detail">
     <div class="container">
         <div class="myheader">
-            <a class="titleHeader"> {{movie.title}} </a>
+            <span class="titleHeader"> {{movie.title}} </span> 
         </div>
         <div class="rows">
             <div>
@@ -32,14 +32,12 @@
             </div>
         </div>
         <footer >
-
             <div class="header">
                 <div>
                     <h2> {{movie.title}}</h2>
                     <p> Hier stehen gleich die Infos dazu</p>
                 </div>
             </div>
-
 
             <div class="timeSelectionRow">
                 <div class="timeRowBox" *ngFor="let movieEventDay of movieEventsPerDay">
