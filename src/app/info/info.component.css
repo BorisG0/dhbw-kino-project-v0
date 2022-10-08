@@ -1,7 +1,7 @@
 .card-anf{
     background-color: #333;
     min-height: 400px;
-    width: 600px;
+    width: 620px;
     padding-left: 10px;
     padding-top: 10px;
     margin-top: 10px;
@@ -12,49 +12,49 @@
 .card-open{
     background-color: #333;
     min-height: 195px;
-    width: 300px;
+    width: 340px;
     padding-left: 10px;
     padding-top: 10px;
     margin-top: 10px;
     margin-left: 10px;
     float: left;
+    overflow: hidden;
 }
 .card-con{
     background-color: #333;
     min-height: 185px;
-    width: 300px;
+    width: 340px;
     padding-left: 10px;
     padding-top: 10px;
     margin-top: 225px;
-    margin-left: -310px;
+    margin-left: -350px;
     overflow: hidden;
     float: left;
 }
 .card-gal{
     background-color: #333;
     min-height: 700px;
-    width: 600px;
+    width: 645px;
     padding-left: 10px;
     padding-top: 10px;
     margin-top: 10px;
     margin-left: 10px;
-    margin-bottom: 10px;
     overflow: hidden;
     float: left;
 }
 .card-pri{
     background-color: #333;
     min-height: 280px;
-    width: 920px;
+    width: 980px;
     padding-left: 10px;
     padding-top: 10px;
     margin-top: 430px;
-    margin-left: -1550px;
+    margin-left: -1655px;
     margin-bottom: 10px;
     overflow: hidden;
     float: left;
 }
-h1 {
+h1, h2, h3, p{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
