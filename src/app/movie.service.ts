@@ -52,7 +52,7 @@ export class MovieService {
     return this.http.post<SeatInEvent[]>("/api/seatsInEvent", eventId);
   }
 
-  setSeatInEventStaus(seatInEvent: SeatInEvent){
+  setSeatInEventStatus(seatInEvent: SeatInEvent){
     console.log("setting status");
     return this.http.post<boolean>("/api/setStatusForSeatInEvent", seatInEvent);
   }

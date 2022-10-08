@@ -24,6 +24,8 @@ export class BookingComponent implements OnInit {
 
   seatsInEvent :SeatInEvent[] = [];
 
+  selectedSeats: SeatInEvent[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
@@ -86,17 +88,20 @@ export class BookingComponent implements OnInit {
   }
 
   async seatClicked(seat: SeatInEvent){
-    //seat.status = (seat.status - 1) * (seat.status - 1);
+    if(this.selectedSeats.filter(s => s.seatId == seat.seatId).length > 0) return;
+
     console.log("clicked: " + seat.row + seat.numberInRow);
     await this.changeSeatStatus(seat);
     this.loadData();
+
+    this.selectedSeats.push(seat);
   }
 
   changeSeatStatus(seat: SeatInEvent){
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const id = Number(this.route.snapshot.paramMap.get('id'))
-        this.movieService.setSeatInEventStaus({row: seat.row, numberInRow: seat.numberInRow, status: 2, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
+        this.movieService.setSeatInEventStatus({row: seat.row, numberInRow: seat.numberInRow, status: 2, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
           data => {
             this.statusChangeSuccessfull = data;
             resolve(0);
@@ -104,6 +109,18 @@ export class BookingComponent implements OnInit {
         );
       }, 0)
     })
+  }
+
+  clearSelectedSeats(){
+    this.selectedSeats.forEach(seat => {
+      this.movieService.setSeatInEventStatus({row: seat.row, numberInRow: seat.numberInRow, status: 0, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
+        data => {
+          this.statusChangeSuccessfull = data;
+        }
+      );
+    })
+
+    window.location.reload();
   }
 
 }
