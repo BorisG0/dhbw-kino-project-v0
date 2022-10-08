@@ -21,6 +21,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { SeatComponent } from './seat/seat.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
+import {InfoComponent} from './info/info.component';
 
 
 
