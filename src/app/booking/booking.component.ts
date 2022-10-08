@@ -18,6 +18,7 @@ import { Time } from '@angular/common';
 export class BookingComponent implements OnInit {
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
+  movieEvent: MovieEvent | undefined;
   
   statusChangeSuccessfull: boolean = false;
 
@@ -34,8 +35,16 @@ export class BookingComponent implements OnInit {
   }
 
   async loadData(){
+    this.getMovieEvent();
     await this.getSeats();
     this.splitSeatsByRows();
+  }
+
+  getMovieEvent(){
+    const id = Number(this.route.snapshot.paramMap.get('id'))
+    this.movieService.getEventById(id).subscribe(data => {
+      this.movieEvent = data;
+    })
   }
 
   getSeats(){
@@ -87,7 +96,7 @@ export class BookingComponent implements OnInit {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const id = Number(this.route.snapshot.paramMap.get('id'))
-        this.movieService.setSeatInEventStaus({row: seat.row, numberInRow: seat.numberInRow, status: 1, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
+        this.movieService.setSeatInEventStaus({row: seat.row, numberInRow: seat.numberInRow, status: 2, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
           data => {
             this.statusChangeSuccessfull = data;
             resolve(0);

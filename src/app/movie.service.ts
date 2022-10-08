@@ -43,6 +43,11 @@ export class MovieService {
     return this.http.post<MovieEvent[]>("/api/eventsformovie", movie);
   }
 
+  getEventById(id: number){
+    console.log("getting event by id: " + id);
+    return this.http.post<MovieEvent>("/api/eventById", id);
+  }
+
   getSeatsInEventId(eventId: number){
     return this.http.post<SeatInEvent[]>("/api/seatsInEvent", eventId);
   }
