@@ -15,7 +15,7 @@ import { MovieEvent } from '../MovieEvent';
 })
 export class MovieDetailComponent implements OnInit {
 
-  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: '', description: '', genre: '', startDate: new Date('0000-00-00')};
+  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: '', description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: ''};
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
 
@@ -56,6 +56,7 @@ export class MovieDetailComponent implements OnInit {
       setTimeout(() => {
         this.movieService.getEventsForMovie(movie).subscribe(data =>{
           this.movieEvents = data;
+          console.log(data)
           resolve(0)
         })
       }, 0)
