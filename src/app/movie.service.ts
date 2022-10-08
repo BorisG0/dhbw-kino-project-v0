@@ -32,6 +32,12 @@ export class MovieService {
     return this.http.post<Movie>("/api/movie", id);
   }
 
+  getMoviesByGenre(genre: String): Observable<Movie[]> {
+
+    this.messageService.add(`MovieService: fetched Movie genre=${genre}`)
+    return this.http.post<Movie[]>("/api/moviesByGenre", genre);
+  }
+
   getEventsForMovie(movie: Movie){
     this.messageService.add(`getting events for movie ${movie.id}`);
     return this.http.post<MovieEvent[]>("/api/eventsformovie", movie);

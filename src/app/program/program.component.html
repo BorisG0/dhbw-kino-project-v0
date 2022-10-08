@@ -14,7 +14,7 @@
 
 <div class="parent">
     <div  *ngFor="let movie of movies">
-        <a  div *ngIf="compairGenre(movie.genre)" routerLink="/detail/{{movie.id}}" class="child">
+        <a  routerLink="/detail/{{movie.id}}" class="child">
             {{movie.title}}
             <img src="\assets\images\{{movie.imageName}}">
         </a>
