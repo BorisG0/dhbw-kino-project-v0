@@ -18,6 +18,8 @@ import { Time } from '@angular/common';
 export class BookingComponent implements OnInit {
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
+  
+  statusChangeSuccessfull: boolean = false;
 
   seatsInEvent :SeatInEvent[] = [];
 
@@ -74,8 +76,25 @@ export class BookingComponent implements OnInit {
     }
   }
 
-  seatClicked(seat: SeatInEvent){
-    seat.status = (seat.status - 1) * (seat.status - 1);
+  async seatClicked(seat: SeatInEvent){
+    //seat.status = (seat.status - 1) * (seat.status - 1);
+    console.log("clicked: " + seat.row + seat.numberInRow);
+    await this.changeSeatStatus(seat);
+    this.loadData();
+  }
+
+  changeSeatStatus(seat: SeatInEvent){
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const id = Number(this.route.snapshot.paramMap.get('id'))
+        this.movieService.setSeatInEventStaus({row: seat.row, numberInRow: seat.numberInRow, status: 1, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
+          data => {
+            this.statusChangeSuccessfull = data;
+            resolve(0);
+          }
+        );
+      }, 0)
+    })
   }
 
 }
