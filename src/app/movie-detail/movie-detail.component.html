@@ -76,7 +76,7 @@
                 <div id="one-thirds-column-footer">
                     <div id="moreMovies"  *ngFor="let movie of movies" >
                         <h2>{{movie.title}}</h2>
-                        <img  src="\assets\images\{{movie.imageName}}"  (click)="changedMovie(movie.id)">
+                        <img  src="\assets\images\{{movie.imageName}}"  (click)="changedMovie()">
                     </div>
                 </div>
             </div>
