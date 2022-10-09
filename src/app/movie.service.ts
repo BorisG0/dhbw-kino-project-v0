@@ -32,12 +32,28 @@ export class MovieService {
     return this.http.post<Movie>("/api/movie", id);
   }
 
+  getMoviesByGenre(genre: String): Observable<Movie[]> {
+
+    this.messageService.add(`MovieService: fetched Movie genre=${genre}`)
+    return this.http.post<Movie[]>("/api/moviesByGenre", genre);
+  }
+
   getEventsForMovie(movie: Movie){
     this.messageService.add(`getting events for movie ${movie.id}`);
     return this.http.post<MovieEvent[]>("/api/eventsformovie", movie);
   }
 
+  getEventById(id: number){
+    console.log("getting event by id: " + id);
+    return this.http.post<MovieEvent>("/api/eventById", id);
+  }
+
   getSeatsInEventId(eventId: number){
     return this.http.post<SeatInEvent[]>("/api/seatsInEvent", eventId);
+  }
+
+  setSeatInEventStatus(seatInEvent: SeatInEvent){
+    console.log("setting status");
+    return this.http.post<boolean>("/api/setStatusForSeatInEvent", seatInEvent);
   }
 }

@@ -17,7 +17,14 @@ export class ProgramComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.getMovies();
+    if(this.selectedGenre == null){
+      console.log("getMovies");
+      this.getMovies();
+    } else{
+      console.log("genre");
+      this.getMoviesByGenre(this.selectedGenre);
+    }
+    
   }
 
   getMovies(): void{
@@ -26,20 +33,18 @@ export class ProgramComponent implements OnInit {
 
   applyGenres(){
     this.selectedGenre = (document.getElementById("genre") as HTMLInputElement).value;
+    if(this.selectedGenre != null && !(this.selectedGenre === "")){
+      console.log("genre Change");
+      this.movies = [];
+      this.getMoviesByGenre(this.selectedGenre);
+    }else if(this.selectedGenre === ""){
+      console.log("movies change");
+      this.movies = [];
+      this.getMovies();
+    }
   }
 
-  compairGenre(genre: String): Boolean{
-
-    if(!this.selectedGenre || this.selectedGenre === ""){
-      console.log("true")
-
-      return true;
-    } else if(genre.includes(this.selectedGenre)){
-      console.log("true")
-      return true;
-    } else{
-      console.log("false")
-      return false;
-    }
+  getMoviesByGenre(genre: String){
+    this.movieService.getMoviesByGenre(genre).subscribe(movies => this.movies = movies);
   }
 }

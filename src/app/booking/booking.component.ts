@@ -18,8 +18,13 @@ import { Time } from '@angular/common';
 export class BookingComponent implements OnInit {
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
+  movieEvent: MovieEvent | undefined;
+  
+  statusChangeSuccessfull: boolean = false;
 
   seatsInEvent :SeatInEvent[] = [];
+
+  selectedSeats: SeatInEvent[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -32,8 +37,16 @@ export class BookingComponent implements OnInit {
   }
 
   async loadData(){
+    this.getMovieEvent();
     await this.getSeats();
     this.splitSeatsByRows();
+  }
+
+  getMovieEvent(){
+    const id = Number(this.route.snapshot.paramMap.get('id'))
+    this.movieService.getEventById(id).subscribe(data => {
+      this.movieEvent = data;
+    })
   }
 
   getSeats(){
@@ -74,8 +87,40 @@ export class BookingComponent implements OnInit {
     }
   }
 
-  seatClicked(seat: SeatInEvent){
-    seat.status = (seat.status - 1) * (seat.status - 1);
+  async seatClicked(seat: SeatInEvent){
+    if(this.selectedSeats.filter(s => s.seatId == seat.seatId).length > 0) return;
+
+    console.log("clicked: " + seat.row + seat.numberInRow);
+    await this.changeSeatStatus(seat);
+    this.loadData();
+
+    this.selectedSeats.push(seat);
+  }
+
+  changeSeatStatus(seat: SeatInEvent){
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const id = Number(this.route.snapshot.paramMap.get('id'))
+        this.movieService.setSeatInEventStatus({row: seat.row, numberInRow: seat.numberInRow, status: 2, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
+          data => {
+            this.statusChangeSuccessfull = data;
+            resolve(0);
+          }
+        );
+      }, 0)
+    })
+  }
+
+  clearSelectedSeats(){
+    this.selectedSeats.forEach(seat => {
+      this.movieService.setSeatInEventStatus({row: seat.row, numberInRow: seat.numberInRow, status: 0, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
+        data => {
+          this.statusChangeSuccessfull = data;
+        }
+      );
+    })
+
+    window.location.reload();
   }
 
 }
