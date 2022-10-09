@@ -9,6 +9,7 @@ import { MovieService } from '../movie.service';
 
 import { Movie } from '../movie';
 import { MovieEvent } from '../MovieEvent';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 
 
@@ -19,15 +20,17 @@ import { MovieEvent } from '../MovieEvent';
 })
 export class MovieDetailComponent implements OnInit {
   movies: Movie[] = [];
-  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: '', description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: ''};
+  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: '', description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: 'https://www.youtube.com/embed/6DxjJzmYsXo'};
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
+  safeSrc: SafeResourceUrl | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private _route: Router,
     private movieService: MovieService,
-    private location: Location
+    private location: Location,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -46,6 +49,7 @@ export class MovieDetailComponent implements OnInit {
     await this.getMovie();
     await this.getMovieEvents(this.movie);
     this.loadMovieEventsperDay();
+    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailerLink);
   }
 
   getMovie() {
@@ -54,6 +58,8 @@ export class MovieDetailComponent implements OnInit {
         const id = Number(this.route.snapshot.paramMap.get('id'));
         this.movieService.getMovie(id).subscribe(movie =>{
           this.movie = movie;
+
+          console.log(movie.trailerLink);
           resolve(0)
           })
       }, 0)
