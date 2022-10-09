@@ -66,7 +66,11 @@ export class MovieDetailComponent implements OnInit {
     })
   }
   changedMovie() {
-    //this._route.navigate(['/detail/'+this.movie.id])
+     /* this._route.navigate(['/detail/'+movieId])
+    this.getMovie();
+    this.movieEvents = [];
+    this.loadData();*/
+    //window.location.reload();
   }
 
   goBack(): void {
