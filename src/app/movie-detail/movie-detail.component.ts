@@ -49,6 +49,8 @@ export class MovieDetailComponent implements OnInit {
     await this.getMovie();
     await this.getMovieEvents(this.movie);
     this.loadMovieEventsperDay();
+
+    this.movie.trailerLink = this.movie.trailerLink.substring(1, this.movie.trailerLink.length - 1);
     this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailerLink);
   }
 
