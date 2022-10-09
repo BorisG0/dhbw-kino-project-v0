@@ -40,7 +40,8 @@ export class MovieDetailComponent implements OnInit {
   }
   getMovies(): void{
     this.movieService.getMovies().subscribe(movies =>{
-
+      //remove current movie from movies array
+      movies.splice(this.movie.id-1, 1)
      this.movies = movies
     });
   }
@@ -48,12 +49,15 @@ export class MovieDetailComponent implements OnInit {
   async loadData(){
     await this.getMovie();
     await this.getMovieEvents(this.movie);
+    await this.getMovies();
+    this.filterMovies();
     this.loadMovieEventsperDay();
 
     this.movie.trailerLink = this.movie.trailerLink.substring(1, this.movie.trailerLink.length - 1);
     this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailerLink);
   }
-
+filterMovies(){  
+}
   getMovie() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
