@@ -59,3 +59,19 @@ h1, h2, h3, p{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
 }
+.text-links {
+    float: left;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.text-rechts {
+    float: right;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+u {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    font-size: 6mm;
+}
