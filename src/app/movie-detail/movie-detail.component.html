@@ -1,4 +1,95 @@
-<body *ngIf="movie" class="detail">
+<html>
+
+<header>
+</header>
+
+<body>
+    <div id="main">
+        <div class="page-section">
+
+            <div id="image-cover">
+                <img id="theImage" src="\assets\images\{{movie.imageName}}">
+            </div>
+
+            <div id="content">
+<div id="contentWrapper">
+
+
+                <div id="descirption" class="text-content">
+                    <h1> Filmbeschreibung </h1>
+                    <div class="heading-devider"></div>
+                    <p> {{movie.description}}</p>
+                </div>
+                <div id="common-info" class="text-content">
+                    <h1>Allgemeine Infos {{movie.title | uppercase}} Details</h1>
+                    <div class="heading-devider"></div>
+                    <p class="object"> id: {{movie.id}} <br>
+                        length: {{movie.duration}} <br>
+                        studio: {{movie.movieStudio}} <br>
+                    </p>
+                </div>
+                <div id="cast-crew" class="text-content">
+                    <h1>Cast & Crew</h1>
+                    <div class="heading-devider"></div>
+                    <p> {{movie.regie}}</p>
+                    <p> {{movie.cast}}</p>
+                </div>
+                <div id="eventSelection" class="text-content">
+                    <div id="eventSelectionHeader">
+                        <h1>Vorstellungen</h1>
+                        <div class="heading-devider"></div>
+                    </div>
+                    <div id="eventSelectionFooter">
+                        <div id="eventDays" *ngFor="let movieEventDay of movieEventsPerDay">
+                            {{movieEventDay[0].date}}
+                            <br>
+                            <br>
+                            <div id="events" *ngFor="let movieEvent of movieEventDay" routerLink="/booking/{{movieEvent.id}}">
+                                <div id="eventTime">
+                                    <span> {{movieEvent.time}}</span>
+
+                                </div>
+                                <div id="eventRoom">
+
+                                    <span > Saal {{movieEvent.roomId}} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="page-section" id="frame2">
+
+            <div class="two-thirds-column">
+                <iframe src="https://www.youtube.com/embed/JfVOs4VSpmA" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="one-thirds-column overflow-scroll">
+                <div id="one-thirds-column-header"> 
+                    <h1> Weitere Filmvorschläge </h1>
+                    <div class="heading-devider"></div>
+                </div>
+                <div id="one-thirds-column-footer">
+                    <div id="moreMovies"  *ngFor="let movie of movies" >
+                        <h2>{{movie.title}}</h2>
+                        <img  src="\assets\images\{{movie.imageName}}"  (click)="changedMovie()">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<!--<body *ngIf="movie" class="detail">
     <div class="container">
         <div class="myheader">
             <span class="titleHeader"> {{movie.title}} </span> 
@@ -52,5 +143,4 @@
             </div>
         </footer>
     </div>
-</body>
-
+</body>-->
