@@ -11,7 +11,12 @@
 #theImage{
   height: 100%;
   width:100%;
+  object-fit: cover;
+  /*
   position: relative;
+  height: 100%;
+  width:100%;
+  */
 }
 #image-cover{
   height: 100%;
