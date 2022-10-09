@@ -190,6 +190,9 @@ text-align: center;
   transform: translateX(-50%);
   position: relative;
 }
+#moreMovies img:hover{
+cursor: pointer;
+}
 
 
 
