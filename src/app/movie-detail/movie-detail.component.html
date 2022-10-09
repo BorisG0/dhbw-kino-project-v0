@@ -54,7 +54,7 @@
                         <div class="heading-devider"></div>
                     </div>
                     <div id="eventSelectionFooter">
-                        <div id="eventDays" *ngFor="let movieEventDay of movieEventsPerDay">
+                        <div class="testClassForEventDay" *ngFor="let movieEventDay of movieEventsPerDay" id="{{ 'eventDays-' + movieEventDay[0].id }}">
                             {{movieEventDay[0].date}}
                             <br>
                             <br>
@@ -90,7 +90,7 @@
                 <div id="one-thirds-column-footer">
                     <div id="moreMovies"  *ngFor="let movie of movies" >
                         <h2>{{movie.title}}</h2>
-                        <img  src="\assets\images\{{movie.imageName}}"  (click)="changedMovie()">
+                        <img  src="\assets\images\{{movie.imageName}}"  (click)="changedMovie(movie.id)">
                     </div>
                 </div>
             </div>

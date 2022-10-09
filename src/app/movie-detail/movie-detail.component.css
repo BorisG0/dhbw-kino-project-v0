@@ -113,6 +113,21 @@ iframe{
   margin-right: 50px;
   display: flex;
 }
+
+
+
+.testClassForEventDay{
+  border-color: black;
+  min-width: 500px;
+  min-height: 200px;
+  text-align: center;
+}
+.testClassForEventDay:nth-of-type(even){
+  background-color: grey;
+}
+.testClassForEventDay:nth-of-type(odd){
+  background-color: #BBB;
+}
 #eventDays{
   border-color: black;
   min-width: 500px;
@@ -125,6 +140,9 @@ iframe{
 #eventDays:nth-of-type(odd){
   background-color: #BBB;
 }
+
+
+
 #events{
   transition: all 0.2s ease-out;
 

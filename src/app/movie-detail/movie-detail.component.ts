@@ -71,12 +71,24 @@ filterMovies(){
       }, 0)
     })
   }
-  changedMovie() {
-     /* this._route.navigate(['/detail/'+movieId])
-    this.getMovie();
+  changedMovie(movieId: number) {
+    this._route.navigate(['/detail/'+movieId]);
+    var element: any = '';
+    /*element = document.getElementById("eventDays");
+      element!.parentNode.removeChild(element)
+*/
+    for(let i = 0; i<100; i++){
+      element = document.getElementById("eventDays-"+i);
+      if(element!=null){
+        element!.parentNode.removeChild(element)
+      }
+    }
+    
+    this.ngOnInit();
+    /*this.getMovie();
     this.movieEvents = [];
-    this.loadData();*/
-    //window.location.reload();
+    this.loadData();
+    *///window.location.reload();
   }
 
   goBack(): void {
