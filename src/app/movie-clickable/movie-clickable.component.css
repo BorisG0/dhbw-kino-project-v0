@@ -1,5 +1,7 @@
 .main:hover{
-    background-color: black;
+    background-color: rgb(202, 202, 202);
+    color: black;
+    transition: all 0.2s ease-out;
 }
 
 .main{
@@ -13,7 +15,11 @@
     color: rgb(202, 202, 202);
 }
 
-.title{
-    color: rgb(202, 202, 202);
+
+
+a{
     text-decoration: none;
+}
+a:hover{
+    color:black;
 }
