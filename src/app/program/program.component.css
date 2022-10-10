@@ -38,4 +38,8 @@
 
   img{
     width: 20vmax;
+    transition: all 0.2s ease-out;
+  }
+  a img:hover:not(.active){
+    width: 21vmax;
   }
