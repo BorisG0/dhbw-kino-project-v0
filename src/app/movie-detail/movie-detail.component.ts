@@ -50,14 +50,12 @@ export class MovieDetailComponent implements OnInit {
     await this.getMovie();
     await this.getMovieEvents(this.movie);
     await this.getMovies();
-    this.filterMovies();
     this.loadMovieEventsperDay();
 
     this.movie.trailerLink = this.movie.trailerLink.substring(1, this.movie.trailerLink.length - 1);
     this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailerLink);
   }
-filterMovies(){  
-}
+
   getMovie() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
