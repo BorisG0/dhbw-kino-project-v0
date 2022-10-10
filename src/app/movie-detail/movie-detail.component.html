@@ -24,9 +24,9 @@
                     </mat-card>
 
                     <mat-card id="common-info" class="text-content">
-                        <mat-card-header>
-                            <mat-card-title>Allgemeine Infos</mat-card-title>
-                        </mat-card-header>
+                        <mat-card-title>
+                            Allgemeine Infos
+                        </mat-card-title>
                         <mat-card-content>
                             <p class="object"> id: {{movie.id}} <br>
                                 length: {{movie.duration}} <br>
@@ -36,11 +36,10 @@
                             </p>
                         </mat-card-content>
                     </mat-card>
-
                     <mat-card id="cast-crew" class="text-content">
-                        <mat-card-header>
-                            <mat-card-title>Cast & Crew</mat-card-title>
-                        </mat-card-header>
+                        <mat-card-title>
+                            Cast & Crew
+                        </mat-card-title>
                         <mat-card-content>
                             <p> Regie: {{movie.regie}}<br>
                                 Cast:{{movie.cast}}</p>
@@ -48,10 +47,9 @@
                     </mat-card>
 
                     <mat-card id="eventSelection" class="text-content">
-                        <mat-card-header>
-                            <mat-card-title id="eventSelectionHeader">Vorstellungen</mat-card-title>
-                        </mat-card-header>
-                        
+                        <mat-card-title id="eventSelectionHeader">
+                            Vorstellungen
+                        </mat-card-title>
                         <mat-card-content id="eventSelectionFooter">
                             <div class="testClassForEventDay" *ngFor="let movieEventDay of movieEventsPerDay"
                                 id="{{ 'eventDays-' + movieEventDay[0].id }}">
