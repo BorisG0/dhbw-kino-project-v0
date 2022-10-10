@@ -12,68 +12,66 @@
             </div>
 
             <div id="content">
-            <div id="contentWrapper">
+                <div id="contentWrapper">
 
-                <mat-card id="descirption" class="text-content">
-                    <mat-card-header >
-                        <mat-card-title>Filmbeschreibung </mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p> {{movie.description}}</p>
-                    </mat-card-content>
-                </mat-card>
+                    <mat-card id="descirption" class="text-content">
+                        <mat-card-header>
+                            <mat-card-title>Filmbeschreibung </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p> {{movie.description}}</p>
+                        </mat-card-content>
+                    </mat-card>
 
-                <mat-card id="common-info" class="text-content">
-                    <mat-card-title>
-                        Allgemeine Infos
-                    </mat-card-title>
-                    <mat-card-content>
-                        <p class="object"> id: {{movie.id}} <br>
-                            length: {{movie.duration}} <br>
-                            studio: {{movie.movieStudio}} <br>
-                            genre: {{movie.genre}} <br>
-                            <a href="{{movie.trailerLink}}">trailer link</a><br>
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-                <mat-card id="cast-crew" class="text-content">
-                    <mat-card-title >
-                        Cast & Crew
-                    </mat-card-title >
-                    <mat-card-content>
-                        <p> Regie: {{movie.regie}}<br>
-                         Cast:{{movie.cast}}</p>
-                    </mat-card-content>
-                </mat-card>
+                    <mat-card id="common-info" class="text-content">
+                        <mat-card-title>
+                            Allgemeine Infos
+                        </mat-card-title>
+                        <mat-card-content>
+                            <p class="object"> id: {{movie.id}} <br>
+                                length: {{movie.duration}} <br>
+                                studio: {{movie.movieStudio}} <br>
+                                genre: {{movie.genre}} <br>
+                                <a href="{{movie.trailerLink}}">trailer link</a><br>
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card id="cast-crew" class="text-content">
+                        <mat-card-title>
+                            Cast & Crew
+                        </mat-card-title>
+                        <mat-card-content>
+                            <p> Regie: {{movie.regie}}<br>
+                                Cast:{{movie.cast}}</p>
+                        </mat-card-content>
+                    </mat-card>
 
+                    <mat-card id="eventSelection" class="text-content">
+                        <mat-card-title id="eventSelectionHeader">
+                            Vorstellungen
+                        </mat-card-title>
+                        <mat-card-content id="eventSelectionFooter">
+                            <div class="testClassForEventDay" *ngFor="let movieEventDay of movieEventsPerDay"
+                                id="{{ 'eventDays-' + movieEventDay[0].id }}">
+                                {{movieEventDay[0].date}}
+                                <br>
+                                <br>
+                                <div id="events" *ngFor="let movieEvent of movieEventDay"
+                                    routerLink="/booking/{{movieEvent.id}}">
+                                    <div id="eventTime">
+                                        <span> {{movieEvent.time}}</span>
 
+                                    </div>
+                                    <div id="eventRoom">
 
-                <div id="eventSelection" class="text-content">
-                    <div id="eventSelectionHeader">
-                        <h1>Vorstellungen</h1>
-                        <div class="heading-devider"></div>
-                    </div>
-                    <div id="eventSelectionFooter">
-                        <div class="testClassForEventDay" *ngFor="let movieEventDay of movieEventsPerDay" id="{{ 'eventDays-' + movieEventDay[0].id }}">
-                            {{movieEventDay[0].date}}
-                            <br>
-                            <br>
-                            <div id="events" *ngFor="let movieEvent of movieEventDay" routerLink="/booking/{{movieEvent.id}}">
-                                <div id="eventTime">
-                                    <span> {{movieEvent.time}}</span>
-
-                                </div>
-                                <div id="eventRoom">
-
-                                    <span > Saal {{movieEvent.roomId}} </span>
+                                        <span> Saal {{movieEvent.roomId}} </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </mat-card-content>
+                    </mat-card>
 
-                
-            </div>
+                </div>
             </div>
         </div>
 
@@ -90,9 +88,9 @@
                     <div class="heading-devider"></div>
                 </div>
                 <div id="one-thirds-column-footer">
-                    <div id="moreMovies"  *ngFor="let movie of movies" >
+                    <div id="moreMovies" *ngFor="let movie of movies">
                         <h2>{{movie.title}}</h2>
-                        <img  src="\assets\images\{{movie.imageName}}"  (click)="changedMovie(movie.id)">
+                        <img src="\assets\images\{{movie.imageName}}" (click)="changedMovie(movie.id)">
                     </div>
                 </div>
             </div>

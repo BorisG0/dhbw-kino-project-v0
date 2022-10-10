@@ -7,7 +7,7 @@
   height: 100%;
   margin: 0;
   padding: 0;
-    background-color: rgb(50, 0, 0);
+  background-color: rgb(50, 0, 0);
 
 }
 #theImage{
@@ -127,10 +127,10 @@ iframe{
   text-align: center;
 }
 .testClassForEventDay:nth-of-type(even){
-  background-color: grey;
+  background-color: rgb(150, 47, 47);
 }
 .testClassForEventDay:nth-of-type(odd){
-  background-color: #BBB;
+  background-color: rgb(139, 8, 8);
 }
 #eventDays{
   border-color: black;
