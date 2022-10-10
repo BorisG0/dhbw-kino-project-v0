@@ -32,7 +32,6 @@ export class ProgramComponent implements OnInit {
   }
 
   applyGenres(){
-    this.selectedGenre = (document.getElementById("genre") as HTMLInputElement).value;
     if(this.selectedGenre != null && !(this.selectedGenre === "")){
       console.log("genre Change");
       this.movies = [];

@@ -1,3 +1,4 @@
+  
   h1 {
     color: rgb(155, 113, 28);
     font-family: Arial, Helvetica, sans-serif;
@@ -14,14 +15,11 @@
 
   .filter_box{
     float: left;
-  width: 300px;
-  padding-left: 5%;
-  padding-right: 10%;
-  }
-
-  .filter_box_background{
-    background-color: #333;
-    text-align: center;
+  width: 20vmax;
+  margin-left: 5%;
+  margin-right: 10%;
+  background-color: #333;
+  
   }
 
   
