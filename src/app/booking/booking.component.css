@@ -34,22 +34,3 @@ h2{
 .selectedSeat{
     color: white
 }
-
-/*
-
-.seat{
-    background-color: white;
-    text-decoration: none;
-    color: black;
-    margin: 1%;
-    height: 30%;
-    font-size: 25px;
-    text-align: center;
-    width: 20%;
-    display: inline-table;
-    text-align: left;
-    float:left;
-  
-  }
-
-  */
