@@ -4,6 +4,7 @@ import { MovieService } from '../movie.service';
 
 import { Movie } from '../movie';
 
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-program',
@@ -33,7 +34,7 @@ export class ProgramComponent implements OnInit {
 
   applyGenres(){
     if(this.selectedGenre != null && !(this.selectedGenre === "")){
-      console.log("genre Change");
+      console.log("genre Change " + this.selectedGenre);
       this.movies = [];
       this.getMoviesByGenre(this.selectedGenre);
     }else if(this.selectedGenre === ""){

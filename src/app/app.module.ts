@@ -25,8 +25,9 @@ import {InfoComponent} from './info/info.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { RegistrationComponent } from './registration/registration.component';
-import { NgSelectModule } from '@ng-select/ng-select'
-import { FormsModule } from '@angular/forms';
+//import { NgSelectModule } from '@ng-select/ng-select';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -63,8 +64,10 @@ import { FormsModule } from '@angular/forms';
     MatGridListModule,
     MatIconModule,
     MatCheckboxModule,
-    NgSelectModule,
-    FormsModule
+    MatSelectModule,
+    //NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

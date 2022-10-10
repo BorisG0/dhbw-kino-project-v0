@@ -3,6 +3,8 @@
 <mat-card class="filter_box">
         <h2 style="color:White">Genreauswahl</h2>
         <br>
+
+        <!--
         <ng-select [(ngModel)]="selectedGenre" (change)="applyGenres()" style="background-color: rgb(224, 224, 224); border-radius: 5px;">
             <ng-option value="">None</ng-option>
             <ng-option value="Action">Action</ng-option>
@@ -13,6 +15,22 @@
             <ng-option value="Science Fiction">Science Fiction</ng-option>
             <ng-option value="Thriller">Thriller</ng-option>
         </ng-select>
+        -->
+
+        <mat-form-field appearance="fill">
+            <mat-label>Filter</mat-label>
+            <mat-select [(ngModel)]="selectedGenre" (selectionChange)="applyGenres()">
+                <mat-option value="">None</mat-option>
+                <mat-option value="Action">Action</mat-option>
+                <mat-option value="Animation">Animation</mat-option>
+                <mat-option value="Fantasy">Fantasy</mat-option>
+                <mat-option value="Horror">Horror</mat-option>
+                <mat-option value="Komödie">Komödie</mat-option>
+                <mat-option value="Science Fiction">Science Fiction</mat-option>
+                <mat-option value="Thriller">Thriller</mat-option>
+            </mat-select>
+        </mat-form-field>
+
     </mat-card>
 
 <div class="parent">
