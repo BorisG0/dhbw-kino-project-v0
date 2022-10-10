@@ -39,9 +39,11 @@ overflow-y: auto;
 .text-content{
   background-color: rgb(70, 0, 0);
   color: rgb(202, 202, 202);
+  margin:20px;
+  /*
   margin-top: 20px;
   margin-bottom: 20px;
-
+*/
 
 }
 #descirption{
@@ -49,6 +51,10 @@ overflow-y: auto;
 }
 #contentWrapper{
   height: 100%;
+
+  
+
+/*
   margin-left: 20px;
   margin-right: 20px;
 
@@ -56,6 +62,7 @@ overflow-y: auto;
   justify-content: space-between;
   display: flex;
   align-items: stretch;
+  */
 }
 
 .page-section{
@@ -89,6 +96,9 @@ overflow-y: auto;
   margin-bottom: 30px;
 }   
 
+#eventSelection{
+  bottom: 0;
+}
 
 iframe{
   width: 100%;
