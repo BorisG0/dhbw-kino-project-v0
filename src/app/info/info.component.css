@@ -35,7 +35,7 @@
     background-color: blueviolet;
     width: 100%;
 }
-#communication{
+#contact{
     height: 50%;
     background-color: chocolate;
     width: 100%;
@@ -43,12 +43,20 @@
 
 .card{
     width: auto;
-    height: auto;
-    margin: 5px;
+    height: 100%;
     background-color: rgb(70, 0, 0);
     color: rgb(202, 202, 202);
 }
 
 .map{
     width: 100%;
+}
+
+.text-left{
+    float: left;
+    margin-left: 20px;
+}
+.text-right{
+    float: right;
+    margin-right: 20px;
 }
