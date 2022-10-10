@@ -21,7 +21,6 @@
 <div class="parent">
     <div  *ngFor="let movie of movies">
         <a  routerLink="/detail/{{movie.id}}" class="child">
-            {{movie.title}}
             <img src="\assets\images\{{movie.imageName}}">
         </a>
     <div>
