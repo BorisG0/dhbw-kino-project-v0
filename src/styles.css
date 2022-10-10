@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-/* Uncomment to set background image*/
+
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
+
 html {
 
         background-image: url('/assets/images/background.png');
