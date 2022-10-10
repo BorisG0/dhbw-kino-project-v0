@@ -51,12 +51,11 @@
                             Vorstellungen
                         </mat-card-title>
                         <mat-card-content id="eventSelectionFooter">
-                            <div class="testClassForEventDay" *ngFor="let movieEventDay of movieEventsPerDay"
+                            <mat-card class="testClassForEventDay" *ngFor="let movieEventDay of movieEventsPerDay"
                                 id="{{ 'eventDays-' + movieEventDay[0].id }}">
-                                {{movieEventDay[0].date}}
-                                <br>
-                                <br>
-                                <div id="events" *ngFor="let movieEvent of movieEventDay"
+                                <mat-card-title>{{movieEventDay[0].date}} </mat-card-title> 
+
+                                <mat-card-content id="events" *ngFor="let movieEvent of movieEventDay"
                                     routerLink="/booking/{{movieEvent.id}}">
                                     <div id="eventTime">
                                         <span> {{movieEvent.time}}</span>
@@ -66,8 +65,8 @@
 
                                         <span> Saal {{movieEvent.roomId}} </span>
                                     </div>
-                                </div>
-                            </div>
+                                </mat-card-content>
+                            </mat-card>
                         </mat-card-content>
                     </mat-card>
 
