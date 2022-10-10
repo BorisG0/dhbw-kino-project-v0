@@ -7,6 +7,8 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { BookingComponent } from './booking/booking.component';
 import { InfoComponent } from './info/info.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+
 
 const routes: Routes = [
   { path: 'program', component: ProgramComponent},
@@ -15,7 +17,9 @@ const routes: Routes = [
   { path: 'detail/:id', component: MovieDetailComponent},
   { path: 'info', component: InfoComponent},
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent }
+
 ];
 
 @NgModule({

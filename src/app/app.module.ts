@@ -22,6 +22,9 @@ import { SeatComponent } from './seat/seat.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {InfoComponent} from './info/info.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 
@@ -38,10 +41,12 @@ import {InfoComponent} from './info/info.component';
     BookingComponent,
     LoginComponent,
     SeatComponent,
+    RegistrationComponent,
  
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FlexLayoutModule,
@@ -52,7 +57,8 @@ import {InfoComponent} from './info/info.component';
     MatToolbarModule,
     MatRadioModule,
     MatGridListModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
