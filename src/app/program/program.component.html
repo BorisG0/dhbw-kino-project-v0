@@ -1,22 +1,19 @@
 <h2>Programm</h2>
 
-<div class="filter_box">
-    <div class="filter_box_background">
+<mat-card class="filter_box">
         <h2 style="color:White">Genreauswahl</h2>
         <br>
-        <select id="genre" (change)="applyGenres()">
-            <option value="">None</option>
-            <option value="Action">Action</option>
-            <option value="Animation">Animation</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Horror">Horror</option>
-            <option value="Komödie">Komödie</option>
-            <option value="Science Fiction">Science Fiction</option>
-            <option value="Thriller">Thriller</option>
-
-        </select>
-    </div>
-</div>
+        <ng-select [(ngModel)]="selectedGenre" (change)="applyGenres()" style="background-color: rgb(224, 224, 224); border-radius: 5px;">
+            <ng-option value="">None</ng-option>
+            <ng-option value="Action">Action</ng-option>
+            <ng-option value="Animation">Animation</ng-option>
+            <ng-option value="Fantasy">Fantasy</ng-option>
+            <ng-option value="Horror">Horror</ng-option>
+            <ng-option value="Komödie">Komödie</ng-option>
+            <ng-option value="Science Fiction">Science Fiction</ng-option>
+            <ng-option value="Thriller">Thriller</ng-option>
+        </ng-select>
+    </mat-card>
 
 <div class="parent">
     <div  *ngFor="let movie of movies">
