@@ -1,80 +1,42 @@
-.card-anf{
-    background-color: #333;
-    min-height: 400px;
-    width: 620px;
-    padding-left: 10px;
-    padding-top: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    overflow: hidden;
+#first-left{
+    background-color: green;
     float: left;
+    width: 60%;
+    height: 100%;
 }
-.card-open{
-    background-color: #333;
-    min-height: 195px;
-    width: 340px;
-    padding-left: 10px;
-    padding-top: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    float: left;
-    overflow: hidden;
-}
-.card-con{
-    background-color: #333;
-    min-height: 185px;
-    width: 340px;
-    padding-left: 10px;
-    padding-top: 10px;
-    margin-top: 225px;
-    margin-left: -350px;
-    overflow: hidden;
-    float: left;
-}
-.card-gal{
-    background-color: #333;
-    min-height: 700px;
-    width: 645px;
-    padding-left: 10px;
-    padding-top: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    overflow: hidden;
-    float: left;
-}
-.card-pri{
-    background-color: #333;
-    min-height: 280px;
-    width: 980px;
-    padding-left: 10px;
-    padding-top: 10px;
-    margin-top: 430px;
-    margin-left: -1655px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    float: left;
-}
-h1, h2, h3, p{
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-}
-.text-links {
-    float: left;
-    margin-left: 30px;
-    margin-top: 20px;
-}
-.text-rechts {
+#first-right{
+    background-color: red;
     float: right;
-    margin-top: 20px;
-    margin-right: 50px;
+    width: 40%;
+    height: 100%;
 }
-u {
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-    font-size: 6mm;
+#left-top{
+    height: 60%;
+    background-color: aqua;
 }
-.extrawurst{
-    margin-left: 5px;
+#left-bottom{
+    height: 40%;
+    background-color: yellow;
+}
+#location{
+    width: 50%;
+    height: 100%;
+    background-color: blue;
+    float: left;
+}
+#left-top-right{
+    width: 50%;
+    height: 100%;
+    background-color: aquamarine;
+    float: right;
+}
+#opening-hours{
+    height: 50%;
+    background-color: blueviolet;
+    width: 100%;
+}
+#communication{
+    height: 50%;
+    background-color: chocolate;
+    width: 100%;
 }

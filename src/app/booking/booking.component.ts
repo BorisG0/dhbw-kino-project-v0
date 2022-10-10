@@ -123,4 +123,9 @@ export class BookingComponent implements OnInit {
     window.location.reload();
   }
 
+  bookSeats(){
+    console.log("booking seats");
+    console.log(this.selectedSeats);
+  }
+
 }
