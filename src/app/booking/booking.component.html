@@ -1,5 +1,6 @@
-<h2>Sitze - StatusChangeSuccessfull: {{statusChangeSuccessfull}}</h2>
-<h2>Vorstellung {{movieEvent?.id}} am {{movieEvent?.date}} um {{movieEvent?.time}} Raum: {{movieEvent?.roomId}}</h2>
+<h2>Sitze</h2>
+<h2>Vorstellung {{movieEvent?.id}} am {{movieEvent?.date}} um {{movieEvent?.time}}<br>
+    Saal: {{movieEvent?.roomId}}</h2>
 <button mat-flat-button (click)="clearSelectedSeats()">clear selected seats (admin feature)</button>
 <ul class="seats">
     <div class="row" *ngFor="let row of seats">
@@ -17,3 +18,4 @@
 <div class="selectedSeat" *ngFor="let seat of selectedSeats">
     {{seat.row}} {{seat.numberInRow}}
 </div>
+<button mat-flat-button *ngIf="selectedSeats.length > 0" (click)="bookSeats()">Sitze buchen</button>
