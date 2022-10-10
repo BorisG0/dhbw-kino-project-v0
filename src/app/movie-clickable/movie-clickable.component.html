@@ -1,1 +1,14 @@
-<p>movie-clickable works!</p>
+<a routerLink="/detail/{{movie?.id}}">
+
+<mat-card class="main">
+    <mat-card-header class="header">
+        <mat-card-title class="title">{{movie?.title}}</mat-card-title>
+        <mat-card-subtitle class="title">{{movie?.genre}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="\assets\images\{{movie?.imageName}}"/>
+    <mat-card-content>
+        {{movie?.cast}}
+    </mat-card-content>
+</mat-card>
+
+</a>

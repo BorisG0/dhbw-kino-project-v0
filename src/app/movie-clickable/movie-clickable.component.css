@@ -1,0 +1,19 @@
+.main:hover{
+    background-color: black;
+}
+
+.main{
+    background-color: rgb(70, 0, 0);
+    color:rgb(202, 202, 202);
+    width: 30vmin;
+    text-decoration: none;
+}
+
+.header{
+    color: rgb(202, 202, 202);
+}
+
+.title{
+    color: rgb(202, 202, 202);
+    text-decoration: none;
+}

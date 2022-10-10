@@ -1,7 +1,11 @@
 <div class="movies-menu">
    
+    <!--
         <a *ngFor="let movie of movies" routerLink="/detail/{{movie.id}}">
             <img src="\assets\images\{{movie.imageName}}">
         </a>
+-->
+        <app-movie-clickable class="movie" *ngFor="let movie of movies" [movie]="movie">
+        </app-movie-clickable>
     
 </div>
