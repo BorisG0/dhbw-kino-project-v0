@@ -19,26 +19,15 @@
     align-content: flex-start;
     align-items: flex-start;
   }
-  
-  /*a {
-    background-color: #3f525c;
-    border-radius: 2px;
-    padding: 1rem;
-    font-size: 1.2rem;
-    text-decoration: none;
-    display: inline-block;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-    min-width: 70px;
-    margin: .5rem auto;
-    box-sizing: border-box;
-  
 
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-  } */
+  img{
+    width: 30vmin;
+    transition: all 0.2s ease-out;
+  }
+  a img:hover:not(.active){
+    width: 31vmin;
+  }
+  
   
   @media (min-width: 600px) {
     a {
@@ -46,13 +35,9 @@
       box-sizing: content-box;
     }
   }
-  /*
-  a:hover {
-    background-color: #000;
-  }*/
+
 
   img{
     width: 30vmin;
     height: auto;
-    /*padding: 5vmin;*/
   }
