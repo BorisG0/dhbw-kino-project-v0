@@ -42,6 +42,7 @@ import { RegistrationComponent } from './registration/registration.component';
     LoginComponent,
     SeatComponent,
     RegistrationComponent,
+    InfoComponent
  
   ],
   imports: [
