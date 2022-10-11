@@ -29,6 +29,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieClickableComponent } from './movie-clickable/movie-clickable.component';
+import { EmployeeProgramComponent } from './employee-program/employee-program.component';
+import { EventsComponent } from './events/events.component';
 
 
 
@@ -48,7 +50,9 @@ import { MovieClickableComponent } from './movie-clickable/movie-clickable.compo
     SeatComponent,
     RegistrationComponent,
     InfoComponent,
-    MovieClickableComponent
+    MovieClickableComponent,
+    EmployeeProgramComponent,
+    EventsComponent
  
   ],
   imports: [

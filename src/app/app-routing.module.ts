@@ -8,6 +8,8 @@ import { BookingComponent } from './booking/booking.component';
 import { InfoComponent } from './info/info.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { EmployeeProgramComponent } from './employee-program/employee-program.component';
+import { EventsComponent } from './events/events.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,10 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent},
   { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
-  { path: 'registration', component: RegistrationComponent }
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'emprogram', component: EmployeeProgramComponent},
+  { path: 'events', component: EventsComponent}
+
 
 ];
 
