@@ -10,7 +10,7 @@ import { Movie } from '../movie';
 })
 export class EmployeeProgramComponent implements OnInit {
   movies: Movie[] = [];
-  displayedColumns: string[] = ['Titel', 'Beschreibung', 'Genre', 'FSK'];
+  displayedColumns: string[] = ['Titel', 'Genre', 'FSK', 'Events'];
 
 
 
@@ -26,5 +26,10 @@ export class EmployeeProgramComponent implements OnInit {
       this.movies = movies;
     } );
   }
-
+  onSelectRow(row: Movie){
+console.log(row);
+  }
+  onClickEvents(){
+    console.log("button")
+  }
 }
