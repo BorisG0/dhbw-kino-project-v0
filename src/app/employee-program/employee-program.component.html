@@ -1,22 +1,29 @@
 <body>
     <div id="main">
-<table mat-table>
-    <ng-container>
-        <th> Titel </th>
-        <td> </td>
-    </ng-container>
-    <ng-container>
-        <th> Beschreibung </th>
-        <td> </td>
-    </ng-container>
-    <ng-container>
-        <th> Genre</th>
-        <td> </td>
-    </ng-container>
-    <ng-container>
-        <th> FSK </th>
-        <td> </td>
-    </ng-container>
-</table>
+        <table id="table" mat-table [dataSource]="movies">
+            <ng-container matColumnDef="Titel" sticky>
+              <th mat-header-cell *matHeaderCellDef> Titel </th>
+              <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+            </ng-container>
+          
+
+            <ng-container matColumnDef="Beschreibung">
+              <th mat-header-cell *matHeaderCellDef> Beschreibung </th>
+              <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="Genre">
+              <th mat-header-cell *matHeaderCellDef> Genre </th>
+              <td mat-cell *matCellDef="let element"> {{element.genre}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="FSK">
+              <th mat-header-cell *matHeaderCellDef> FSK </th>
+              <td mat-cell *matCellDef="let element"> {{element.ageRestriction}} </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
     </div>
 </body>

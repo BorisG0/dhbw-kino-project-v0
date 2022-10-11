@@ -31,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovieClickableComponent } from './movie-clickable/movie-clickable.component';
 import { EmployeeProgramComponent } from './employee-program/employee-program.component';
 import { EventsComponent } from './events/events.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -73,7 +74,8 @@ import { EventsComponent } from './events/events.component';
     MatSelectModule,
     //NgSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

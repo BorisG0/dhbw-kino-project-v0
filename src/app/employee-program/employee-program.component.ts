@@ -10,6 +10,8 @@ import { Movie } from '../movie';
 })
 export class EmployeeProgramComponent implements OnInit {
   movies: Movie[] = [];
+  displayedColumns: string[] = ['Titel', 'Beschreibung', 'Genre', 'FSK'];
+
 
 
   constructor(private movieService: MovieService) {
@@ -17,9 +19,12 @@ export class EmployeeProgramComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getMovies();
   }
   getMovies(): void{
-    this.movieService.getMovies().subscribe(movies => this.movies = movies);
+    this.movieService.getMovies().subscribe(movies =>{
+      this.movies = movies;
+    } );
   }
 
 }
