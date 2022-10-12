@@ -1,0 +1,19 @@
+.main-div mat-card {
+    padding: 0;
+    background-color: grey;
+}
+
+.mat-toolbar.mat-primary {
+    background: #3a3737;
+    color: white;
+  }
+
+  .registration-button{
+    background-color: green;
+    display: flex;
+  }
+
+  .registration-form{
+        padding: 20px
+  }
+

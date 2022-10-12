@@ -1,1 +1,42 @@
-<p>registration works!</p>
+<div fxLayoutAlign ="center center" fxFlexFill class="main-div">
+
+    <mat-card fxFlex="30">
+        <mat-toolbar color="primary" fxLayoutAlign="left center">Registrieren</mat-toolbar>
+
+        <form fxLayoutAlign="stretch" fxLayout="column" class="registration-form">
+
+        
+        <mat-form-field>
+            <input matInput placeholder="Vorname">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Nachname">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Geburtstag">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Email">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Passwort">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="Passwort wiederholen">
+        </mat-form-field>
+
+        <mat-checkbox> Ich habe die <a href="https://dsgvo-gesetz.de/">AGB</a> gelesen und akzeptiere diese. </mat-checkbox>
+
+    </form>
+
+        <mat-toolbar color="primary"><button mat-raised-button type="submit" class="registration-button" >Jetzt registrieren</button></mat-toolbar>
+
+
+
+    </mat-card>
+</div>
