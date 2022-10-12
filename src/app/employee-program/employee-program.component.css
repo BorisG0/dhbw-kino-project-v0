@@ -1,17 +1,23 @@
 #main{
-    width: 90%;
+    width: 80%;
     height: 100%;
     margin: auto;
-    overflow-x: auto;
+    overflow-x: scroll;
 
     background-color: rgb(50, 0, 0);
 }
+td.mat-column-Genre {
+  padding-right: 8px;
+}
 #table{
     color:  rgb(202, 202, 202);
+    width: 2500px;
+    height: 90%;
+
+
 }
 .mat-row .mat-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
+    border-top: 1px solid grey;
     cursor: pointer;
   }
   
