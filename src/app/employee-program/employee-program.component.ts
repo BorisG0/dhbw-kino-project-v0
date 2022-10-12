@@ -10,7 +10,7 @@ import { Movie } from '../movie';
 })
 export class EmployeeProgramComponent implements OnInit {
   movies: Movie[] = [];
-  displayedColumns: string[] = ['title', 'duration', 'genre', 'fsk', 'cast', 'regie', 'studio', 'date', 'description'];
+  displayedColumns: string[] = ['title', 'duration', 'genre', 'fsk', 'cast', 'regie', 'studio', 'date', 'description', 'symbol'];
 
 
 
