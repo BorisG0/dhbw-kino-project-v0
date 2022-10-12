@@ -32,6 +32,7 @@ import { MovieClickableComponent } from './movie-clickable/movie-clickable.compo
 import { EmployeeProgramComponent } from './employee-program/employee-program.component';
 import { EventsComponent } from './events/events.component';
 import {MatTableModule} from '@angular/material/table';
+import { NewMovieComponent } from './new-movie/new-movie.component';
 
 
 
@@ -53,7 +54,8 @@ import {MatTableModule} from '@angular/material/table';
     InfoComponent,
     MovieClickableComponent,
     EmployeeProgramComponent,
-    EventsComponent
+    EventsComponent,
+    NewMovieComponent
  
   ],
   imports: [

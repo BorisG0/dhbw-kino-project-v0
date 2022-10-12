@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { EmployeeProgramComponent } from './employee-program/employee-program.component';
 import { EventsComponent } from './events/events.component';
+import { NewMovieComponent } from './new-movie/new-movie.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'emprogram', component: EmployeeProgramComponent},
-  { path: 'events', component: EventsComponent}
+  { path: 'events', component: EventsComponent},
+  { path: 'newMovie', component: NewMovieComponent}
 
 
 ];
