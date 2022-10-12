@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'emprogram', component: EmployeeProgramComponent},
-  { path: 'events', component: EventsComponent},
+  { path: 'events/:id', component: EventsComponent},
   { path: 'newMovie', component: NewMovieComponent}
 
 

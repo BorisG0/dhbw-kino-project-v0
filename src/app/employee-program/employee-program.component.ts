@@ -26,10 +26,5 @@ export class EmployeeProgramComponent implements OnInit {
       this.movies = movies;
     } );
   }
-  onSelectRow(row: Movie){
-console.log(row);
-  }
-  onClickEvents(){
-    console.log("button")
-  }
+
 }
