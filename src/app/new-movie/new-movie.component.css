@@ -1,0 +1,34 @@
+#main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.container{
+    background-color: rgb(50, 0, 0);
+    height: 33%;
+    width: 33%;
+    min-width: 300px;
+
+}
+.formField{
+    background-color: rgb(70, 0, 0);
+    color:  rgb(202, 202, 202);
+font-size: large;
+    width: 100%;
+    height: 100%;
+
+}
+#firstContainer{
+
+}
+#secondContainer{
+
+}
+#thridContainer{
+
+}
+#fourthContainer{
+
+}
