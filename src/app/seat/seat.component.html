@@ -1,1 +1,3 @@
-<button mat-flat-button>{{seat?.status}}</button>
+<button *ngIf="seat?.status == 0" class="free" mat-flat-button>{{seat?.status}}</button>
+<button *ngIf="seat?.status == 1" class="occupied" mat-flat-button>{{seat?.status}}</button>
+<button *ngIf="seat?.status == 2" class="reserved" mat-flat-button>{{seat?.status}}</button>
