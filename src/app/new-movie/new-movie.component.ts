@@ -27,8 +27,8 @@ export class NewMovieComponent implements OnInit {
     }
 
   }
- /*onUpload(){
-    var anchor = document.createElement("a");
+ onUpload(){
+ /*   var anchor = document.createElement("a");
     var myFolder = Folder ((app.activeDocument.path))
     anchor.href = URL.createObjectURL(this.selectedFile);
     console.log(anchor)
@@ -37,6 +37,6 @@ export class NewMovieComponent implements OnInit {
     //anchor.download = "save.png"
     anchor.click()
     AppComp
-  }*/
+ */}
 
 }
