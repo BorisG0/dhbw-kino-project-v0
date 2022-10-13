@@ -33,6 +33,9 @@ import { EmployeeProgramComponent } from './employee-program/employee-program.co
 import { EventsComponent } from './events/events.component';
 import {MatTableModule} from '@angular/material/table';
 import { NewMovieComponent } from './new-movie/new-movie.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -77,7 +80,10 @@ import { NewMovieComponent } from './new-movie/new-movie.component';
     //NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
