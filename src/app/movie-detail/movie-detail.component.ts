@@ -105,6 +105,8 @@ export class MovieDetailComponent implements OnInit {
   loadMovieEventsperDay() {
     let tempArray : MovieEvent[] = [];
     this.movieEvents.forEach(movieEvent => {
+      let tempDate: Date = new Date(movieEvent.date);
+      movieEvent.weekDay = this.weekDayIndexToString(tempDate.getDay());
       if(tempArray.length>0){
         if(tempArray[0].date == movieEvent.date){
           tempArray.push(movieEvent)
@@ -112,7 +114,7 @@ export class MovieDetailComponent implements OnInit {
         else{
           this.movieEventsPerDay.push(tempArray)
           tempArray = [];
-          tempArray.push(movieEvent)
+          tempArray.push(movieEvent);
         }
       }else{
         tempArray.push(movieEvent)
@@ -123,6 +125,11 @@ export class MovieDetailComponent implements OnInit {
       this.movieEventsPerDay.push(tempArray)
     }
 
+  }
+
+  weekDayIndexToString(dayOfWeek: number){
+    const weekDays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return weekDays[dayOfWeek];
   }
 
 

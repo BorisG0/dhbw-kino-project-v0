@@ -54,7 +54,7 @@
                         <mat-card-content id="eventSelectionFooter">
                             <mat-card class="testClassForEventDay" *ngFor="let movieEventDay of movieEventsPerDay"
                                 id="{{ 'eventDays-' + movieEventDay[0].id }}">
-                                <mat-card-title>{{movieEventDay[0].date}} </mat-card-title> 
+                                <mat-card-title>{{movieEventDay[0].date}} {{movieEventDay[0].weekDay}} </mat-card-title> 
 
                                 <mat-card-content id="events" *ngFor="let movieEvent of movieEventDay"
                                     routerLink="/booking/{{movieEvent.id}}">

@@ -6,4 +6,5 @@ export interface MovieEvent{
     time: Time;
     movieId: number;
     roomId: number;
+    weekDay: string;
 }
