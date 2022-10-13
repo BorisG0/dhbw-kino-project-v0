@@ -46,5 +46,16 @@ background-color: rgb(202, 202, 202) !important;
 height: 100%;
 }
 #fourthContainer mat-form-field{
-height: 33%;
+}
+
+.flexform{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+img{
+    width: 100%;
+}
+input{
+    color:rgb(202, 202, 202)
 }

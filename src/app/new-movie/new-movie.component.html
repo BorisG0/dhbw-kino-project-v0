@@ -39,7 +39,7 @@
             </form>
         </div>
         <div class="container" id="fourthContainer">
-            <form class="form">
+            <form class="form flexform">
             <mat-form-field appearance="fill" class="formField">
                 <mat-label>Genre</mat-label>
                 <mat-select >
@@ -98,11 +98,15 @@
                 </mat-autocomplete>
               </mat-form-field>-->
         </div>
-        <div class="container" id="fourthContainer">
-
-        </div>
-        <div class="container" id="fourthContainer">
-
+        <div class="container" id="fifthContainer">
+            <form class="form">
+                <mat-form-field class="formField" appearance="fill">
+                    <mat-label> Trailer Link </mat-label>
+                    <textarea  matInput placeholder="" ></textarea>
+                </mat-form-field>
+                <input type="file" (change)="onChangeImage($event)">
+                <img [src]="url">
+            </form>
         </div>
         <div class="container" id="fourthContainer">
 
