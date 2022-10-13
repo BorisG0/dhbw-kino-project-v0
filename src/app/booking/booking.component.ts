@@ -8,7 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { MovieService } from '../movie.service';
-import { Time } from '@angular/common';
+
+import { Booking } from '../booking';
 
 @Component({
   selector: 'app-booking',
@@ -101,7 +102,8 @@ export class BookingComponent implements OnInit {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const id = Number(this.route.snapshot.paramMap.get('id'))
-        this.movieService.setSeatInEventStatus({row: seat.row, numberInRow: seat.numberInRow, status: 2, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
+        this.movieService.setSeatInEventStatus({row: seat.row,
+          numberInRow: seat.numberInRow, status: 2, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
           data => {
             this.statusChangeSuccessfull = data;
             resolve(0);
@@ -113,7 +115,8 @@ export class BookingComponent implements OnInit {
 
   clearSelectedSeats(){
     this.selectedSeats.forEach(seat => {
-      this.movieService.setSeatInEventStatus({row: seat.row, numberInRow: seat.numberInRow, status: 0, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
+      this.movieService.setSeatInEventStatus({row: seat.row,
+        numberInRow: seat.numberInRow, status: 0, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
         data => {
           this.statusChangeSuccessfull = data;
         }
@@ -126,6 +129,16 @@ export class BookingComponent implements OnInit {
   bookSeats(){
     console.log("booking seats");
     console.log(this.selectedSeats);
+    if(this.selectedSeats.length == 0){
+      console.log("no selected seats");
+      return;
+    }
+    let seatIds: number[] = [];
+    this.selectedSeats.forEach(seat => {
+      seatIds.push(seat.seatId);
+    });
+    let booking: Booking = {id: 0, eventId: this.eventId, seatIds: seatIds};
+    console.log(booking);
   }
 
 }
