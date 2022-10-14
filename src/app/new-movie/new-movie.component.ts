@@ -10,6 +10,16 @@ import { AppComponent } from '../app.component';
 export class NewMovieComponent implements OnInit {
   url="";
   selectedFile : any;
+  selectedFSK : number = -1;
+  selectedDate: any;
+  selectedGenre: String = "";
+  enteredCast: String = "";
+  enteredRegie: String = "";
+  enteredDescription: String = "";
+  enteredStudio: String = "";
+  enteredduration: number = -1;
+  enteredTitle: String = "";
+  enteredLink: String = "";
 
   constructor(private http: HttpClient) { }
 
@@ -22,10 +32,12 @@ export class NewMovieComponent implements OnInit {
       reader.readAsDataURL(e.target.files[0]);
       reader.onload=(event: any)=>{
         this.url = event.target.result;
-        console.log(this.url)
       }
     }
 
+  }
+  onPressAddMovie()  {
+    console.log(this.selectedFSK + this.selectedDate + this.selectedGenre + this.enteredCast + this.enteredDescription + this.enteredRegie + this.enteredStudio + this.enteredTitle + this.enteredduration + this.selectedFile + this.enteredLink)
   }
  onUpload(){
  /*   var anchor = document.createElement("a");

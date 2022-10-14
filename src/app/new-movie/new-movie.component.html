@@ -4,16 +4,16 @@
             <form class="form">
                 <mat-form-field class="formField" appearance="fill">
                 <mat-label> Titel </mat-label>
-                <textarea matInput placeholder=""></textarea>
+                <textarea [(ngModel)]="enteredTitle" name="enteredTitle" matInput placeholder=""></textarea>
               </mat-form-field>
               <mat-form-field class="formField" appearance="fill">
                 <mat-label> Dauer </mat-label>
-                <textarea  matInput placeholder="" ></textarea>
+                <textarea [(ngModel)]="enteredduration" name="enteredduration" matInput placeholder="" ></textarea>
                 <mat-hint> Angabe in Minuten </mat-hint>
               </mat-form-field>
               <mat-form-field class="formField" appearance="fill">
                 <mat-label> Film Studio </mat-label>
-                <textarea  matInput placeholder="" ></textarea>
+                <textarea [(ngModel)]="enteredStudio" name="enteredStudio" matInput placeholder="" ></textarea>
               </mat-form-field>
             </form>
         </div>
@@ -21,11 +21,11 @@
             <form class="form">
                 <mat-form-field class="formField" appearance="fill">
                     <mat-label> Regie </mat-label>
-                    <textarea  matInput placeholder="" ></textarea>
+                    <textarea [(ngModel)]="enteredRegie" name="enteredRegie" matInput placeholder="" ></textarea>
                 </mat-form-field>
                 <mat-form-field class="formField" appearance="fill">
                     <mat-label> Besetzung </mat-label>
-                    <textarea  matInput placeholder="" ></textarea>
+                    <textarea [(ngModel)]="enteredCast" name="enteredCast" matInput placeholder="" ></textarea>
                 </mat-form-field>
             </form>
         </div>
@@ -33,7 +33,7 @@
             <form class="form">
                 <mat-form-field class="formField" appearance="fill">
                     <mat-label> Beschreibung </mat-label>
-                    <textarea  matInput placeholder="" ></textarea>
+                    <textarea [(ngModel)]="enteredDescription" name="enteredDescription" matInput placeholder="" ></textarea>
                 </mat-form-field>
 
             </form>
@@ -42,7 +42,7 @@
             <form class="form flexform">
             <mat-form-field appearance="fill" class="formField">
                 <mat-label>Genre</mat-label>
-                <mat-select >
+                <mat-select [(ngModel)]="selectedGenre" name="selectedGenre">
                     <mat-option value="">None</mat-option>
                     <mat-option value="Action">Action</mat-option>
                     <mat-option value="Animation">Animation</mat-option>
@@ -55,7 +55,7 @@
             </mat-form-field>
             <mat-form-field appearance="fill" class="formField">
                 <mat-label>FSK</mat-label>
-                <mat-select >
+                <mat-select [(ngModel)]="selectedFSK" name="selectedFSK">
                     <mat-option value="0">0</mat-option>
                     <mat-option value="6">6</mat-option>
                     <mat-option value="12">12</mat-option>
@@ -65,7 +65,7 @@
             </mat-form-field>
             <mat-form-field appearance="fill" class="formField">
                 <mat-label> Start Datum</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input [(ngModel)]="selectedDate" name="selectedDate" matInput [matDatepicker]="picker">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -102,7 +102,7 @@
             <form class="form">
                 <mat-form-field class="formField" appearance="fill">
                     <mat-label> Trailer Link </mat-label>
-                    <textarea  matInput placeholder="" ></textarea>
+                    <textarea [(ngModel)]="enteredLink" name="enteredLink" matInput placeholder="" ></textarea>
                 </mat-form-field>
                 <input type="file" (change)="onChangeImage($event)">
                 <button (click)="onUpload()"> test</button>
@@ -110,7 +110,6 @@
             </form>
         </div>
         <div class="container" id="fourthContainer">
-
-        </div>
+            <button mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>        </div>
     </div>
 </body>
