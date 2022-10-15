@@ -1,1 +1,52 @@
-<p>events works!</p>
+
+        <div *ngFor="let movieEventDay of movieEventsPerDay">
+            <table *ngFor="let movieEvent of movieEventDay">
+                <ng-container matColumnDef="title" sticky>
+                    <td> {{movieEvent.id}}</td>
+                    <td> Saal {{movieEvent.roomId}}</td>
+                    <td> {{movieEvent.time}}</td>
+                    <td> {{movieEvent.date}}</td>
+                </ng-container>
+            </table>
+        </div>
+
+        <form class="example-form" style="padding-top: 5%">
+            
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>event ID</mat-label>
+                <input matInput>
+              </mat-form-field></td>
+
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>movie ID</mat-label>
+                <input matInput>
+              </mat-form-field></td>
+            </tr></table>
+
+            <p>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>room id</mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>date</mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>time</mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field>
+              <button>
+                <mat-icon>update</mat-icon>
+              </button>
+              <button>
+                <mat-icon>create</mat-icon>
+              </button>
+              <button>
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </p>
+          </form>
+          
+
