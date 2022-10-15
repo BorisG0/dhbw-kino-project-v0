@@ -15,29 +15,29 @@
             <table class="example-full-width" cellspacing="0"><tr>
               <td><mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>event ID</mat-label>
-                <input matInput>
+                <input matInput id="eventId">
               </mat-form-field></td>
 
               <td><mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>movie ID</mat-label>
-                <input matInput>
+                <input matInput id="movieId">
               </mat-form-field></td>
             </tr></table>
 
             <p>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>room id</mat-label>
-                <textarea matInput></textarea>
+                <textarea id="roomId" matInput></textarea>
               </mat-form-field>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>date</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput id="date"></textarea>
               </mat-form-field>
               <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>time</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput id="time"></textarea>
               </mat-form-field>
-              <button>
+              <button (click)=getInput()>
                 <mat-icon>update</mat-icon>
               </button>
               <button>

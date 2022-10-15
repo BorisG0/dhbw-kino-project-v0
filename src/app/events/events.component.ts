@@ -92,5 +92,14 @@ export class EventsComponent implements OnInit {
     return weekDays[dayOfWeek];
   }
 
+  getInput(){
+    var roomid = (document.getElementById('roomId') as HTMLInputElement | null)?.value;
+    var movieid = (document.getElementById('movieId') as HTMLInputElement | null)?.value;
+    var eventid = (document.getElementById('eventId') as HTMLInputElement | null)?.value;
+    var date = (document.getElementById('date') as HTMLInputElement | null)?.value;
+    var time = (document.getElementById('time') as HTMLInputElement | null)?.value;
+
+    alert([eventid, movieid, roomid, date, time]);
+  }
 
 }
