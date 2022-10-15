@@ -7,7 +7,7 @@
                     <mat-card-header >
                         <mat-card-title>Anfahrt</mat-card-title>
                     </mat-card-header>
-                    <mat-card-content>
+                    <mat-card-content class="text">
                         <div class="text-left">
                             <p>Adresse:</p>
                         </div>
@@ -29,7 +29,7 @@
                         <mat-card-header >
                             <mat-card-title>Öffnungszeiten</mat-card-title>
                         </mat-card-header>
-                        <mat-card-content>
+                        <mat-card-content class="text">
                             <div class="text-left">
                                 <p>Mo - Fr:</p>
                                 <p>Sa + So:</p>
@@ -49,7 +49,7 @@
                         <mat-card-header >
                             <mat-card-title>Kontakt</mat-card-title>
                         </mat-card-header>
-                        <mat-card-content>
+                        <mat-card-content class="text">
                             <div class="text-left">
                                 <p>E-Mail:</p>
                                 <p>Telefon:</p>
@@ -70,8 +70,9 @@
                 <mat-card-header >
                     <mat-card-title>Preisübersicht</mat-card-title>
                 </mat-card-header>
-                <mat-card-content>
+                <mat-card-content class="text">
                     <p>hier stehen unsere günstigen Preise</p>
+                    <img src="assets/images/imgpreistabelle.PNG">
                 </mat-card-content>
             </mat-card>
         </div>
@@ -82,11 +83,21 @@
             <mat-card-header >
                 <mat-card-title>Galerie</mat-card-title>
             </mat-card-header>
+            <div class="galerie-top">
+                <mat-card-content class="design-galerie1">
+                    <!--<p>hier sind schöne bilder</p>-->
+                    <img src="assets/images/infoimg1.jpg">
+                </mat-card-content>
+            </div>
             <mat-card-content>
-                <p>hier sind schöne bilder</p>
-                <img src="assets/images/img10.jpg">
-                <img src="assets/images/img11.jpg">
-                <img src="assets/images/img12.jpg">
+                <div class="galerie-bottom">
+                    <div class="galerie-bottom-left">
+                        <img src="assets/images/infoimg3.jpg">
+                    </div>
+                    <div class="galerie-bottom-right">
+                        <img src="assets/images/infoimg2.jpg">
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
         <!--<mat-card>
