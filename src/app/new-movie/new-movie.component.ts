@@ -8,18 +8,18 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./new-movie.component.css']
 })
 export class NewMovieComponent implements OnInit {
-  url="";
-  selectedFile : any;
-  selectedFSK : number = -1;
-  selectedDate: any;
-  selectedGenre: String = "";
-  enteredCast: String = "";
-  enteredRegie: String = "";
-  enteredDescription: String = "";
-  enteredStudio: String = "";
-  enteredduration: number = -1;
-  enteredTitle: String = "";
-  enteredLink: String = "";
+  url : String | undefined;
+  selectedFile : File | undefined;
+  selectedFSK : number | undefined;
+  selectedDate: Date | undefined;
+  selectedGenre: String | undefined;
+  enteredCast: String| undefined;
+  enteredRegie: String | undefined;
+  enteredDescription: String | undefined;
+  enteredStudio: String | undefined;
+  enteredduration: number | undefined;
+  enteredTitle: String | undefined;
+  enteredLink: String | undefined;
 
   constructor(private http: HttpClient) { }
 
@@ -37,7 +37,6 @@ export class NewMovieComponent implements OnInit {
 
   }
   onPressAddMovie()  {
-    console.log(this.selectedFSK + this.selectedDate + this.selectedGenre + this.enteredCast + this.enteredDescription + this.enteredRegie + this.enteredStudio + this.enteredTitle + this.enteredduration + this.selectedFile + this.enteredLink)
   }
  onUpload(){
  /*   var anchor = document.createElement("a");
