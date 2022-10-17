@@ -8,4 +8,6 @@ import { Movie } from '../movie';
 })
 export class MovieClickableComponent {
   @Input() movie: Movie | undefined;
+  url="";
+
 }

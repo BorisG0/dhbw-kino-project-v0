@@ -3,7 +3,8 @@ export interface Movie {
     title: string;
     duration: number;
     ageRestriction: number;
-    imageName: string;
+    //imageName: string;
+    image: File;
     description: string;
     genre: string;
     startDate: Date;

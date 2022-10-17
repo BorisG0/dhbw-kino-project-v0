@@ -8,7 +8,9 @@
         <div class="page-section">
 
             <div id="image-cover">
-                <img id="theImage" src="\assets\images\{{movie.imageName}}">
+                <!--<img id="theImage" src="{{movie.imageName}}">-->
+                <!--<img id="theImage" src="{{movie.image}}">-->
+
             </div>
 
             <div id="content">
@@ -78,9 +80,9 @@
         <div class="page-section" id="frame2">
 
             <div class="two-thirds-column">
-                <iframe [src]="safeSrc" title="YouTube video player" frameborder="0"
+                <!--<iframe [src]="safeSrc" title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                    allowfullscreen></iframe>-->
             </div>
             <div class="one-thirds-column overflow-scroll">
                 <div id="one-thirds-column-header">
@@ -90,7 +92,7 @@
                 <div id="one-thirds-column-footer">
                     <div id="moreMovies" *ngFor="let movie of movies">
                         <h2>{{movie.title}}</h2>
-                        <img src="\assets\images\{{movie.imageName}}" (click)="changedMovie(movie.id)">
+                        <!--<img src="\assets\images\{{movie.imageName}}" (click)="changedMovie(movie.id)">-->
                     </div>
                 </div>
             </div>

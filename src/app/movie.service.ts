@@ -31,6 +31,13 @@ export class MovieService {
     this.messageService.add(`MovieService: fetched Movie id=${id}`)
     return this.http.post<Movie>("/api/movie", id);
   }
+  getMovieImage(imageName: string): Observable<any> {
+    //const movie = MOVIES.find(m => m.id === id)!;
+    //return of(movie);
+
+    this.messageService.add(`MovieService: fetched Movie id=${imageName}`)
+    return this.http.post<any>("/api/GetMovieImage", imageName);
+  }
 
   getMoviesByGenre(genre: String): Observable<Movie[]> {
 
@@ -56,4 +63,13 @@ export class MovieService {
     console.log("setting status");
     return this.http.post<boolean>("/api/setStatusForSeatInEvent", seatInEvent);
   }
+  addMovie(newMovie: Movie){
+    console.log("setting status");
+    return this.http.post<String>("/api/addMovie", newMovie);
+  }
+    addImage(newImage: any){
+    console.log("setting status");
+    return this.http.post<String>("/api/addImageTestNothing", newImage);
+  }
+
 }

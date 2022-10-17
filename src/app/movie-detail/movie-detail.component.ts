@@ -20,7 +20,11 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 })
 export class MovieDetailComponent implements OnInit {
   movies: Movie[] = [];
-  movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: 'img0.png', description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: 'https://www.youtube.com/embed/6DxjJzmYsXo'};
+  file = new File(["foo"], "foo.txt", {
+    type: "text/plain",
+  });
+  testtype : any;
+  movie: Movie = {id: 1, title: "placehold", image: this.file, duration: 10, ageRestriction: 0, description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: 'https://www.youtube.com/embed/6DxjJzmYsXo'};
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
   safeSrc: SafeResourceUrl | undefined;
@@ -48,6 +52,7 @@ export class MovieDetailComponent implements OnInit {
 
   async loadData(){
     await this.getMovie();
+    await this.getMovieImage();
     await this.getMovieEvents(this.movie);
     await this.getMovies();
     this.loadMovieEventsperDay();
@@ -62,10 +67,23 @@ export class MovieDetailComponent implements OnInit {
         const id = Number(this.route.snapshot.paramMap.get('id'));
         this.movieService.getMovie(id).subscribe(movie =>{
           this.movie = movie;
+          //console.log(this.movie.imageName)
+          console.log(this.movie)
           resolve(0)
           })
       }, 0)
     })
+  }
+  getMovieImage(){
+    /*return new Promise((resolve, reject) => {
+      setTimeout(() => {
+    this.movieService.getMovieImage(this.movie.imageName).subscribe(movieImage =>{
+      this.testtype = movieImage;
+console.log(this.testtype)
+      resolve(0)
+      })
+    }, 0)
+  })*/
   }
   changedMovie(movieId: number) {
     this._route.navigate(['/detail/'+movieId]);
@@ -92,14 +110,14 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getMovieEvents(movie: Movie) {
-    return new Promise((resolve, reject) => {
+    /*return new Promise((resolve, reject) => {
       setTimeout(() => {
         this.movieService.getEventsForMovie(movie).subscribe(data =>{
           this.movieEvents = data;
           resolve(0)
         })
       }, 0)
-    })
+    })*/
   }
 
   loadMovieEventsperDay() {
