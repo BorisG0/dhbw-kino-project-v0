@@ -51,9 +51,6 @@ export class MovieDetailComponent implements OnInit {
     await this.getMovieEvents(this.movie);
     await this.getMovies();
     this.loadMovieEventsperDay();
-
-    this.movie.trailerLink = this.movie.trailerLink.substring(1, this.movie.trailerLink.length - 1);
-    this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailerLink);
   }
 
   getMovie() {
@@ -62,6 +59,8 @@ export class MovieDetailComponent implements OnInit {
         const id = Number(this.route.snapshot.paramMap.get('id'));
         this.movieService.getMovie(id).subscribe(movie =>{
           this.movie = movie;
+          this.movie.trailerLink = this.movie.trailerLink.substring(1, this.movie.trailerLink.length - 1);
+          this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.movie.trailerLink);
           resolve(0)
           })
       }, 0)
