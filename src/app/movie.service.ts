@@ -56,4 +56,9 @@ export class MovieService {
     console.log("setting status");
     return this.http.post<boolean>("/api/setStatusForSeatInEvent", seatInEvent);
   }
+
+  addMovie(movie: Movie){
+    console.log("adding Movie");
+    return this.http.post<String>("/api/addMovie", movie);
+  }
 }

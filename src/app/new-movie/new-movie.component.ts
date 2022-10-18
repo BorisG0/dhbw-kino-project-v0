@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
     import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../app.component';
+import { MovieService } from '../movie.service';
+
 
 @Component({
   selector: 'app-new-movie',
@@ -8,7 +10,7 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./new-movie.component.css']
 })
 export class NewMovieComponent implements OnInit {
-  url : String | undefined;
+  /*url : String | undefined;
   selectedFile : File | undefined;
   selectedFSK : number | undefined;
   selectedDate: Date | undefined;
@@ -19,9 +21,25 @@ export class NewMovieComponent implements OnInit {
   enteredStudio: String | undefined;
   enteredduration: number | undefined;
   enteredTitle: String | undefined;
-  enteredLink: String | undefined;
+  enteredLink: String | undefined;*/
+  url : string = "";
+  selectedFile : File | undefined;
+  selectedFSK : number = -1;
+  selectedDate: Date = new Date;
+  selectedGenre: string = "";
+  enteredCast: string = "";
+  enteredRegie: string = "";
+  enteredDescription: string = "";
+  enteredStudio: string = "";
+  enteredduration: number | undefined;
+  enteredTitle: string = "";
+  enteredLink: string = "";
 
-  constructor(private http: HttpClient) { }
+
+  constructor(
+    private movieService: MovieService,
+    private http: HttpClient
+    ) { }
 
   ngOnInit(): void {
   }
@@ -37,6 +55,36 @@ export class NewMovieComponent implements OnInit {
 
   }
   onPressAddMovie()  {
+    return new Promise((resolve, reject) => {
+
+      setTimeout(() => {
+        if(this.enteredduration!=null)
+        {
+
+        
+        this.movieService.addMovie({
+          id: 18,
+          title: this.enteredTitle,
+          duration: this.enteredduration,
+          ageRestriction: this.selectedFSK,
+          imageName: "newImageName.png",
+          //image: this.selectedFile,
+          description: this.enteredDescription,
+          genre: this.selectedGenre,
+          startDate: this.selectedDate,
+          movieStudio: this.enteredStudio,
+          regie: this.enteredRegie,
+          cast: this.enteredCast,
+          trailerLink: this.enteredLink
+        }).subscribe(
+          data => {
+            console.log(data);
+            resolve(0);
+          }
+        );
+        }
+      }, 0)
+    })
   }
  onUpload(){
  /*   var anchor = document.createElement("a");

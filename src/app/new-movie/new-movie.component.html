@@ -7,37 +7,31 @@
                 <textarea [(ngModel)]="enteredTitle" name="enteredTitle" matInput placeholder=""></textarea>
               </mat-form-field>
               <mat-form-field class="formField" appearance="fill">
-                <mat-label> Dauer </mat-label>
-                <textarea [(ngModel)]="enteredduration" name="enteredduration" matInput placeholder="" ></textarea>
-                <mat-hint> Angabe in Minuten </mat-hint>
-              </mat-form-field>
-              <mat-form-field class="formField" appearance="fill">
-                <mat-label> Film Studio </mat-label>
-                <textarea [(ngModel)]="enteredStudio" name="enteredStudio" matInput placeholder="" ></textarea>
-              </mat-form-field>
+                <mat-label> Regie </mat-label>
+                <textarea [(ngModel)]="enteredRegie" name="enteredRegie" matInput placeholder="" ></textarea>
+            </mat-form-field>
+            <mat-form-field class="formField" appearance="fill">
+                <mat-label> Besetzung </mat-label>
+                <textarea [(ngModel)]="enteredCast" name="enteredCast" matInput placeholder="" ></textarea>
+            </mat-form-field>
             </form>
         </div>
         <div class="container" id="secondContainer">
             <form class="form">
-                <mat-form-field class="formField" appearance="fill">
-                    <mat-label> Regie </mat-label>
-                    <textarea [(ngModel)]="enteredRegie" name="enteredRegie" matInput placeholder="" ></textarea>
-                </mat-form-field>
-                <mat-form-field class="formField" appearance="fill">
-                    <mat-label> Besetzung </mat-label>
-                    <textarea [(ngModel)]="enteredCast" name="enteredCast" matInput placeholder="" ></textarea>
-                </mat-form-field>
+                
+                  <mat-form-field class="formField" appearance="fill">
+                    <mat-label> Film Studio </mat-label>
+                    <textarea [(ngModel)]="enteredStudio" name="enteredStudio" matInput placeholder="" ></textarea>
+                  </mat-form-field>
+                  <mat-form-field class="formField" appearance="fill">
+                    <mat-label> Dauer </mat-label>
+                    <textarea [(ngModel)]="enteredduration" name="enteredduration" matInput placeholder="" ></textarea>
+                    <mat-hint> Angabe in Minuten </mat-hint>
+                  </mat-form-field>
+                
             </form>
         </div>
-        <div class="container" id="thridContainer">
-            <form class="form">
-                <mat-form-field class="formField" appearance="fill">
-                    <mat-label> Beschreibung </mat-label>
-                    <textarea [(ngModel)]="enteredDescription" name="enteredDescription" matInput placeholder="" ></textarea>
-                </mat-form-field>
 
-            </form>
-        </div>
         <div class="container" id="fourthContainer">
             <form class="form flexform">
             <mat-form-field appearance="fill" class="formField">
@@ -98,6 +92,7 @@
                 </mat-autocomplete>
               </mat-form-field>-->
         </div>
+
         <div class="container" id="fifthContainer">
             <form class="form">
                 <mat-form-field class="formField" appearance="fill">
@@ -105,11 +100,20 @@
                     <textarea [(ngModel)]="enteredLink" name="enteredLink" matInput placeholder="" ></textarea>
                 </mat-form-field>
                 <input type="file" (change)="onChangeImage($event)">
-                <button (click)="onUpload()"> test</button>
                 <img [src]="url">
             </form>
         </div>
-        <div class="container" id="fourthContainer">
-            <button mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>        </div>
+        <div class="container" id="thridContainer">
+            <form class="form">
+                <mat-form-field class="formField" appearance="fill">
+                    <mat-label> Beschreibung </mat-label>
+                    <textarea style="height: max-content" [(ngModel)]="enteredDescription" name="enteredDescription" matInput placeholder="" ></textarea>
+                </mat-form-field>
+
+            </form>
+            </div>
+        <div class="container" id="sixthContainer">
+                    <button mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>        </div>
+
     </div>
 </body>

@@ -42,10 +42,32 @@ background-color: rgb(202, 202, 202) !important;
 #secondContainer textarea{
     height: 70%;
 }
+#thridContainer{
+    width: 59% !important;
+}
+#fifthContainer{
+    width: 40%;
+    height: max-content;
+    min-height: 33%;
+}
 #thridContainer mat-form-field{
 height: 100%;
 }
 #fourthContainer mat-form-field{
+}
+#sixthContainer{
+    display: flex;
+    justify-content: center;
+    min-width: 100px;
+    width: 7%;
+    height: 5%;
+    align-items: center;
+}
+#sixthContainer button{
+    width: 90%;
+    height: 90%;
+    text-align: center;
+
 }
 
 .flexform{
