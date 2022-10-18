@@ -54,18 +54,19 @@ background-color: rgb(202, 202, 202) !important;
 height: 100%;
 }
 #fourthContainer mat-form-field{
+    height: 33%;
 }
 #sixthContainer{
     display: flex;
     justify-content: center;
-    min-width: 100px;
-    width: 7%;
+    max-width: 10%;
+    min-width: unset;
     height: 5%;
     align-items: center;
 }
 #sixthContainer button{
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     text-align: center;
 
 }

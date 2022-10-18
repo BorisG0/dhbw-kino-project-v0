@@ -3,14 +3,15 @@
     height: auto;
     margin: auto;
     overflow-x: scroll;
+    color:  rgb(202, 202, 202);
 
-    background-color: rgb(50, 0, 0);
 }
 td.mat-column-Genre {
   padding-right: 8px;
 }
 #table{
     color:  rgb(202, 202, 202);
+    background-color: rgb(50, 0, 0);
     width: 150%;
     height: auto;
 }
@@ -27,5 +28,13 @@ td.mat-column-Genre {
   }
   
   .mat-row:hover .mat-cell {
-    background-color: rgb(202, 202, 202);
+    background-color: rgb(70, 0, 0);
+
   }
+th{
+  color:rgb(202, 202, 202)
+
+}
+td{
+ color:rgb(202, 202, 202)
+}
