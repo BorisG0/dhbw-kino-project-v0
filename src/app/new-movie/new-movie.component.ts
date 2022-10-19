@@ -38,6 +38,7 @@ export class NewMovieComponent implements OnInit {
   enteredduration: number | undefined;
   enteredTitle: string = "";
   enteredLink: string = "";
+  
 
 
   constructor(
@@ -82,11 +83,14 @@ export class NewMovieComponent implements OnInit {
   }
   openSuccessfulAddMovieDialog(){
     
-      this._snackBar.open("Film wurde hinzugefügt","okay");
+      this._snackBar.open("Film wurde hinzugefügt","okay")
+
     
   }
   openFailedAddMovieDialog(){
-    this._snackBar.open("Alles eingeben","okay");
+    //let config = new MdSnackBarConfig();
+    //config.duration = 10;
+    this._snackBar.open("Fehlerhafte eingabe","okay");
 
   }
 
