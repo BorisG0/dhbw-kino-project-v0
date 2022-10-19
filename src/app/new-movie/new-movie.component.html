@@ -34,7 +34,33 @@
 
         <div class="container" id="fourthContainer">
             <form class="form">
-            <mat-form-field appearance="fill" class="formField">
+              <mat-form-field appearance="fill" class="formField">
+                <mat-label>Genreauswahl</mat-label>
+                <mat-chip-list #chipList aria-label="Genreauswahl">
+                  <mat-chip
+                    *ngFor="let genre of genres"
+                    (removed)="remove(genre)">
+                    {{genre}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input
+                    placeholder="New fruit..."
+                    #fruitInput
+                    [formControl]="genreCtrl"
+                    [matAutocomplete]="auto"
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+                <!--<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                  <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                    {{fruit}}
+                  </mat-option>
+                </mat-autocomplete>-->
+              </mat-form-field>
+            <!--<mat-form-field appearance="fill" class="formField">
                 <mat-label>Genre</mat-label>
                 <mat-select [(ngModel)]="selectedGenre" name="selectedGenre">
                     <mat-option value="">None</mat-option>
@@ -46,7 +72,7 @@
                     <mat-option value="Science Fiction">Science Fiction</mat-option>
                     <mat-option value="Thriller">Thriller</mat-option>
                 </mat-select>
-            </mat-form-field>
+            </mat-form-field>-->
             <mat-form-field appearance="fill" class="formField">
                 <mat-label>FSK</mat-label>
                 <mat-select [(ngModel)]="selectedFSK" name="selectedFSK">
@@ -98,6 +124,8 @@
                 <mat-form-field class="formField" appearance="fill">
                     <mat-label> Trailer Link </mat-label>
                     <textarea [(ngModel)]="enteredLink" name="enteredLink" matInput placeholder="" ></textarea>
+                    <mat-hint> Füge hier den Youtube Link ein (am besten embeded) </mat-hint>
+
                 </mat-form-field>
                 <input type="file" (change)="onChangeImage($event)">
                 <img [src]="url">

@@ -4,6 +4,13 @@ import { AppComponent } from '../app.component';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
+
+
+
 
 
 
@@ -37,18 +44,32 @@ export class NewMovieComponent implements OnInit {
   enteredDescription: string = "";
   enteredStudio: string = "";
   enteredduration: string = "";
-  durationAsNumber: number = -1
+  durationAsNumber: number = -1;
 
   //enteredduration: number | undefined;
   enteredTitle: string = "";
   enteredLink: string = "";
+
+
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  //filteredGenres: Observable<string[]>;
+  genres: string[] = ['Action'];
+
+  allGenres: string[] = ["Thriller", "Science Fiction","Komödie","Horror","Fantasy","Animation","Action"]
+  genreCtrl = new FormControl('');
+
   
 
 
   constructor(
+    /*this.filteredGenres = this.fruitCtrl.valueChanges.pipe(
+      startWith(null),
+      map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allFruits.slice())),
+    );*/
     private movieService: MovieService,
     private http: HttpClient,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+
     ) { }
 
   ngOnInit(): void {
@@ -63,6 +84,27 @@ export class NewMovieComponent implements OnInit {
       }
     }
 
+  }
+
+  remove(fruit: string): void {
+    const index = this.genres.indexOf(fruit);
+
+    if (index >= 0) {
+      this.genres.splice(index, 1);
+    }
+  }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.genres.push(value);
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+
+    this.genreCtrl.setValue(null);
   }
 
   clearInputFields(){
