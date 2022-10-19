@@ -173,6 +173,7 @@ iframe{
 }
 #events:hover{
  cursor: pointer;
+   background-color: #878787;
 }
 #eventTime{
   height: 70%;
@@ -182,9 +183,6 @@ iframe{
   font-size: 15pt;
   }
 
-#events:hover{
-  background-color: #878787;
-}
 #one-thirds-column-header{
   text-align: center;
 }

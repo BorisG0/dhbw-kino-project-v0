@@ -36,7 +36,10 @@ export class NewMovieComponent implements OnInit {
   enteredRegie: string = "";
   enteredDescription: string = "";
   enteredStudio: string = "";
-  enteredduration: number | undefined;
+  enteredduration: string = "";
+  durationAsNumber: number = -1
+
+  //enteredduration: number | undefined;
   enteredTitle: string = "";
   enteredLink: string = "";
   
@@ -64,12 +67,25 @@ export class NewMovieComponent implements OnInit {
 
   clearInputFields(){
     this.enteredTitle = "";
+    this.selectedFSK = -1;
+    this.selectedDate= new Date;
+    this.selectedGenre = "";
+    this.enteredCast = "";
+    this.enteredRegie = "";
+    this.enteredDescription = "";
+    this.enteredStudio = "";
+    this.enteredduration = "";
+
+    //this.enteredduration = undefined;
+    this.enteredTitle = "";
+    this.enteredLink = "";
 
   }
   inputsAreCorrect (){
     let areCorret : boolean = false;
     if(this.enteredTitle != "" &&
-    this.enteredduration != null &&
+    this.enteredduration.match(/^[0-9]+$/) != null &&//nur zahlen eingegeben
+    this.enteredduration != "" &&
     this.selectedFSK != -1 &&
     this.enteredDescription != "" &&
     this.selectedGenre != "" &&
@@ -79,22 +95,16 @@ export class NewMovieComponent implements OnInit {
     this.enteredLink != ""
     )  {//vllt noch abfragen ob es ein richtiger Link ist unso 
       areCorret = true;
+      this.durationAsNumber = Number(this.enteredduration);
     }
     return areCorret;
   }
-  openSuccessfulAddMovieDialog(){
-    
-      this._snackBar.open("Film wurde hinzugefügt","okay")
 
-    
-  }
   openFailedAddMovieDialog(){
     //let config = new MatSnackBarConfig();
     //config.duration = 10;
     this._snackBar.open("Falsche Eingabe", "okay"
-    
     );
-
   }
 
 
@@ -102,13 +112,13 @@ export class NewMovieComponent implements OnInit {
     //Film nur hinzufügen wenn alle Eingaben korrekt sind
     if(this.inputsAreCorrect()){
       let newMovie: Movie;
-      this.openSuccessfulAddMovieDialog();
+      this._snackBar.open("Film wurde hinzugefügt","okay")
       //abfrage ist notwendig da enteredduration als undefined deklariert wird
       if(this.enteredduration!=null){
         //Film zwischenspeichern - Nur notwendig wegen der Error Meldung (Methode geht nicht in subscribe rein)
         newMovie = {id: 18,
           title: this.enteredTitle,
-          duration: this.enteredduration,
+          duration: this.durationAsNumber,
           ageRestriction: this.selectedFSK,
           imageName: "img0.png",
           //image: this.selectedFile,

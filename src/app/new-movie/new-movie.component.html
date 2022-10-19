@@ -25,7 +25,7 @@
                   </mat-form-field>
                   <mat-form-field class="formField" appearance="fill">
                     <mat-label> Dauer </mat-label>
-                    <textarea [(ngModel)]="enteredduration" name="enteredduration" matInput placeholder="" ></textarea>
+                    <textarea mat Input type="number" [(ngModel)]="enteredduration" name="enteredduration" matInput placeholder="" ></textarea>
                     <mat-hint> Angabe in Minuten </mat-hint>
                   </mat-form-field>
                 
@@ -113,7 +113,7 @@
             </form>
             </div>
         <div class="container" id="sixthContainer">
-                    <button mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>        </div>
+                    <button id="pressMovieButton" mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>        </div>
 
     </div>
 </body>
