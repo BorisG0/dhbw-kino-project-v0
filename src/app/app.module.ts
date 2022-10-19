@@ -36,6 +36,8 @@ import { NewMovieComponent } from './new-movie/new-movie.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -83,7 +85,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatChipsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

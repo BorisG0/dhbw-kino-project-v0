@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
     import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../app.component';
 import { MovieService } from '../movie.service';
+import { Movie } from '../movie';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+
 
 
 @Component({
@@ -38,7 +42,8 @@ export class NewMovieComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
-    private http: HttpClient
+    private http: HttpClient,
+    private _snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
@@ -54,20 +59,51 @@ export class NewMovieComponent implements OnInit {
     }
 
   }
+
+  clearInputFields(){
+    this.enteredTitle = "";
+
+  }
+  inputsAreCorrect (){
+    let areCorret : boolean = false;
+    if(this.enteredTitle != "" &&
+    this.enteredduration != null &&
+    this.selectedFSK != -1 &&
+    this.enteredDescription != "" &&
+    this.selectedGenre != "" &&
+    this.enteredStudio != "" &&
+    this.enteredRegie != "" &&
+    this.enteredCast != "" &&
+    this.enteredLink != ""
+    )  {//vllt noch abfragen ob es ein richtiger Link ist unso 
+      areCorret = true;
+    }
+    return areCorret;
+  }
+  openSuccessfulAddMovieDialog(){
+    
+      this._snackBar.open("Film wurde hinzugefügt","okay");
+    
+  }
+  openFailedAddMovieDialog(){
+    this._snackBar.open("Alles eingeben","okay");
+
+  }
+
+
   onPressAddMovie()  {
-    return new Promise((resolve, reject) => {
-
-      setTimeout(() => {
-        if(this.enteredduration!=null)
-        {
-
-        
-        this.movieService.addMovie({
-          id: 18,
+    //Film nur hinzufügen wenn alle Eingaben korrekt sind
+    if(this.inputsAreCorrect()){
+      let newMovie: Movie;
+      this.openSuccessfulAddMovieDialog();
+      //abfrage ist notwendig da enteredduration als undefined deklariert wird
+      if(this.enteredduration!=null){
+        //Film zwischenspeichern - Nur notwendig wegen der Error Meldung (Methode geht nicht in subscribe rein)
+        newMovie = {id: 18,
           title: this.enteredTitle,
           duration: this.enteredduration,
           ageRestriction: this.selectedFSK,
-          imageName: "newImageName.png",
+          imageName: "img0.png",
           //image: this.selectedFile,
           description: this.enteredDescription,
           genre: this.selectedGenre,
@@ -75,16 +111,33 @@ export class NewMovieComponent implements OnInit {
           movieStudio: this.enteredStudio,
           regie: this.enteredRegie,
           cast: this.enteredCast,
-          trailerLink: this.enteredLink
-        }).subscribe(
-          data => {
-            console.log(data);
-            resolve(0);
+          trailerLink: this.enteredLink}
+      }
+      //input Felder zurück setzen
+      this.clearInputFields();
+  
+      return new Promise((resolve, reject) => {
+  
+        setTimeout(() => {
+          if(this.enteredduration!=null)
+          {
+            
+          
+          this.movieService.addMovie(newMovie).subscribe(
+            data => {
+              this.enteredTitle = "";
+              //console.log(data);
+              resolve(0);
+            }
+          );
           }
-        );
-        }
-      }, 0)
-    })
+        }, 0)
+      })
+      //else wenn nicht alle eingaben korrekt sind
+    }else{
+      this.openFailedAddMovieDialog();
+      return;
+    }
   }
  onUpload(){
  /*   var anchor = document.createElement("a");
