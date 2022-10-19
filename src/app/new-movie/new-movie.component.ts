@@ -8,6 +8,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 
+
 @Component({
   selector: 'app-new-movie',
   templateUrl: './new-movie.component.html',
@@ -88,9 +89,11 @@ export class NewMovieComponent implements OnInit {
     
   }
   openFailedAddMovieDialog(){
-    //let config = new MdSnackBarConfig();
+    //let config = new MatSnackBarConfig();
     //config.duration = 10;
-    this._snackBar.open("Fehlerhafte eingabe","okay");
+    this._snackBar.open("Falsche Eingabe", "okay"
+    
+    );
 
   }
 
