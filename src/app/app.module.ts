@@ -37,7 +37,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSnackBarModule } from '@angular/material/snack-bar';
-import {FormControl} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+//import {FormControl} from '@angular/forms';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import {FormControl} from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    FormControl
+    MatAutocompleteModule
+    //FormControl
   ],
   providers: [],
   bootstrap: [AppComponent]
