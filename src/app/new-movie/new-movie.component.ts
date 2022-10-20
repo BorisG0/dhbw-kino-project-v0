@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
     import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../app.component';
 import { MovieService } from '../movie.service';
@@ -8,6 +8,10 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {map, startWith} from 'rxjs/operators';
+
+
 
 
 
@@ -38,7 +42,7 @@ export class NewMovieComponent implements OnInit {
   selectedFile : File | undefined;
   selectedFSK : number = -1;
   selectedDate: Date = new Date;
-  selectedGenre: string = "";
+  //selectedGenre: string = "";
   enteredCast: string = "";
   enteredRegie: string = "";
   enteredDescription: string = "";
@@ -52,25 +56,28 @@ export class NewMovieComponent implements OnInit {
 
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  //filteredGenres: Observable<string[]>;
-  genres: string[] = ['Action'];
+  filteredGenres: Observable<string[]>;
+  selectedGenres: string[] = [];
 
   allGenres: string[] = ["Thriller", "Science Fiction","Komödie","Horror","Fantasy","Animation","Action"]
   genreCtrl = new FormControl('');
+  //@ViewChild('genreInput') genreInput: ElementRef<HTMLInputElement>;
+
 
   
 
 
-  constructor(
-    /*this.filteredGenres = this.fruitCtrl.valueChanges.pipe(
-      startWith(null),
-      map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allFruits.slice())),
-    );*/
-    private movieService: MovieService,
+  constructor(    private movieService: MovieService,
     private http: HttpClient,
-    private _snackBar: MatSnackBar,
+    private _snackBar: MatSnackBar,) { 
+      //Für was braucht man das hier?
+    this.filteredGenres = this.genreCtrl.valueChanges.pipe(
+      startWith(null),
+      map((genre: string | null) => (genre ? this._filter(genre) : this.allGenres.slice())),
+    );
 
-    ) { }
+    }
+    
 
   ngOnInit(): void {
   }
@@ -87,10 +94,10 @@ export class NewMovieComponent implements OnInit {
   }
 
   remove(fruit: string): void {
-    const index = this.genres.indexOf(fruit);
+    const index = this.selectedGenres.indexOf(fruit);
 
     if (index >= 0) {
-      this.genres.splice(index, 1);
+      this.selectedGenres.splice(index, 1);
     }
   }
   add(event: MatChipInputEvent): void {
@@ -98,7 +105,7 @@ export class NewMovieComponent implements OnInit {
 
     // Add our fruit
     if (value) {
-      this.genres.push(value);
+      this.selectedGenres.push(value);
     }
 
     // Clear the input value
@@ -106,12 +113,23 @@ export class NewMovieComponent implements OnInit {
 
     this.genreCtrl.setValue(null);
   }
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.selectedGenres.push(event.option.viewValue);
+    //this.genreInput.nativeElement.value = '';
+    this.genreCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allGenres.filter(genre => genre.toLowerCase().includes(filterValue));
+  }
 
   clearInputFields(){
     this.enteredTitle = "";
     this.selectedFSK = -1;
     this.selectedDate= new Date;
-    this.selectedGenre = "";
+    this.selectedGenres = [];
     this.enteredCast = "";
     this.enteredRegie = "";
     this.enteredDescription = "";
@@ -130,7 +148,7 @@ export class NewMovieComponent implements OnInit {
     this.enteredduration != "" &&
     this.selectedFSK != -1 &&
     this.enteredDescription != "" &&
-    this.selectedGenre != "" &&
+    this.selectedGenres.length != 0 &&
     this.enteredStudio != "" &&
     this.enteredRegie != "" &&
     this.enteredCast != "" &&
@@ -170,6 +188,7 @@ export class NewMovieComponent implements OnInit {
     //Film nur hinzufügen wenn alle Eingaben korrekt sind
     if(this.inputsAreCorrect()){
       let newMovie: Movie;
+      let genreString = this.selectedGenres.toString()
       this._snackBar.open("Film wurde hinzugefügt","okay")
       //abfrage ist notwendig da enteredduration als undefined deklariert wird
       if(this.enteredduration!=null){
@@ -181,7 +200,7 @@ export class NewMovieComponent implements OnInit {
           imageName: "img0.png",
           //image: this.selectedFile,
           description: this.enteredDescription,
-          genre: this.selectedGenre,
+          genre: genreString,
           startDate: this.selectedDate,
           movieStudio: this.enteredStudio,
           regie: this.enteredRegie,
@@ -213,6 +232,10 @@ export class NewMovieComponent implements OnInit {
       this.openFailedAddMovieDialog();
       return;
     }
+  }
+  onTest(){
+    console.log(this.filteredGenres)
+    console.log(this.selectedGenres)
   }
  onUpload(){
  /*   var anchor = document.createElement("a");
