@@ -49,7 +49,6 @@ export class NewMovieComponent implements OnInit {
   enteredStudio: string = "";
   enteredduration: string = "";
   durationAsNumber: number = -1;
-  genreInput: string ="";
 
   //enteredduration: number | undefined;
   enteredTitle: string = "";
@@ -62,7 +61,7 @@ export class NewMovieComponent implements OnInit {
 
   allGenres: string[] = ["Thriller", "Science Fiction","Komödie","Horror","Fantasy","Animation","Action"]
   genreCtrl = new FormControl('');
-  //Für was braucht man das hier?
+  //Funkt noch nicht ... bei select wird input value nicht zurückgesetzt
   //@ViewChild('genreInput') genreInput: ElementRef<HTMLInputElement>;
 
 
@@ -97,12 +96,14 @@ export class NewMovieComponent implements OnInit {
 
   remove(fruit: string): void {
     const index = this.selectedGenres.indexOf(fruit);
-
+    console.log("jetzt in remove")
     if (index >= 0) {
       this.selectedGenres.splice(index, 1);
     }
   }
   add(event: MatChipInputEvent): void {
+    console.log("jetzt in add")
+
     const value = (event.value || '').trim();
 
     // Add our fruit
@@ -116,11 +117,11 @@ export class NewMovieComponent implements OnInit {
   }
   
   selected(event: MatAutocompleteSelectedEvent): void {
+    console.log("jetzt in select")
+    console.log(event);
     this.selectedGenres.push(event.option.viewValue);
-    //Was ist daran anders an dem unten drunter
+    //Funkt noch nicht
     //this.genreInput.nativeElement.value = '';
-
-    this.genreInput = "";
     this.genreCtrl.setValue(null);
   }
 
