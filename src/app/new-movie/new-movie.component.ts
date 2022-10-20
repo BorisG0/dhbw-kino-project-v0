@@ -49,6 +49,7 @@ export class NewMovieComponent implements OnInit {
   enteredStudio: string = "";
   enteredduration: string = "";
   durationAsNumber: number = -1;
+  genreInput: string ="";
 
   //enteredduration: number | undefined;
   enteredTitle: string = "";
@@ -61,6 +62,7 @@ export class NewMovieComponent implements OnInit {
 
   allGenres: string[] = ["Thriller", "Science Fiction","Komödie","Horror","Fantasy","Animation","Action"]
   genreCtrl = new FormControl('');
+  //Für was braucht man das hier?
   //@ViewChild('genreInput') genreInput: ElementRef<HTMLInputElement>;
 
 
@@ -110,12 +112,15 @@ export class NewMovieComponent implements OnInit {
 
     // Clear the input value
     event.chipInput!.clear();
-
     this.genreCtrl.setValue(null);
   }
+  
   selected(event: MatAutocompleteSelectedEvent): void {
     this.selectedGenres.push(event.option.viewValue);
+    //Was ist daran anders an dem unten drunter
     //this.genreInput.nativeElement.value = '';
+
+    this.genreInput = "";
     this.genreCtrl.setValue(null);
   }
 
@@ -233,10 +238,7 @@ export class NewMovieComponent implements OnInit {
       return;
     }
   }
-  onTest(){
-    console.log(this.filteredGenres)
-    console.log(this.selectedGenres)
-  }
+
  onUpload(){
  /*   var anchor = document.createElement("a");
     var myFolder = Folder ((app.activeDocument.path))
