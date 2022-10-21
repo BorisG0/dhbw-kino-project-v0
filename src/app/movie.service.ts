@@ -61,4 +61,8 @@ export class MovieService {
     console.log("adding Movie");
     return this.http.post<String>("/api/addMovie", movie);
   }
+  updateMovie(movie: Movie){
+    console.log("updating Movie");
+    return this.http.post<String>("/api/updateMovie", movie);
+  }
 }

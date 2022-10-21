@@ -10,6 +10,8 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {map, startWith} from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 
@@ -49,6 +51,7 @@ export class NewMovieComponent implements OnInit {
   enteredStudio: string = "";
   enteredduration: string = "";
   durationAsNumber: number = -1;
+  id: number = 0;
 
   //enteredduration: number | undefined;
   enteredTitle: string = "";
@@ -61,6 +64,8 @@ export class NewMovieComponent implements OnInit {
 
   allGenres: string[] = ["Thriller", "Science Fiction","Komödie","Horror","Fantasy","Animation","Action"]
   genreCtrl = new FormControl('');
+  
+  movie : Movie = { id:0, title:"", duration:0, ageRestriction:0, imageName:"",  description:"", genre:"", startDate: new Date(), movieStudio:"",regie:"", cast:"", trailerLink:"" }
   //Funkt noch nicht ... bei select wird input value nicht zurückgesetzt
   //@ViewChild('genreInput') genreInput: ElementRef<HTMLInputElement>;
 
@@ -68,7 +73,10 @@ export class NewMovieComponent implements OnInit {
   
 
 
-  constructor(    private movieService: MovieService,
+  constructor(
+    private route: ActivatedRoute,
+    private _route: Router,
+    private movieService: MovieService,
     private http: HttpClient,
     private _snackBar: MatSnackBar,) { 
       //Für was braucht man das hier?
@@ -81,7 +89,98 @@ export class NewMovieComponent implements OnInit {
     
 
   ngOnInit(): void {
+    this.getMovie();
   }
+
+  getMovie() {
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    
+    if(this.id){
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          //wenn es eine id gibt -> bin ich im Film bearbeiten
+  
+  
+          this.movieService.getMovie(this.id).subscribe(movie =>{
+            this.movie = movie;
+            this.enteredTitle = movie.title;
+            this.enteredCast = movie.cast;
+            this.enteredDescription = movie.description;
+            this.enteredLink = movie.trailerLink;
+            this.enteredRegie = movie.regie;
+            this.enteredStudio = movie.movieStudio;
+            this.enteredduration = String(movie.duration);
+            this.selectedDate = movie.startDate;
+            this.selectedFSK = movie.ageRestriction;
+            console.log(this.selectedFSK)
+            this.selectedGenres = movie.genre.split(',');
+            
+            this.movie.trailerLink = this.movie.trailerLink.substring(1, this.movie.trailerLink.length - 1);
+            resolve(0)
+            })
+        }, 0)
+      })
+    }
+    else{
+      return;
+    }
+
+  }
+  onPressUpdateMovie(){
+    if(this.id){
+      //Film nur ändern wenn alle Eingaben korrekt sind
+    if(this.inputsAreCorrect()){
+      let newUpdateMovie : Movie;
+
+      let genreString = this.selectedGenres.toString()
+      this._snackBar.open("Film wurde geändert","okay")
+      //abfrage ist notwendig da enteredduration als undefined deklariert wird
+      if(this.enteredduration!=null){
+        //Film zwischenspeichern - Nur notwendig wegen der Error Meldung (Methode geht nicht in subscribe rein)
+        newUpdateMovie = {id: this.movie.id,
+          title: this.enteredTitle,
+          duration: this.durationAsNumber,
+          ageRestriction: this.selectedFSK,
+          imageName: this.movie.imageName,
+          //image: this.selectedFile,
+          description: this.enteredDescription,
+          genre: genreString,
+          startDate: this.selectedDate,
+          movieStudio: this.enteredStudio,
+          regie: this.enteredRegie,
+          cast: this.enteredCast,
+          trailerLink: this.movie.trailerLink}
+      }
+      //input Felder zurück setzen
+      //this.clearInputFields();
+  
+      return new Promise((resolve, reject) => {
+  
+        setTimeout(() => {
+          if(this.enteredduration!=null)
+          {
+            
+          
+          this.movieService.updateMovie(newUpdateMovie).subscribe(
+            data => {
+              this.enteredTitle = "";
+              //console.log(data);
+              resolve(0);
+            }
+          );
+          }
+        }, 0)
+      })
+      //else wenn nicht alle eingaben korrekt sind
+    }else{
+      this.openFailedAddMovieDialog();
+    }
+    }
+    return;
+
+  }
+
+
   onChangeImage(e: any): void{
     if(e.target.files){
       var reader = new FileReader;
