@@ -141,8 +141,16 @@
             </form>
             </div>
         <div class="container" id="sixthContainer">
-                    <button id="pressMovieButton" mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>        </div>
-                    <button id="pressUpdateMovieButton" mat-raised-button (click)="onPressUpdateMovie()"> Ändern </button>        
+          <div *ngIf="id==0; then thenBlock else elseBlock"></div>
+              <ng-template #thenBlock>
+                <button id="pressMovieButton" mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>
+              </ng-template>
+              <ng-template #elseBlock>
+                <button id="pressSetMovieInactive" mat-raised-button (click)="onPressSetMovieInactive()"> Inaktiv </button>
+                <button id="pressUpdateMovieButton" mat-raised-button (click)="onPressUpdateMovie()"> Ändern </button>
+              </ng-template>
+          </div>
+                          
 
     </div>
 </body>

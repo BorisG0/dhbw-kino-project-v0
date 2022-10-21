@@ -65,4 +65,8 @@ export class MovieService {
     console.log("updating Movie");
     return this.http.post<String>("/api/updateMovie", movie);
   }
+  setMovieInactive(id: number){
+    console.log("setting movie inactive");
+    return this.http.post<String>("/api/GetMovieImage", id);
+  }
 }

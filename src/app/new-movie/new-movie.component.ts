@@ -338,6 +338,25 @@ export class NewMovieComponent implements OnInit {
       return;
     }
   }
+  onPressSetMovieInactive(){
+    return new Promise((resolve, reject) => {
+  
+      setTimeout(() => {
+        if(this.enteredduration!=null)
+        {
+          
+        
+        this.movieService.setMovieInactive(this.movie.id).subscribe(
+          data => {
+            console.log(data)
+            //console.log(data);
+            resolve(0);
+          }
+        );
+        }
+      }, 0)
+    })
+  }
 
  onUpload(){
  /*   var anchor = document.createElement("a");
