@@ -24,4 +24,12 @@ table {
   td {
     padding-right: 8px;
   }
+  #movieDetails{
+    width: 100%;
+    height: 100%;
+  }
+  #eventDetails{
+width: 100%;
+height: 100%;
+  }
   
