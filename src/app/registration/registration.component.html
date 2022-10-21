@@ -6,29 +6,33 @@
         <form fxLayoutAlign="stretch" fxLayout="column" class="registration-form">
 
         
-        <mat-form-field>
-            <input matInput placeholder="Vorname">
+          <mat-form-field>
+            <input [(ngModel)]="enteredFirstName" name="enteredFirstName" matInput placeholder="Vorname">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="Nachname">
+            <input [(ngModel)]="enteredName" name="enteredName" matInput placeholder="Nachname">
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="Geburtstag">
+            <input [(ngModel)]="selectedDate" name="selectedDate" matInput [matDatepicker]="picker" placeholder="Geburtstag">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
           <mat-form-field>
-            <input matInput placeholder="Email">
-        </mat-form-field>
+            <input [(ngModel)]="enteredEmail" name="enteredEmail" matInput placeholder="Email">
+          </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Passwort">
-        </mat-form-field>
-        
-        <mat-form-field>
-            <input matInput placeholder="Passwort wiederholen">
-        </mat-form-field>
+          <mat-form-field>
+            <input [(ngModel)]="enteredPassword" name="enteredPassword" matInput placeholder="Passwort">
+          </mat-form-field>
+
+       
+          <mat-form-field>
+            <input  [(ngModel)]="enteredPassword" name="enteredPassword" matInput placeholder="Passwort wiederholen">
+          </mat-form-field>
 
         <mat-checkbox> Ich habe die <a href="https://dsgvo-gesetz.de/">AGB</a> gelesen und akzeptiere diese. </mat-checkbox>
 
@@ -39,4 +43,4 @@
 
 
     </mat-card>
-</div>
+  </div>
