@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
 
-
 @Component({
   selector: 'app-employee-program',
   templateUrl: './employee-program.component.html',
@@ -11,16 +10,12 @@ import { Movie } from '../movie';
 export class EmployeeProgramComponent implements OnInit {
   movies: Movie[] = [];
   displayedColumns: string[] = ['title', 'duration', 'genre', 'fsk', 'cast', 'regie', 'studio', 'date', 'description', 'symbol'];
-
-
-
   constructor(private movieService: MovieService) {
-    
    }
-
   ngOnInit(): void {
     this.getMovies();
   }
+  //Alle Filme laden
   getMovies(): void{
     this.movieService.getMovies().subscribe(movies =>{
       this.movies = movies;

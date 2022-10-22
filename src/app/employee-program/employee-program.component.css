@@ -1,19 +1,18 @@
-#main{
-    width: 95%;
-    height: auto;
-    margin: auto;
-    overflow-x: scroll;
-    color:  rgb(202, 202, 202);
-
+#main {
+  width: 95%;
+  height: auto;
+  margin: auto;
+  overflow-x: scroll;
+  color: rgb(202, 202, 202);
 }
 td.mat-column-Genre {
   padding-right: 8px;
 }
-#table{
-    color:  rgb(202, 202, 202);
-    background-color: rgb(50, 0, 0);
-    width: 150%;
-    height: auto;
+#table {
+  color: rgb(202, 202, 202);
+  background-color: rgb(50, 0, 0);
+  width: 150%;
+  height: auto;
 }
 .mat-table-sticky-border-elem-left {
   border-right: 1px solid #e0e0e0;
@@ -22,19 +21,15 @@ td.mat-column-Genre {
   border-left: 1px solid #e0e0e0;
 }
 .mat-row .mat-cell {
-    border-top: 1px solid grey;
-
-    cursor: pointer;
-  }
-  
-  .mat-row:hover .mat-cell {
-    background-color: rgb(70, 0, 0);
-
-  }
-th{
-  color:rgb(202, 202, 202)
-
+  border-top: 1px solid grey;
+  cursor: pointer;
 }
-td{
- color:rgb(202, 202, 202)
+.mat-row:hover .mat-cell {
+  background-color: rgb(70, 0, 0);
+}
+th {
+  color: rgb(202, 202, 202)
+}
+td {
+  color: rgb(202, 202, 202)
 }
