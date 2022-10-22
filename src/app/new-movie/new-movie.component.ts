@@ -1,6 +1,4 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { AppComponent } from '../app.component';
 import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,7 +9,6 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { map, startWith } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-movie',
@@ -43,16 +40,13 @@ export class NewMovieComponent implements OnInit {
   allGenres: string[] = ["Thriller", "Science Fiction", "Komödie", "Horror", "Fantasy", "Animation", "Action"]
   genreCtrl = new FormControl('');
 
-  //Funkt noch nicht ... bei select wird input value nicht zurückgesetzt
+  //Soll den eingegebnen Wert zurücksetzen, wenn ein vorgeschlagener Wert ausgewählt wird
   //@ViewChild('genreInput') genreInput: ElementRef<HTMLInputElement>;
 
   constructor(
     private route: ActivatedRoute,
-    //private _route: Router,
     private movieService: MovieService,
-    // private http: HttpClient,
     private _snackBar: MatSnackBar,) {
-    //Für was braucht man das hier?
     this.filteredGenres = this.genreCtrl.valueChanges.pipe(
       startWith(null),
       map((genre: string | null) => (genre ? this._filter(genre) : this.allGenres.slice())),
@@ -81,15 +75,14 @@ export class NewMovieComponent implements OnInit {
           this.enteredStudio = movie.movieStudio;
           this.enteredduration = String(movie.duration);
           this.selectedDate = movie.startDate;
+          //FSk wird im select noch nicht augewählt
           this.selectedFSK = movie.ageRestriction;
-          console.log(this.selectedFSK)
           this.selectedGenres = movie.genre.split(',');
           resolve(0)
         })
       }, 0)
     })
   }
-
 
   onPressAddMovie() {
     //Film nur hinzufügen wenn alle Eingaben korrekt sind
@@ -119,7 +112,6 @@ export class NewMovieComponent implements OnInit {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           if (this.enteredduration != null) {
-            console.log(newMovie)
             this.movieService.addMovie(newMovie).subscribe(
               data => {
                 resolve(0);
@@ -141,7 +133,6 @@ export class NewMovieComponent implements OnInit {
         if (this.enteredduration != null) {
           this.movieService.setMovieInactive(this.movie.id).subscribe(
             data => {
-              console.log(data)
               resolve(0);
             }
           );
@@ -228,82 +219,44 @@ export class NewMovieComponent implements OnInit {
   openFailedAddMovieDialog() {
     this._snackBar.open("Falsche Eingabe", "okay");
   }
-
-
-  /*checkLink(){
-    var request;
-    if(window.XMLHttpRequest){
-      request = new XMLHttpRequest();
-    }
-    else{
-      request = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    request.open('GET', 'http://www.mozilla.org', false);
-    request.send(); // there will be a 'pause' here until the response to come.
-    // the object request will be actually modified
-    if (request.status === 404) {
-      alert("The page you are trying to reach is not available.");
-    }else{
-      alert("gibts")
-    }
-  }*/
-  onUpload() {
- /*   var anchor = document.createElement("a");
-    var myFolder = Folder ((app.activeDocument.path))
-    anchor.href = URL.createObjectURL(this.selectedFile);
-    console.log(anchor)
-    console.log(anchor.href)
-    anchor.setAttribute('desktop', '{{this.selectedFile}}.png')
-    //anchor.download = "save.png"
-    anchor.click()
-    AppComp
- */}
- onChangeImage(e: any): void {
-  if (e.target.files) {
-    var reader = new FileReader;
-    this.selectedFile = <File>e.target.files[0];
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = (event: any) => {
-      this.url = event.target.result;
+  //Zeigt das ausgewählte Bild an
+  onChangeImage(e: any): void {
+    if (e.target.files) {
+      var reader = new FileReader;
+      this.selectedFile = <File>e.target.files[0];
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      }
     }
   }
-}
 
-remove(fruit: string): void {
-  const index = this.selectedGenres.indexOf(fruit);
-  console.log("jetzt in remove")
-  if (index >= 0) {
-    this.selectedGenres.splice(index, 1);
+/*----------------------------------------------------------------------------------------------------------------------
+--------------------------------------Methoden für Genre Chip List -----------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------*/
+  remove(fruit: string): void {
+    const index = this.selectedGenres.indexOf(fruit);
+    if (index >= 0) {
+      this.selectedGenres.splice(index, 1);
+    }
   }
-}
-add(event: MatChipInputEvent): void {
-  console.log("jetzt in add")
-
-  const value = (event.value || '').trim();
-
-  // Add our fruit
-  if (value) {
-    this.selectedGenres.push(value);
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    if (value) {
+      this.selectedGenres.push(value);
+    }
+    // Clear the input value
+    event.chipInput!.clear();
+    this.genreCtrl.setValue(null);
   }
-
-  // Clear the input value
-  event.chipInput!.clear();
-  this.genreCtrl.setValue(null);
-}
-
-selected(event: MatAutocompleteSelectedEvent): void {
-  console.log("jetzt in select")
-  console.log(event);
-  this.selectedGenres.push(event.option.viewValue);
-  //Funkt noch nicht
-  //this.genreInput.nativeElement.value = '';
-  this.genreCtrl.setValue(null);
-}
-
-private _filter(value: string): string[] {
-  const filterValue = value.toLowerCase();
-
-  return this.allGenres.filter(genre => genre.toLowerCase().includes(filterValue));
-}
-
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.selectedGenres.push(event.option.viewValue);
+    //Soll den eingegebnen Wert zurücksetzen, wenn ein vorgeschlagener Wert ausgewählt wird
+    //this.genreInput.nativeElement.value = '';
+    this.genreCtrl.setValue(null);
+  }
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.allGenres.filter(genre => genre.toLowerCase().includes(filterValue));
+  }
 }
