@@ -20,35 +20,43 @@
       <table class="example-full-width" cellspacing="0"><tr>
         <td><mat-form-field class="example-full-width" appearance="fill">
           <mat-label>event ID</mat-label>
-          <input matInput id="eventId">
+          <input [(ngModel)]="inputEventid" matInput name="eventId">
         </mat-form-field></td>
   
         <td><mat-form-field class="example-full-width" appearance="fill">
           <mat-label>movie ID</mat-label>
-          <input matInput id="movieId">
+          <input [(ngModel)]="inputMovieid" matInput name="moviId">
         </mat-form-field></td>
       </tr></table>
     
       <p>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>room id</mat-label>
-          <textarea id="roomId" matInput></textarea>
+          <mat-label type="number">room id</mat-label>
+          <textarea [(ngModel)]="inputRoomid" matInput name="roomId"></textarea>
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>date</mat-label>
-          <textarea matInput id="date"></textarea>
+          <textarea [(ngModel)]="inputDate" matInput name="date"></textarea>
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>time</mat-label>
-          <textarea matInput id="time"></textarea>
+          <mat-label>hours</mat-label>
+          <textarea [(ngModel)]="inputHours" matInput name="hours"></textarea>
         </mat-form-field>
-        <button (click)=getInput()>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>minutes</mat-label>
+          <textarea [(ngModel)]="inputMinutes" matInput name="minutes"></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>weekday</mat-label>
+          <textarea [(ngModel)]="inputWeekDay" matInput name="weekday"></textarea>
+        </mat-form-field>
+        <button (click)=onPressUpdate()>
           <mat-icon>update</mat-icon>
         </button>
-        <button>
+        <button (click)=onPressCreate()>
           <mat-icon>create</mat-icon>
         </button>
-        <button>
+        <button (click)=onPressDelete()>
           <mat-icon>delete_forever</mat-icon>
         </button>
       </p>

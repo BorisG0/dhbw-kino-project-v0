@@ -7,6 +7,7 @@ import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
 import { MovieEvent } from '../MovieEvent';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { Time } from '@angular/common';
 
 
 
@@ -21,6 +22,16 @@ export class EventsComponent implements OnInit {
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
   safeSrc: SafeResourceUrl | undefined;
+
+
+    inputRoomid : number |undefined;
+    inputMovieid : number |undefined;
+    inputEventid : number |undefined;
+    inputDate : Date |undefined;
+    inputHours : number |undefined;
+    inputMinutes : number |undefined;
+    inputWeekDay : string |undefined;
+    inputTime: Time |undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -92,14 +103,30 @@ export class EventsComponent implements OnInit {
     return weekDays[dayOfWeek];
   }
 
-  getInput(){
-    var roomid = (document.getElementById('roomId') as HTMLInputElement | null)?.value;
-    var movieid = (document.getElementById('movieId') as HTMLInputElement | null)?.value;
-    var eventid = (document.getElementById('eventId') as HTMLInputElement | null)?.value;
-    var date = (document.getElementById('date') as HTMLInputElement | null)?.value;
-    var time = (document.getElementById('time') as HTMLInputElement | null)?.value;
+  onPressUpdate(){
+    let newEvent : MovieEvent;
+    
+      if(this.inputEventid != undefined && this.inputDate != undefined &&  this.inputHours != undefined && this.inputMinutes != undefined &&  this.inputMovieid != undefined &&  this.inputRoomid != undefined &&  this.inputWeekDay != undefined){
+        this.inputTime = {hours: this.inputHours, minutes: this.inputMinutes};
+        newEvent = { id: this.inputEventid, date: this.inputDate, time: this.inputTime, movieId: this.inputMovieid, roomId: this.inputRoomid, weekDay: this.inputWeekDay}
+        console.log(newEvent);
+      }
+  }
 
-    alert([eventid, movieid, roomid, date, time]);
+  onPressCreate(){
+    let newEvent : MovieEvent;
+    
+      if(this.inputEventid != undefined && this.inputDate != undefined &&  this.inputHours != undefined && this.inputMinutes != undefined &&  this.inputMovieid != undefined &&  this.inputRoomid != undefined &&  this.inputWeekDay != undefined){
+        this.inputTime = {hours: this.inputHours, minutes: this.inputMinutes};
+        newEvent = { id: this.inputEventid, date: this.inputDate, time: this.inputTime, movieId: this.inputMovieid, roomId: this.inputRoomid, weekDay: this.inputWeekDay}
+        console.log(newEvent);
+      }
+  }
+
+  onPressDelete(){ 
+      if(this.inputEventid != undefined && this.inputDate == undefined &&  this.inputHours == undefined && this.inputMinutes == undefined &&  this.inputMovieid != undefined &&  this.inputRoomid == undefined &&  this.inputWeekDay == undefined){
+        console.log("deleted: " + this.inputEventid);
+      }
   }
 
 }
