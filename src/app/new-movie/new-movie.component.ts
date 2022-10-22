@@ -145,7 +145,6 @@ export class NewMovieComponent implements OnInit {
     if (this.id) {
       //Film nur ändern wenn alle Eingaben korrekt sind
       if (this.inputsAreCorrect()) {
-        let newUpdateMovie: Movie;
         let genreString = this.selectedGenres.toString()
         //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
         this._snackBar.open("Film wurde geändert", "okay")
