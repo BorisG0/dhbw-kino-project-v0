@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-
 import { Location } from '@angular/common';
-
 import { MovieService } from '../movie.service';
-
 import { Movie } from '../movie';
 import { MovieEvent } from '../MovieEvent';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-
-
 
 @Component({
   selector: 'app-movie-detail',
@@ -35,25 +29,16 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
-    this.getMovies();
-
   }
-  getMovies(): void{
-    this.movieService.getMovies().subscribe(movies =>{
-      //remove current movie from movies array
-      movies.splice(this.movie.id-1, 1)
-     this.movies = movies
-    });
-  }
-
+  //Reihenfolge ist wichtig, da die Funktionen Daten von den vorherigen Funktionen benötigen
   async loadData(){
     await this.getMovie();
     await this.getMovieEvents(this.movie);
     await this.getMovies();
     this.loadMovieEventsperDay();
   }
-
-  getMovie() {
+  //Lädt das aktuelle Movie Objekt (welche im Programm ausgewählt wurde)
+   getMovie() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -66,30 +51,7 @@ export class MovieDetailComponent implements OnInit {
       }, 0)
     })
   }
-  changedMovie(movieId: number) {
-    this._route.navigate(['/detail/'+movieId]);
-    var element: any = '';
-    /*element = document.getElementById("eventDays");
-      element!.parentNode.removeChild(element)
-*/
-    for(let i = 0; i<100; i++){
-      element = document.getElementById("eventDays-"+i);
-      if(element!=null){
-        element!.parentNode.removeChild(element)
-      }
-    }
-    
-    this.ngOnInit();
-    /*this.getMovie();
-    this.movieEvents = [];
-    this.loadData();
-    *///window.location.reload();
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
+//Lädt alle Movie Events für den Film
   getMovieEvents(movie: Movie) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -100,7 +62,17 @@ export class MovieDetailComponent implements OnInit {
       }, 0)
     })
   }
-
+//Lädt alle anderen Filme um so eine schnelle Navigation zwischen den Filmen zu ermöglichen
+//Der bereits ausgewählte Film wird nicht mit angezeigt
+  getMovies(): void{
+    this.movieService.getMovies().subscribe(movies =>{
+      //remove current movie from movies array
+      movies.splice(this.movie.id-1, 1)
+     this.movies = movies
+    });
+  }
+//Die Vorstellungen werden den einzelnen Vorstellungstagen untergeordnet
+//Außerdem wird der Wochentag zu den Vorstellungstagen ausgegeben
   loadMovieEventsperDay() {
     let tempArray : MovieEvent[] = [];
     this.movieEvents.forEach(movieEvent => {
@@ -118,18 +90,34 @@ export class MovieDetailComponent implements OnInit {
       }else{
         tempArray.push(movieEvent)
       }
-
     })
     if(tempArray.length>0){
       this.movieEventsPerDay.push(tempArray)
     }
-
   }
-
+  //Funktion um Wochentag auszugeben
   weekDayIndexToString(dayOfWeek: number){
-    const weekDays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const weekDays: string[] = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
     return weekDays[dayOfWeek];
   }
+
+  //Beim wechseln der FIlme wird die Seite neu geladen aber die erzeugten div Container für die Vorstellungen wurden nicht gelöscht, weshalb die Container (bis zu 100) in der For Schleife gelöscht werden
+  //ToDo: Schönere Lösung für das Problem
+  changedMovie(movieId: number) {
+    this._route.navigate(['/detail/'+movieId]);
+    var element: any = '';
+    for(let i = 0; i<100; i++){
+      element = document.getElementById("eventDays-"+i);
+      if(element!=null){
+        element!.parentNode.removeChild(element)
+      }
+    }
+    this.ngOnInit();
+  }
+
+
+
+
 
 
 }

@@ -1,22 +1,14 @@
 <html>
-
-<header>
-</header>
-
-<body>
-    <div id="main">
-        <div class="page-section">
-
-            <div id="image-cover">
-                <img id="theImage" src="\assets\images\{{movie.imageName}}">
-            </div>
-
-            <div id="content">
-               <!-- <div id="contentWrapper">-->
+    <body>
+        <div id="main">
+            <div class="page-section">
+                <div id="image-cover">
+                    <img id="theImage" src="\assets\images\{{movie.imageName}}">
+                </div>
+                <div id="content">
                     <mat-card id="title-info" class="text-content">
                         <h1>{{movie.title}}</h1>
                     </mat-card>
-
                     <mat-card id="common-info" class="text-content">
                         <mat-card-title>
                             Allgemeine Infos
@@ -30,14 +22,12 @@
                             </p>
                         </mat-card-content>
                     </mat-card>
-
                     <mat-card id="descirption" class="text-content">
-                            <mat-card-title>Filmbeschreibung </mat-card-title>
+                        <mat-card-title>Filmbeschreibung </mat-card-title>
                         <mat-card-content>
                             <p> {{movie.description}}</p>
                         </mat-card-content>
                     </mat-card>
-
                     <mat-card id="cast-crew" class="text-content">
                         <mat-card-title>
                             Cast & Crew
@@ -47,7 +37,6 @@
                                 Cast:{{movie.cast}}</p>
                         </mat-card-content>
                     </mat-card>
-
                     <mat-card id="eventSelection" class="text-content">
                         <mat-card-title id="eventSelectionHeader">
                             Vorstellungen
@@ -55,51 +44,40 @@
                         <mat-card-content id="eventSelectionFooter">
                             <mat-card class="testClassForEventDay" *ngFor="let movieEventDay of movieEventsPerDay"
                                 id="{{ 'eventDays-' + movieEventDay[0].id }}">
-                                <mat-card-title>{{movieEventDay[0].date}} {{movieEventDay[0].weekDay}} </mat-card-title> 
-
+                                <mat-card-title>{{movieEventDay[0].date}} {{movieEventDay[0].weekDay}} </mat-card-title>
                                 <mat-card-content id="events" *ngFor="let movieEvent of movieEventDay"
                                     routerLink="/booking/{{movieEvent.id}}">
                                     <div id="eventTime">
                                         <span> {{movieEvent.time}}</span>
-
                                     </div>
                                     <div id="eventRoom">
-
                                         <span> Saal {{movieEvent.roomId}} </span>
                                     </div>
                                 </mat-card-content>
                             </mat-card>
                         </mat-card-content>
                     </mat-card>
-
-                <!--</div>-->
-            </div>
-        </div>
-
-        <div class="page-section" id="frame2">
-
-            <div class="two-thirds-column">
-                <iframe [src]="safeSrc" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-            <div class="one-thirds-column overflow-scroll">
-                <div id="one-thirds-column-header">
-                    <h1> Weitere Filmvorschläge </h1>
-                    <div class="heading-devider"></div>
                 </div>
-                <div id="one-thirds-column-footer">
-                    <div id="moreMovies" *ngFor="let movie of movies">
-                        <h2>{{movie.title}}</h2>
-                        <img src="\assets\images\{{movie.imageName}}" (click)="changedMovie(movie.id)">
+            </div>
+            <div class="page-section" id="frame2">
+                <div class="two-thirds-column">
+                    <iframe [src]="safeSrc" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="one-thirds-column overflow-scroll">
+                    <div id="one-thirds-column-header">
+                        <h1> Weitere Filmvorschläge </h1>
+                        <div class="heading-devider"></div>
+                    </div>
+                    <div id="one-thirds-column-footer">
+                        <div id="moreMovies" *ngFor="let movie of movies">
+                            <h2>{{movie.title}}</h2>
+                            <img src="\assets\images\{{movie.imageName}}" (click)="changedMovie(movie.id)">
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
-    </div>
-
-</body>
-
+    </body>
 </html>
