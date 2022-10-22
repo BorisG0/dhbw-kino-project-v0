@@ -210,9 +210,12 @@ text-align: center;
   left: 50%;
   transform: translateX(-50%);
   position: relative;
+  transition-duration: 1s;
+
 }
 #moreMovies img:hover{
 cursor: pointer;
+width: 300px;
 }
 
 
