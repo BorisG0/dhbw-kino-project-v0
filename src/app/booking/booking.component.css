@@ -21,6 +21,7 @@
     width: 30%;
     float: right;
     height: 100%;
+    position: relative;
 }
 
 
@@ -48,10 +49,6 @@
 }
 */
 
-.selectedSeat{
-    color: white
-}
-
 hr.solid {
     border-top: 3px solid rgb(255, 255, 255);
     width: 80%;
@@ -60,4 +57,9 @@ hr.solid {
 
 .leinwandText{
     text-align: center;
+}
+
+.bookButton{
+    position: absolute;
+    bottom: 0;
 }
