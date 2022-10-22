@@ -320,6 +320,7 @@ export class NewMovieComponent implements OnInit {
         setTimeout(() => {
           if(this.enteredduration!=null)
           {
+            console.log(newMovie)
             
           
           this.movieService.addMovie(newMovie).subscribe(
