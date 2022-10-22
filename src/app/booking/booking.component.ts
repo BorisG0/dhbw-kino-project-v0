@@ -70,6 +70,10 @@ export class BookingComponent implements OnInit {
     let tempArray: SeatInEvent[] = [];
 
     this.seatsInEvent.forEach(seat => {
+      if(this.selectedSeats.filter(s => s.seatId == seat.seatId).length > 0){
+        seat.status = 3;
+      }
+
       if(tempArray.length > 0){
         if(tempArray[0].row == seat.row){
           tempArray.push(seat);
@@ -92,10 +96,9 @@ export class BookingComponent implements OnInit {
     if(this.selectedSeats.filter(s => s.seatId == seat.seatId).length > 0) return;
 
     console.log("clicked: " + seat.row + seat.numberInRow);
+    this.selectedSeats.push(seat);
     await this.changeSeatStatus(seat);
     this.loadData();
-
-    this.selectedSeats.push(seat);
   }
 
   changeSeatStatus(seat: SeatInEvent){
