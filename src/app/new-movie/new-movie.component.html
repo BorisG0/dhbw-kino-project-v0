@@ -1,156 +1,104 @@
 <body>
-    <div id="main">
-        <div class="container" id="firstContainer">
-            <form class="form">
-                <mat-form-field class="formField" appearance="fill">
-                <mat-label> Titel </mat-label>
-                <textarea [(ngModel)]="enteredTitle" name="enteredTitle" matInput placeholder=""></textarea>
-              </mat-form-field>
-              <mat-form-field class="formField" appearance="fill">
-                <mat-label> Regie </mat-label>
-                <textarea [(ngModel)]="enteredRegie" name="enteredRegie" matInput placeholder="" ></textarea>
-            </mat-form-field>
-            <mat-form-field class="formField" appearance="fill">
-                <mat-label> Besetzung </mat-label>
-                <textarea [(ngModel)]="enteredCast" name="enteredCast" matInput placeholder="" ></textarea>
-            </mat-form-field>
-            </form>
-        </div>
-        <div class="container" id="secondContainer">
-            <form class="form">
-                
-                  <mat-form-field class="formField" appearance="fill">
-                    <mat-label> Film Studio </mat-label>
-                    <textarea [(ngModel)]="enteredStudio" name="enteredStudio" matInput placeholder="" ></textarea>
-                  </mat-form-field>
-                  <mat-form-field class="formField" appearance="fill">
-                    <mat-label> Dauer </mat-label>
-                    <textarea mat Input type="number" [(ngModel)]="enteredduration" name="enteredduration" matInput placeholder="" ></textarea>
-                    <mat-hint> Angabe in Minuten </mat-hint>
-                  </mat-form-field>
-                
-            </form>
-        </div>
-
-        <div class="container" id="fourthContainer">
-            <form class="form">
-              <mat-form-field appearance="fill" class="formField">
-                <mat-label>Genreauswahl</mat-label>
-                <mat-chip-list #chipList aria-label="Genreauswahl">
-                  <mat-chip
-                    *ngFor="let genre of selectedGenres"
-                    (removed)="remove(genre)">
-                    {{genre}}
-                    <button matChipRemove>
-                      <mat-icon>cancel</mat-icon>
-                    </button>
-                  </mat-chip>
-                  <input
-                    placeholder=""
-                    #genreInput
-                    [formControl]="genreCtrl"
-                    [matAutocomplete]="auto"
-                    [matChipInputFor]="chipList"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                    (matChipInputTokenEnd)="add($event)">
-                </mat-chip-list>
-                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                  <mat-option *ngFor="let genre of filteredGenres | async" [value]="genre">
-                    {{genre}}
-                  </mat-option>
-                </mat-autocomplete>
-              </mat-form-field>
-            <!--<mat-form-field appearance="fill" class="formField">
-                <mat-label>Genre</mat-label>
-                <mat-select [(ngModel)]="selectedGenre" name="selectedGenre">
-                    <mat-option value="">None</mat-option>
-                    <mat-option value="Action">Action</mat-option>
-                    <mat-option value="Animation">Animation</mat-option>
-                    <mat-option value="Fantasy">Fantasy</mat-option>
-                    <mat-option value="Horror">Horror</mat-option>
-                    <mat-option value="Komödie">Komödie</mat-option>
-                    <mat-option value="Science Fiction">Science Fiction</mat-option>
-                    <mat-option value="Thriller">Thriller</mat-option>
-                </mat-select>
-            </mat-form-field>-->
-            <mat-form-field appearance="fill" class="formField">
-                <mat-label>FSK</mat-label>
-                <mat-select [(ngModel)]="selectedFSK" name="selectedFSK">
-                    <mat-option value="0">0</mat-option>
-                    <mat-option value="6">6</mat-option>
-                    <mat-option value="12">12</mat-option>
-                    <mat-option value="16">16</mat-option>
-                    <mat-option value="18">18</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="fill" class="formField">
-                <mat-label> Start Datum</mat-label>
-                <input [(ngModel)]="selectedDate" name="selectedDate" matInput [matDatepicker]="picker">
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </form>
-            <!--<mat-form-field class="example-chip-list" appearance="fill">
-                <mat-label>Favorite Fruits</mat-label>
-                <mat-chip-list #chipList aria-label="Fruit selection">
-                  <mat-chip
-                    *ngFor="let fruit of fruits"
-                    (removed)="remove(fruit)">
-                    {{fruit}}
-                    <button matChipRemove>
-                      <mat-icon>cancel</mat-icon>
-                    </button>
-                  </mat-chip>
-                  <input
-                    placeholder="New fruit..."
-                    #fruitInput
-                    [formControl]="fruitCtrl"
-                    [matAutocomplete]="auto"
-                    [matChipInputFor]="chipList"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                    (matChipInputTokenEnd)="add($event)">
-                </mat-chip-list>
-                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                  <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-                    {{fruit}}
-                  </mat-option>
-                </mat-autocomplete>
-              </mat-form-field>-->
-        </div>
-
-        <div class="container" id="fifthContainer">
-            <form class="form">
-                <mat-form-field class="formField" appearance="fill">
-                    <mat-label> Trailer Link </mat-label>
-                    <textarea [(ngModel)]="enteredLink" name="enteredLink" matInput placeholder="" ></textarea>
-                    <mat-hint> Youtube Link (am besten embeded) </mat-hint>
-
-                </mat-form-field>
-                <input type="file" (change)="onChangeImage($event)">
-                <img [src]="url">
-            </form>
-        </div>
-        <div class="container" id="thridContainer">
-            <form class="form">
-                <mat-form-field class="formField" appearance="fill">
-                    <mat-label> Beschreibung </mat-label>
-                    <textarea style="height: max-content" [(ngModel)]="enteredDescription" name="enteredDescription" matInput placeholder="" ></textarea>
-                </mat-form-field>
-
-            </form>
-            </div>
-        <div class="container" id="sixthContainer">
-          <div *ngIf="id==0; then thenBlock else elseBlock"></div>
-              <ng-template #thenBlock>
-                <button id="pressMovieButton" mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>
-              </ng-template>
-              <ng-template #elseBlock>
-                <button id="pressSetMovieInactive" mat-raised-button (click)="onPressSetMovieInactive()"> Inaktiv </button>
-                <button id="pressUpdateMovieButton" mat-raised-button (click)="onPressUpdateMovie()"> Ändern </button>
-              </ng-template>
-          </div>
-                          
-
+  <div id="main">
+    <div class="container" id="firstContainer">
+      <form class="form">
+        <mat-form-field class="formField" appearance="fill">
+          <mat-label> Titel </mat-label>
+          <textarea [(ngModel)]="enteredTitle" name="enteredTitle" matInput placeholder=""></textarea>
+        </mat-form-field>
+        <mat-form-field class="formField" appearance="fill">
+          <mat-label> Regie </mat-label>
+          <textarea [(ngModel)]="enteredRegie" name="enteredRegie" matInput placeholder=""></textarea>
+        </mat-form-field>
+        <mat-form-field class="formField" appearance="fill">
+          <mat-label> Besetzung </mat-label>
+          <textarea [(ngModel)]="enteredCast" name="enteredCast" matInput placeholder=""></textarea>
+        </mat-form-field>
+      </form>
     </div>
+    <div class="container" id="secondContainer">
+      <form class="form">
+        <mat-form-field class="formField" appearance="fill">
+          <mat-label> Film Studio </mat-label>
+          <textarea [(ngModel)]="enteredStudio" name="enteredStudio" matInput placeholder=""></textarea>
+        </mat-form-field>
+        <mat-form-field class="formField" appearance="fill">
+          <mat-label> Dauer </mat-label>
+          <textarea mat Input type="number" [(ngModel)]="enteredduration" name="enteredduration" matInput
+            placeholder=""></textarea>
+          <mat-hint> Angabe in Minuten </mat-hint>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="container" id="thirdContainer">
+      <form class="form">
+        <mat-form-field appearance="fill" class="formField">
+          <mat-label>Genreauswahl</mat-label>
+          <mat-chip-list #chipList aria-label="Genreauswahl">
+            <mat-chip *ngFor="let genre of selectedGenres" (removed)="remove(genre)">
+              {{genre}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input placeholder="" #genreInput [formControl]="genreCtrl" [matAutocomplete]="auto"
+              [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let genre of filteredGenres | async" [value]="genre">
+              {{genre}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="formField">
+          <mat-label>FSK</mat-label>
+          <mat-select [(ngModel)]="selectedFSK" name="selectedFSK">
+            <mat-option value="0">0</mat-option>
+            <mat-option value="6">6</mat-option>
+            <mat-option value="12">12</mat-option>
+            <mat-option value="16">16</mat-option>
+            <mat-option value="18">18</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="formField">
+          <mat-label> Start Datum</mat-label>
+          <input [(ngModel)]="selectedDate" name="selectedDate" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="container" id="fourthContainer">
+      <form class="form">
+        <mat-form-field class="formField" appearance="fill">
+          <mat-label> Trailer Link </mat-label>
+          <textarea [(ngModel)]="enteredLink" name="enteredLink" matInput placeholder=""></textarea>
+          <mat-hint> Youtube Link (am besten embeded) </mat-hint>
+        </mat-form-field>
+        <input type="file" (change)="onChangeImage($event)">
+        <img [src]="url">
+      </form>
+    </div>
+    <div class="container" id="fifthContainer">
+      <form class="form">
+        <mat-form-field class="formField" appearance="fill">
+          <mat-label> Beschreibung </mat-label>
+          <textarea style="height: max-content" [(ngModel)]="enteredDescription" name="enteredDescription" matInput
+            placeholder=""></textarea>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="container" id="sixthContainer">
+      <div *ngIf="id==0; then thenBlock else elseBlock"></div>
+      <ng-template #thenBlock>
+        <button id="pressMovieButton" mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>
+      </ng-template>
+      <ng-template #elseBlock>
+        <button id="pressSetMovieInactive" mat-raised-button (click)="onPressSetMovieInactive()"> Inaktiv </button>
+        <button id="pressUpdateMovieButton" mat-raised-button (click)="onPressUpdateMovie()"> Ändern </button>
+      </ng-template>
+    </div>
+  </div>
 </body>

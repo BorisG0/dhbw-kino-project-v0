@@ -1,64 +1,61 @@
-#main{
+#main {
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.container{
+.container {
     background-color: rgb(50, 0, 0);
     height: 33%;
     width: 33%;
     min-width: 300px;
 }
-.form{
+.form {
     height: 100%
 }
-.formField{
+.formField {
     background-color: rgb(70, 0, 0);
-    color:  rgb(202, 202, 202);
+    color: rgb(202, 202, 202);
     font-size: large;
     width: 100%;
 }
-mat-hint{
-    color:rgb(202, 202, 202) !important;
-
+mat-hint {
+    color: rgb(202, 202, 202) !important;
 }
 ::ng-deep .mat-form-field-label {
-    color:rgb(202, 202, 202) !important;
+    color: rgb(202, 202, 202) !important;
 }
-::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
-background-color: rgb(202, 202, 202) !important;
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+    background-color: rgb(202, 202, 202) !important;
 }
-::ng-deep .mat-select-value{    
-    color:rgb(202, 202, 202) !important;
+::ng-deep .mat-select-value {
+    color: rgb(202, 202, 202) !important;
 }
-#firstContainer mat-form-field{
+#firstContainer mat-form-field {
     height: 33%;
 }
-#secondContainer mat-form-field{
+#secondContainer mat-form-field {
     height: 50%;
 }
-#secondContainer textarea{
+#secondContainer textarea {
     height: 70%;
 }
-#thridContainer{
+#fifthContainer {
     width: 59% !important;
 }
-#fifthContainer{
+#fourthContainer {
     width: 40%;
     height: max-content;
     min-height: 33%;
 }
-#thridContainer mat-form-field{
-height: 100%;
+#fifthContainer mat-form-field {
+    height: 100%;
 }
-#fourthContainer mat-form-field{
+#thirdContainer mat-form-field {
     height: 33%;
 }
-
-
-#sixthContainer{
+#sixthContainer {
     display: flex;
     justify-content: center;
     max-width: 10%;
@@ -66,24 +63,23 @@ height: 100%;
     height: 5%;
     align-items: center;
 }
-#sixthContainer button{
+#sixthContainer button {
     width: 100%;
     height: 100%;
     text-align: center;
 }
-#sixthContainer button:hover{
+#sixthContainer button:hover {
     cursor: pointer;
     background-color: #878787;
 }
-
-.flexform{
+.flexform {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
-img{
+img {
     width: 100%;
 }
-input{
-    color:rgb(202, 202, 202)
+input {
+    color: rgb(202, 202, 202)
 }
