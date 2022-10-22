@@ -1,11 +1,3 @@
-h1{
-    color: white;
-}
-
-h2{
-    color:white;
-}
-
 .seats{
     color: white;
     align-items: center;
@@ -20,10 +12,12 @@ h2{
     width: 70%;
     float: left;
     height: 100%;
+    color: white;
 }
 
 .selectedSeats{
     background-color: rgb(222, 222, 222);
+    color: black;
     width: 30%;
     float: right;
     height: 100%;
