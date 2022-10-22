@@ -1,5 +1,11 @@
 button{
     width: 100%;
+    height: 100%;
+}
+
+.seat{
+    width: 100%;
+    aspect-ratio: 1;
 }
 
 .free{
@@ -12,4 +18,8 @@ button{
 
 .reserved{
     background-color: blue;
+}
+
+.selected{
+    background-color: yellow;
 }

@@ -1,9 +1,27 @@
-h2{
-    color:white;
-}
-
 .seats{
     color: white;
+    align-items: center;
+}
+
+.seatManagment{
+    height: 60%;
+}
+
+.seatSelection{
+    background-color: rgb(10, 10, 10);
+    width: 70%;
+    float: left;
+    height: 100%;
+    color: white;
+}
+
+.selectedSeats{
+    background-color: rgb(222, 222, 222);
+    color: black;
+    width: 30%;
+    float: right;
+    height: 100%;
+    position: relative;
 }
 
 
@@ -11,7 +29,16 @@ h2{
     height: 100px;
 }
 
+.rowLabel{
+    display: inline-block;
+}
 
+.seat{
+    display: inline-block;
+    margin: 1%;
+}
+
+/*
 .seat{
     display: inline-block;
     margin: 1%;
@@ -20,17 +47,19 @@ h2{
     font-size: 20px;
     text-align: center;
 }
+*/
 
-.freeSeat{
-    height: 100%;
-    background-color: green;
+hr.solid {
+    border-top: 3px solid rgb(255, 255, 255);
+    width: 80%;
 }
 
-.occupiedSeat{
-    height: 100%;
-    background-color: red;
+
+.leinwandText{
+    text-align: center;
 }
 
-.selectedSeat{
-    color: white
+.bookButton{
+    position: absolute;
+    bottom: 0;
 }

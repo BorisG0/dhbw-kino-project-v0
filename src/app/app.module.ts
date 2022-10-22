@@ -38,6 +38,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ConfirmComponent } from './confirm/confirm.component';
 //import {FormControl} from '@angular/forms';
 
 
@@ -57,7 +58,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MovieClickableComponent,
     EmployeeProgramComponent,
     EventsComponent,
-    NewMovieComponent
+    NewMovieComponent,
+    ConfirmComponent
  
   ],
   imports: [

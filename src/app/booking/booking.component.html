@@ -2,20 +2,32 @@
 <h2>Vorstellung {{movieEvent?.id}} am {{movieEvent?.date}} um {{movieEvent?.time}}<br>
     Saal: {{movieEvent?.roomId}}</h2>
 <button mat-flat-button (click)="clearSelectedSeats()">clear selected seats (admin feature)</button>
-<ul class="seats">
-    <div class="row" *ngFor="let row of seats">
-        <div>{{row[0].row}}</div>
-        <div class="seatsInRow">
 
-            <app-seat class="seat" *ngFor="let seat of row" [seat]="seat" (click)="seatClicked(seat)">
-            </app-seat>
-
-        </div>
+<div class="seatManagment">
+    <div class="seatSelection">
+        <h1>Bitte wähle deine Sitze</h1>
+        <hr class="solid">
+        <h2 class="leinwandText">Leinwand</h2>
+        <ul class="seats">
+            <div class="row" *ngFor="let row of seats">
+                
+                <div class="seatsInRow">
+                    <div class="rowLabel">{{row[0].row}}</div>
+                    <app-seat class="seat" *ngFor="let seat of row" [seat]="seat" (click)="seatClicked(seat)">
+                    </app-seat>
+        
+                </div>
+            </div>
+        </ul>
     </div>
-</ul>
-
-<h2>ausgewählte Sitze</h2>
-<div class="selectedSeat" *ngFor="let seat of selectedSeats">
-    {{seat.row}} {{seat.numberInRow}}
+    
+    <div class="selectedSeats">
+        <h2>ausgewählte Sitze</h2>
+            <div class="selectedSeat" *ngFor="let seat of selectedSeats">
+                {{seat.row}} {{seat.numberInRow}}
+            </div>
+        <button mat-flat-button *ngIf="selectedSeats.length > 0" (click)="bookSeats()" class="bookButton">Sitze buchen</button>
+    </div>
 </div>
-<button mat-flat-button *ngIf="selectedSeats.length > 0" (click)="bookSeats()">Sitze buchen</button>
+
+
