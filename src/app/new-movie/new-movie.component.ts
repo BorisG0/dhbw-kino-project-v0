@@ -98,15 +98,18 @@ export class NewMovieComponent implements OnInit {
     if(this.id){
       return new Promise((resolve, reject) => {
         setTimeout(() => {
+         
           //wenn es eine id gibt -> bin ich im Film bearbeiten
   
   
           this.movieService.getMovie(this.id).subscribe(movie =>{
+            console.log(movie.trailerLink.replace(/"/g, ''))
+            console.log(movie.trailerLink.substring(1, this.movie.trailerLink.length - 1))
             this.movie = movie;
             this.enteredTitle = movie.title;
             this.enteredCast = movie.cast;
             this.enteredDescription = movie.description;
-            this.enteredLink = movie.trailerLink;
+            this.enteredLink = movie.trailerLink.replace(/"/g, '');
             this.enteredRegie = movie.regie;
             this.enteredStudio = movie.movieStudio;
             this.enteredduration = String(movie.duration);
@@ -114,8 +117,6 @@ export class NewMovieComponent implements OnInit {
             this.selectedFSK = movie.ageRestriction;
             console.log(this.selectedFSK)
             this.selectedGenres = movie.genre.split(',');
-            
-            this.movie.trailerLink = this.movie.trailerLink.substring(1, this.movie.trailerLink.length - 1);
             resolve(0)
             })
         }, 0)
@@ -149,7 +150,7 @@ export class NewMovieComponent implements OnInit {
           movieStudio: this.enteredStudio,
           regie: this.enteredRegie,
           cast: this.enteredCast,
-          trailerLink: this.movie.trailerLink}
+          trailerLink: "\"" + this.enteredLink + "\""}
       }
       //input Felder zurück setzen
       //this.clearInputFields();
@@ -310,7 +311,7 @@ export class NewMovieComponent implements OnInit {
           movieStudio: this.enteredStudio,
           regie: this.enteredRegie,
           cast: this.enteredCast,
-          trailerLink: this.enteredLink}
+          trailerLink: "\"" + this.enteredLink + "\""}
       }
       //input Felder zurück setzen
       this.clearInputFields();
