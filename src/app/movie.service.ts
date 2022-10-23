@@ -11,6 +11,7 @@ import { MOVIES } from './mock-movies';
 import { SeatInEvent } from './seatInEvent';
 import { BookingCreation } from './BookingCreation';
 import { Ticket } from './ticket';
+import { StatusChange } from './statusChange';
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +81,11 @@ export class MovieService {
 
   getTicketsInEventId(eventId: number){
     return this.http.post<Ticket[]>("/api/ticketsInEvent", eventId);
+  }
+
+  setStatusForTicket(statusChange: StatusChange){
+    console.log("statusChange() called");
+    return this.http.post<boolean>("/api/setStatusForTicket", statusChange);
   }
   //Booking Stuff End
 }

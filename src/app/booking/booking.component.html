@@ -23,8 +23,8 @@
     
     <div class="selectedSeats">
         <h2>ausgewählte Sitze</h2>
-            <div class="selectedSeat" *ngFor="let seat of selectedSeats">
-                {{seat.row}} {{seat.numberInRow}}
+            <div class="selectedSeat" *ngFor="let ticket of selectedTickets">
+                {{ticket.row}} {{ticket.numberInRow}}
             </div>
         <button mat-flat-button *ngIf="selectedSeats.length > 0" (click)="bookSeatsClicked()" class="bookButton">Sitze buchen</button>
     </div>

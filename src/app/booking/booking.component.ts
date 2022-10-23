@@ -13,6 +13,7 @@ import { Booking } from '../booking';
 import { BookingCreation } from '../BookingCreation';
 
 import { Ticket } from '../ticket';
+import { T } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-booking',
@@ -22,6 +23,7 @@ import { Ticket } from '../ticket';
 export class BookingComponent implements OnInit {
   tickets: Ticket[] = [];
   ticketsByRow : Ticket [][] = [];
+  selectedTickets: Ticket[] = [];
 
 
   seats: SeatInEvent[][] = SEATS;
@@ -123,6 +125,9 @@ export class BookingComponent implements OnInit {
     let tempArray: Ticket[] = [];
 
     this.tickets.forEach(ticket => {
+      if(this.selectedTickets.filter(t => t.id == ticket.id).length > 0){
+        ticket.status = 3;
+      }
 
       if(tempArray.length > 0){
         if(tempArray[0].row == ticket.row){
@@ -233,8 +238,39 @@ export class BookingComponent implements OnInit {
 
   }
 
-  ticketClicked(ticked: Ticket){
-    
+  async ticketClicked(ticket: Ticket){
+    if(ticket.status == 3){
+      for(let i = 0; i < this.selectedTickets.length; i++){
+        if(this.selectedTickets[i].id == ticket.id){
+          this.selectedTickets.splice(i, 1);
+          this.changeTicketStatus(ticket, 0);
+          break;
+        }
+      }
+
+      this.selectedTickets.forEach((t, index) => {
+        
+      })
+    }else if(ticket.status == 0){
+      await this.changeTicketStatus(ticket, 2);
+      this.selectedTickets.push(ticket);
+    }
+    this.loadData();
+  }
+
+  changeTicketStatus(ticket: Ticket, status: number){
+    let statusChange = {id: ticket.id, status: status};
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.movieService.setStatusForTicket(statusChange).subscribe(
+          data => {
+            this.statusChangeSuccessfull = data;
+            resolve(0);
+          }
+        );
+      }, 0)
+    })
   }
 
 }
