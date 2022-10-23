@@ -21,6 +21,9 @@ import { Ticket } from '../ticket';
 })
 export class BookingComponent implements OnInit {
   tickets: Ticket[] = [];
+  ticketsByRow : Ticket [][] = [];
+
+
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
   movieEvent: MovieEvent | undefined;
@@ -48,7 +51,8 @@ export class BookingComponent implements OnInit {
     await this.getSeats();
     this.splitSeatsByRows();
 
-    this.getTickets();
+    await this.getTickets();
+    this.splitTicketsByRow();
   }
 
   getMovieEvent(){
@@ -110,6 +114,31 @@ export class BookingComponent implements OnInit {
 
     if(tempArray.length > 0){
       this.seats.push(tempArray);
+    }
+  }
+
+  splitTicketsByRow(){
+    console.log("splitSeatsByRows");
+    this.ticketsByRow = [];
+    let tempArray: Ticket[] = [];
+
+    this.tickets.forEach(ticket => {
+
+      if(tempArray.length > 0){
+        if(tempArray[0].row == ticket.row){
+          tempArray.push(ticket);
+        }else{
+          this.ticketsByRow.push(tempArray);
+          tempArray = [];
+          tempArray.push(ticket);
+        }
+      }else{
+        tempArray.push(ticket);
+      }
+    })
+
+    if(tempArray.length > 0){
+      this.ticketsByRow.push(tempArray);
     }
   }
 
@@ -202,6 +231,10 @@ export class BookingComponent implements OnInit {
       }, 0)
     })
 
+  }
+
+  ticketClicked(ticked: Ticket){
+    
   }
 
 }

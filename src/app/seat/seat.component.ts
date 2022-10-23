@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SeatInEvent } from '../seatInEvent';
+import { Ticket } from '../ticket';
 
 @Component({
   selector: 'app-seat',
@@ -8,6 +9,6 @@ import { SeatInEvent } from '../seatInEvent';
 })
 export class SeatComponent{
 
-  @Input() seat: SeatInEvent | undefined;
+  @Input() seat: Ticket | undefined;
 
 }
