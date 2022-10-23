@@ -66,7 +66,17 @@
                     </mat-card>
                 </mat-card-content>
             </diV>
-            <div id="qr-code">
+            <div id="containerRight">
+
+                    <div *ngIf="link=='overview' then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                        <button id="" title="Die ausgewählten Plätze werden gebucht" routerLink="/confirm" mat-raised-button (click)="onClickPay()"> Bezahlen </button>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <div id="qrCode">
+                        Hier QR Code
+                    </div>
+                    </ng-template>
 
             </div>
             <mat-card-footer class="outro">
