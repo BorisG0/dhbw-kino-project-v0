@@ -12,12 +12,15 @@ import { MovieService } from '../movie.service';
 import { Booking } from '../booking';
 import { BookingCreation } from '../BookingCreation';
 
+import { Ticket } from '../ticket';
+
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+  tickets: Ticket[] = [];
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
   movieEvent: MovieEvent | undefined;
@@ -44,6 +47,8 @@ export class BookingComponent implements OnInit {
     this.getMovieEvent();
     await this.getSeats();
     this.splitSeatsByRows();
+
+    this.getTickets();
   }
 
   getMovieEvent(){
@@ -54,12 +59,25 @@ export class BookingComponent implements OnInit {
   }
 
   getSeats(){
-    console.log("getSeats");
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const id = Number(this.route.snapshot.paramMap.get('id'))
         this.movieService.getSeatsInEventId(id).subscribe(data =>{
           this.seatsInEvent = data;
+          console.log(data);
+          resolve(0);
+        });
+      }, 0)
+    })
+  }
+
+  getTickets(){
+    console.log("getTickets() called");
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const id = Number(this.route.snapshot.paramMap.get('id'))
+        this.movieService.getTicketsInEventId(id).subscribe(data =>{
+          this.tickets = data;
           console.log(data);
           resolve(0);
         });

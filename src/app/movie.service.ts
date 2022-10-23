@@ -10,6 +10,7 @@ import { MovieEvent } from './MovieEvent';
 import { MOVIES } from './mock-movies';
 import { SeatInEvent } from './seatInEvent';
 import { BookingCreation } from './BookingCreation';
+import { Ticket } from './ticket';
 
 @Injectable({
   providedIn: 'root'
@@ -71,8 +72,14 @@ export class MovieService {
     return this.http.post<String>("/api/SetMovieInactive", id);
   }
 
+  //Booking Stuff Start
   newBooking(booking: BookingCreation){
     console.log("newBooking() called");
     return this.http.post<boolean>("/api/newBooking", booking);
   }
+
+  getTicketsInEventId(eventId: number){
+    return this.http.post<Ticket[]>("/api/ticketsInEvent", eventId);
+  }
+  //Booking Stuff End
 }
