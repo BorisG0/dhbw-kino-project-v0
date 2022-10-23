@@ -46,7 +46,6 @@ mat-hint {
 }
 #fourthContainer {
     width: 40%;
-    height: max-content;
     min-height: 33%;
 }
 #fifthContainer mat-form-field {
@@ -82,4 +81,17 @@ img {
 }
 input {
     color: rgb(202, 202, 202)
+}
+#LinkInput{
+    height: 30%;
+    margin-bottom: 30px;
+}
+#fileLabel{
+    color: rgb(202, 202, 202);
+    height: 20%;
+    width: 100%;
+}
+#fileInput{
+    width: 100%;
+    margin-top: 30px;
 }

@@ -72,12 +72,13 @@
     </div>
     <div class="container" id="fourthContainer">
       <form class="form">
-        <mat-form-field class="formField" appearance="fill">
+        <mat-form-field id="LinkInput" class="formField" appearance="fill">
           <mat-label> Trailer Link </mat-label>
           <textarea [(ngModel)]="enteredLink" name="enteredLink" matInput placeholder=""></textarea>
           <mat-hint> Youtube Link (am besten embeded) </mat-hint>
         </mat-form-field>
-        <input type="file" (change)="onChangeImage($event)">
+        <span id="fileLabel"> Mit dem folgenden "Choose File" Feld, werden Sie in Zukunft die Bilder für die Filme hinzufügen können</span>
+        <input id="fileInput" type="file" (change)="onChangeImage($event)">
         <img [src]="url">
       </form>
     </div>
@@ -93,11 +94,11 @@
     <div class="container" id="sixthContainer">
       <div *ngIf="id==0; then thenBlock else elseBlock"></div>
       <ng-template #thenBlock>
-        <button id="pressMovieButton" mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>
+        <button id="pressMovieButton" title="Film wird hinzugefügt" mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>
       </ng-template>
       <ng-template #elseBlock>
-        <button id="pressSetMovieInactive" mat-raised-button (click)="onPressSetMovieInactive()"> Inaktiv </button>
-        <button id="pressUpdateMovieButton" mat-raised-button (click)="onPressUpdateMovie()"> Ändern </button>
+        <button id="pressSetMovieInactive" title="Film wird aus dem Programm genommen" mat-raised-button (click)="onPressSetMovieInactive()"> Inaktiv </button>
+        <button id="pressUpdateMovieButton" title="Film wird geändert" mat-raised-button (click)="onPressUpdateMovie()"> Ändern </button>
       </ng-template>
     </div>
   </div>
