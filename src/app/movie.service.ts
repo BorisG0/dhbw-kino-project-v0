@@ -9,6 +9,7 @@ import { Movie } from './movie';
 import { MovieEvent } from './MovieEvent';
 import { MOVIES } from './mock-movies';
 import { SeatInEvent } from './seatInEvent';
+import { BookingCreation } from './BookingCreation';
 
 @Injectable({
   providedIn: 'root'
@@ -68,5 +69,10 @@ export class MovieService {
   setMovieInactive(id: number){
     console.log("setting movie inactive");
     return this.http.post<String>("/api/SetMovieInactive", id);
+  }
+
+  newBooking(booking: BookingCreation){
+    console.log("newBooking() called");
+    return this.http.post<boolean>("/api/newBooking", booking);
   }
 }

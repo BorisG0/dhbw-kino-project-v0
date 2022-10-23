@@ -10,6 +10,7 @@ import { Location } from '@angular/common';
 import { MovieService } from '../movie.service';
 
 import { Booking } from '../booking';
+import { BookingCreation } from '../BookingCreation';
 
 @Component({
   selector: 'app-booking',
@@ -22,6 +23,8 @@ export class BookingComponent implements OnInit {
   movieEvent: MovieEvent | undefined;
   
   statusChangeSuccessfull: boolean = false;
+
+  bookingSuccessfull: boolean = false;
 
   seatsInEvent :SeatInEvent[] = [];
 
@@ -142,6 +145,45 @@ export class BookingComponent implements OnInit {
     });
     let booking: Booking = {id: 0, eventId: this.eventId, seatIds: seatIds};
     console.log(booking);
+  }
+
+  async bookSeatsClicked(){
+    if(this.selectedSeats.length == 0){
+      console.log("no selected seats");
+      return;
+    }
+
+    await this.createBooking();
+    this.selectedSeats = [];
+    this.loadData();
+  }
+
+  createBooking(){
+    console.log("creating booking");
+    if(this.selectedSeats.length == 0){
+      console.log("no selected seats");
+      return;
+    }
+    
+    let ticketIds: number[] = [];
+
+    this.selectedSeats.forEach(seat => {
+      ticketIds.push(seat.seatId);
+    })
+
+    let bookingCreation: BookingCreation = {email: "aberger3@posterous.com", ticketIds: ticketIds};
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.movieService.newBooking(bookingCreation).subscribe(
+          data => {
+            this.statusChangeSuccessfull = data;
+            resolve(0);
+          }
+        );
+      }, 0)
+    })
+
   }
 
 }
