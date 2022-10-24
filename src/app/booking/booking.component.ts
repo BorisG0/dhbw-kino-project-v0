@@ -26,7 +26,7 @@ export class BookingComponent implements OnInit {
   selectedTickets: Ticket[] = [];
   priceSum: number = 0;
 
-  
+
 
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
@@ -52,9 +52,6 @@ export class BookingComponent implements OnInit {
 
   async loadData(){
     this.getMovieEvent();
-    await this.getSeats();
-    this.splitSeatsByRows();
-
     await this.getTickets();
     this.splitTicketsByRow();
   }
@@ -66,18 +63,6 @@ export class BookingComponent implements OnInit {
     })
   }
 
-  getSeats(){
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const id = Number(this.route.snapshot.paramMap.get('id'))
-        this.movieService.getSeatsInEventId(id).subscribe(data =>{
-          this.seatsInEvent = data;
-          console.log(data);
-          resolve(0);
-        });
-      }, 0)
-    })
-  }
 
   getTickets(){
     console.log("getTickets() called");
@@ -91,34 +76,6 @@ export class BookingComponent implements OnInit {
         });
       }, 0)
     })
-  }
-
-  splitSeatsByRows(){
-    console.log("splitSeatsByRows");
-    this.seats = [];
-    let tempArray: SeatInEvent[] = [];
-
-    this.seatsInEvent.forEach(seat => {
-      if(this.selectedSeats.filter(s => s.seatId == seat.seatId).length > 0){
-        seat.status = 3;
-      }
-
-      if(tempArray.length > 0){
-        if(tempArray[0].row == seat.row){
-          tempArray.push(seat);
-        }else{
-          this.seats.push(tempArray);
-          tempArray = [];
-          tempArray.push(seat);
-        }
-      }else{
-        tempArray.push(seat);
-      }
-    })
-
-    if(tempArray.length > 0){
-      this.seats.push(tempArray);
-    }
   }
 
   splitTicketsByRow(){
@@ -149,29 +106,6 @@ export class BookingComponent implements OnInit {
     }
   }
 
-  async seatClicked(seat: SeatInEvent){
-    if(this.selectedSeats.filter(s => s.seatId == seat.seatId).length > 0) return;
-
-    console.log("clicked: " + seat.row + seat.numberInRow);
-    this.selectedSeats.push(seat);
-    await this.changeSeatStatus(seat);
-    this.loadData();
-  }
-
-  changeSeatStatus(seat: SeatInEvent){
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const id = Number(this.route.snapshot.paramMap.get('id'))
-        this.movieService.setSeatInEventStatus({row: seat.row,
-          numberInRow: seat.numberInRow, status: 2, seatId: seat.seatId, eventId: seat.eventId}).subscribe(
-          data => {
-            this.statusChangeSuccessfull = data;
-            resolve(0);
-          }
-        );
-      }, 0)
-    })
-  }
 
   clearSelectedSeats(){
     this.selectedSeats.forEach(seat => {
@@ -245,7 +179,7 @@ export class BookingComponent implements OnInit {
       for(let i = 0; i < this.selectedTickets.length; i++){
         if(this.selectedTickets[i].id == ticket.id){
           this.selectedTickets.splice(i, 1);
-          this.changeTicketStatus(ticket, 0);
+          await this.changeTicketStatus(ticket, 0);
           break;
         }
       }
