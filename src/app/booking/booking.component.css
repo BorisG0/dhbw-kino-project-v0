@@ -62,4 +62,11 @@ hr.solid {
 .bookButton{
     position: absolute;
     bottom: 0;
+    right: 0;
+    background-color: red;
+}
+
+.priceSum{
+    position: absolute;
+    bottom: 0;
 }

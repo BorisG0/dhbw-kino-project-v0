@@ -13,7 +13,6 @@ import { Booking } from '../booking';
 import { BookingCreation } from '../BookingCreation';
 
 import { Ticket } from '../ticket';
-import { T } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-booking',
@@ -26,6 +25,8 @@ export class BookingComponent implements OnInit {
 
   selectedTickets: Ticket[] = [];
   priceSum: number = 0;
+
+  
 
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
