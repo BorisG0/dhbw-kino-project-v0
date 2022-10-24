@@ -23,8 +23,9 @@ import { T } from '@angular/cdk/keycodes';
 export class BookingComponent implements OnInit {
   tickets: Ticket[] = [];
   ticketsByRow : Ticket [][] = [];
-  selectedTickets: Ticket[] = [];
 
+  selectedTickets: Ticket[] = [];
+  priceSum: number = 0;
 
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
@@ -200,27 +201,27 @@ export class BookingComponent implements OnInit {
   }
 
   async bookSeatsClicked(){
-    if(this.selectedSeats.length == 0){
-      console.log("no selected seats");
+    if(this.selectedTickets.length == 0){
+      console.log("no selected tickets");
       return;
     }
 
     await this.createBooking();
-    this.selectedSeats = [];
+    this.selectedTickets = [];
     this.loadData();
   }
 
   createBooking(){
     console.log("creating booking");
-    if(this.selectedSeats.length == 0){
+    if(this.selectedTickets.length == 0){
       console.log("no selected seats");
       return;
     }
     
     let ticketIds: number[] = [];
 
-    this.selectedSeats.forEach(seat => {
-      ticketIds.push(seat.seatId);
+    this.selectedTickets.forEach(ticket => {
+      ticketIds.push(ticket.id);
     })
 
     let bookingCreation: BookingCreation = {email: "aberger3@posterous.com", ticketIds: ticketIds};
@@ -256,6 +257,11 @@ export class BookingComponent implements OnInit {
       this.selectedTickets.push(ticket);
     }
     this.loadData();
+
+    this.priceSum = 0;
+    this.selectedTickets.forEach(ticket => {
+      this.priceSum += ticket.defaultPrice;
+    })
   }
 
   changeTicketStatus(ticket: Ticket, status: number){

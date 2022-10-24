@@ -26,7 +26,8 @@
             <div class="selectedSeat" *ngFor="let ticket of selectedTickets">
                 {{ticket.row}} {{ticket.numberInRow}}
             </div>
-        <button mat-flat-button *ngIf="selectedSeats.length > 0" (click)="bookSeatsClicked()" class="bookButton">Sitze buchen</button>
+            <h1 *ngIf="priceSum > 0">Gesamtbetrag: {{priceSum}},00€</h1>
+        <button mat-flat-button *ngIf="selectedTickets.length > 0" (click)="bookSeatsClicked()" class="bookButton">Sitze buchen</button>
     </div>
 </div>
 
