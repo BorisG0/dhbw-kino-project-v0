@@ -123,7 +123,7 @@ export class EventsComponent implements OnInit {
         return new Promise((resolve, reject) => {
           setTimeout(() => {
             console.log(new Date())
-              this.movieService.addEvent({id:5, date: new Date(), time: {hours: 12, minutes: 30}, movieId: 5, roomId: 2, weekDay: 'Sonntag'}).subscribe(
+              this.movieService.addEvent({id:5, date: new Date(), time: 223000 , movieId: 5, roomId: 3}).subscribe(
                 data => {
                   console.log(data)
                   resolve(0);
