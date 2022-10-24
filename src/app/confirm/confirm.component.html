@@ -34,6 +34,9 @@
                                     <p>Datum:</p>
                                     <p>Saal:</p>
                                     <p>Plätze:</p>
+                                    <p class="selectedSeat" *ngFor="let ticket of bookingInfo?.tickets">
+                                        {{ticket.row}} {{ticket.numberInRow}} Regulär: {{ticket.defaultPrice}},00€
+                                    </p>
                                 </div>
                                 <div class="text-right">
 

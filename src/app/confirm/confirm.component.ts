@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Booking } from '../booking';
 
 
 
@@ -12,6 +13,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ConfirmComponent implements OnInit {
   link : string = "";
+
+  @Input() bookingInfo: Booking | undefined;
 
   constructor(    private route: ActivatedRoute,
     private _snackBar: MatSnackBar

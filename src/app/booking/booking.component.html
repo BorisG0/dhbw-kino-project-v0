@@ -3,7 +3,7 @@
     Saal: {{movieEvent?.roomId}}</h2>
 <button mat-flat-button (click)="clearSelectedSeats()">clear selected seats (admin feature)</button>
 
-<div class="seatManagment">
+<div class="seatManagment" *ngIf="bookingToConfirm == null">
     <div class="seatSelection">
         <h1>Bitte wähle deine Sitze</h1>
         <hr class="solid">
@@ -31,4 +31,6 @@
     </div>
 </div>
 
-
+<div class="confirmation" *ngIf="bookingToConfirm != null">
+    <app-confirm [bookingInfo]="bookingToConfirm"></app-confirm>
+</div>

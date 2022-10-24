@@ -26,7 +26,7 @@ export class BookingComponent implements OnInit {
   selectedTickets: Ticket[] = [];
   priceSum: number = 0;
 
-
+  bookingToConfirm: Booking | undefined;
 
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
@@ -120,20 +120,6 @@ export class BookingComponent implements OnInit {
     window.location.reload();
   }
 
-  bookSeats(){
-    console.log("booking seats");
-    console.log(this.selectedSeats);
-    if(this.selectedSeats.length == 0){
-      console.log("no selected seats");
-      return;
-    }
-    let seatIds: number[] = [];
-    this.selectedSeats.forEach(seat => {
-      seatIds.push(seat.seatId);
-    });
-    let booking: Booking = {id: 0, eventId: this.eventId, seatIds: seatIds};
-    console.log(booking);
-  }
 
   async bookSeatsClicked(){
     if(this.selectedTickets.length == 0){
@@ -142,7 +128,10 @@ export class BookingComponent implements OnInit {
     }
 
     await this.createBooking();
+
+    this.bookingToConfirm = {id: 0, eventId: this.eventId, tickets: this.selectedTickets};
     this.selectedTickets = [];
+    
     this.loadData();
   }
 
