@@ -9,7 +9,7 @@ import { Movie } from './movie';
 import { MovieEvent } from './MovieEvent';
 import { MOVIES } from './mock-movies';
 import { SeatInEvent } from './seatInEvent';
-import { BookingCreation } from './BookingCreation';
+import { BookingCreation } from './bookingCreation';
 import { Ticket } from './ticket';
 import { StatusChange } from './statusChange';
 
@@ -71,6 +71,10 @@ export class MovieService {
   setMovieInactive(id: number){
     console.log("setting movie inactive");
     return this.http.post<String>("/api/SetMovieInactive", id);
+  }
+  addEvent(event: MovieEvent){
+    console.log("adding Movie");
+    return this.http.post<String>("/api/addEvent", event);
   }
 
   //Booking Stuff Start

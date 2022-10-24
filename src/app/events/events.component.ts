@@ -120,7 +120,20 @@ export class EventsComponent implements OnInit {
         this.inputTime = {hours: this.inputHours, minutes: this.inputMinutes};
         newEvent = { id: this.inputEventid, date: this.inputDate, time: this.inputTime, movieId: this.inputMovieid, roomId: this.inputRoomid, weekDay: this.inputWeekDay}
         console.log(newEvent);
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log(new Date())
+              this.movieService.addEvent({id:5, date: new Date(), time: {hours: 12, minutes: 30}, movieId: 5, roomId: 2, weekDay: 'Sonntag'}).subscribe(
+                data => {
+                  console.log(data)
+                  resolve(0);
+                }
+              );
+            
+          }, 0)
+        })
       }
+      return;
   }
 
   onPressDelete(){ 

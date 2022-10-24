@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 import { MovieService } from '../movie.service';
 
 import { Booking } from '../booking';
-import { BookingCreation } from '../BookingCreation';
+import { BookingCreation } from '../bookingCreation';
 
 import { Ticket } from '../ticket';
 
