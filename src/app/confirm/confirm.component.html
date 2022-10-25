@@ -24,7 +24,9 @@
                                     <p>Fassung:</p>
                                 </div>
                                 <div class="text-right">
-                                
+                                    <p>Hier steht der Filmtitel</p>
+                                    <p>Hier steht die Dauer</p>
+                                    <p>Und hier die Fassung</p>
                                 </div>
                             </mat-card-content>
                         </div>
@@ -34,12 +36,13 @@
                                     <p>Datum:</p>
                                     <p>Saal:</p>
                                     <p>Plätze:</p>
-                                    <p class="selectedSeat" *ngFor="let ticket of bookingInfo?.tickets">
-                                        {{ticket.row}} {{ticket.numberInRow}} Regulär: {{ticket.defaultPrice}},00€
-                                    </p>
                                 </div>
                                 <div class="text-right">
-
+                                    <p>Hier steht das Datum</p>
+                                    <p>Hier steht der Saal</p>
+                                    <p class="selectedSeat" *ngFor="let ticket of bookingInfo?.tickets">
+                                        {{ticket.row}} {{ticket.numberInRow}}
+                                    </p>
                                 </div>
                             </mat-card-content>
                         </div>
@@ -47,7 +50,9 @@
                             <mat-card-title>Übersicht:</mat-card-title>
                             <mat-card-content>
                                 <div class="text-left">
-                                
+                                    <p class="selectedSeat" *ngFor="let ticket of bookingInfo?.tickets">
+                                        Regulär: {{ticket.defaultPrice}},00€ 
+                                    </p>
                                 </div>
                                 <div class="text-right">
                                 
@@ -63,7 +68,11 @@
                                     <p>Alter:</p>
                                     <p>E-Mail:</p>
                                 </div>
-                                <div class="text-right"></div>
+                                <div class="text-right">
+                                    <p>Hier steht Ihr Name</p>
+                                    <p>Hier steht Ihr Alter</p>
+                                    <p>Hier nochmal Ihre E-mail</p>
+                                </div>
                             </mat-card-content>
                         </div>
                     </mat-card>
@@ -71,9 +80,9 @@
             </diV>
             <div id="containerRight">
 
-                    <div *ngIf="link=='overview' then thenBlock else elseBlock"></div>
+                    <div *ngIf="link=='overview' then elseBlock else thenBlock"></div><!-- Hier habe ich die beiden Blöcke vorerst getauscht -->
                     <ng-template #thenBlock>
-                        <button id="" title="Die ausgewählten Plätze werden gebucht" routerLink="/confirm" mat-raised-button (click)="onClickPay()"> Bezahlen </button>
+                        <button id="" title="bestätigungsbutton" routerLink="/dashboard" mat-raised-button (click)="onClickPay()"> Bezahlen </button>
                     </ng-template>
                     <ng-template #elseBlock>
                         <div id="qrCode">
@@ -83,7 +92,8 @@
 
             </div>
             <mat-card-footer class="outro">
-                <mat-card-title class="bestellübersicht-title">Viel Spaß mit dem Film!</mat-card-title>
+                <!--<mat-card-title class="bestellübersicht-title">Viel Spaß mit dem Film!</mat-card-title>-->
+                <mat-card-title class="bestellübersicht-title">Wow, dass ist eine gute Wahl!</mat-card-title>
             </mat-card-footer>
             </mat-card>
     </div>

@@ -24,7 +24,7 @@ export class ConfirmComponent implements OnInit {
     if(this.route.snapshot.routeConfig?.path!=undefined){
       this.link = this.route.snapshot.routeConfig?.path
     }
-    if(this.link=="confirm"){
+    if(this.link=="dashboard"){
       this._snackBar.open("Danke fürs buchen, eine Email wurde an Sie verschickt", "alles klar", {
         verticalPosition: 'bottom'
       });
