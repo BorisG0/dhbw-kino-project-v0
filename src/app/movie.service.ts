@@ -31,6 +31,12 @@ export class MovieService {
     this.messageService.add('MovieService: fetched Movies');
     return this.http.get<Movie[]>("/api/movies");
   }
+  getMoviesForEmployees(): Observable<Movie[]> {
+    //const movies = of(MOVIES);
+
+    this.messageService.add('MovieService: fetched Movies for Employees');
+    return this.http.get<Movie[]>("/api/empMovies");
+  }
 
   getMovie(id: number): Observable<Movie> {
     //const movie = MOVIES.find(m => m.id === id)!;
