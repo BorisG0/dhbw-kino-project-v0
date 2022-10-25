@@ -1,16 +1,39 @@
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
+#table {
+  color: rgb(202, 202, 202);
+  background-color: rgb(50, 0, 0);
+  width: 50%
+}
+th {
+  color: rgb(202, 202, 202)
+}
+td {
+  color: rgb(202, 202, 202)
+}
   
-  td, p{
+ /* td, p{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
     background-color: ghostwhite;
-  }
+  }*/
+#inputFields{
+  background-color: rgb(70, 0, 0);
+  color: rgb(202, 202, 202);
+  font-size: large;
+  width: 100%;}
 
+mat-hint {
+  color: rgb(202, 202, 202) !important;
+}
+::ng-deep .mat-form-field-label {
+  color: rgb(202, 202, 202) !important;
+}
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  background-color: rgb(202, 202, 202) !important;
+}
+::ng-deep .mat-select-value {
+  color: rgb(202, 202, 202) !important;
+}
   .example-form {
     min-width: 150px;
     max-width: 500px;

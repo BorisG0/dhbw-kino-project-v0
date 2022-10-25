@@ -3,7 +3,25 @@
 <app-new-movie></app-new-movie>
 
   </div>
-  <div id="eventDetails">
+  <table id="table" mat-table [dataSource]="movieEvents">
+    <ng-container  matColumnDef="room" sticky>
+      <th mat-header-cell *matHeaderCellDef> Raum </th>
+      <td  mat-cell *matCellDef="let element"> {{element.roomId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Datum </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef> Uhrzeit </th>
+      <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row routerLink="/events/{{row.id}}" *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <!--<div id="eventDetails">
     <div *ngFor="let movieEventDay of movieEventsPerDay">
       <table *ngFor="let movieEvent of movieEventDay">
           <ng-container matColumnDef="title" sticky>
@@ -13,42 +31,34 @@
               <td> {{movieEvent.date}}</td>
           </ng-container>
       </table>
-    </div>
-    
+    </div>-->
+    <div id="inputFields">
+
     <form class="example-form" style="padding-top: 5%">
-        
-      <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width" appearance="fill">
+      <!--<mat-form-field class="example-full-width" appearance="fill">
           <mat-label>event ID</mat-label>
           <input [(ngModel)]="inputEventid" matInput name="eventId">
-        </mat-form-field></td>
-  
-        <td><mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>movie ID</mat-label>
-          <input [(ngModel)]="inputMovieid" matInput name="moviId">
-        </mat-form-field></td>
-      </tr></table>
-    
-      <p>
+        </mat-form-field>-->
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label type="number">room id</mat-label>
           <textarea [(ngModel)]="inputRoomid" matInput name="roomId"></textarea>
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field appearance="fill" class="formField">
+          <mat-label> Start Datum</mat-label>
+          <input [(ngModel)]="inputDate" name="selectedDate" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <!--<mat-form-field class="example-full-width" appearance="fill">
           <mat-label>date</mat-label>
           <textarea [(ngModel)]="inputDate" matInput name="date"></textarea>
-        </mat-form-field>
+        </mat-form-field>-->
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>hours</mat-label>
-          <textarea [(ngModel)]="inputHours" matInput name="hours"></textarea>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>minutes</mat-label>
-          <textarea [(ngModel)]="inputMinutes" matInput name="minutes"></textarea>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>weekday</mat-label>
-          <textarea [(ngModel)]="inputWeekDay" matInput name="weekday"></textarea>
+          <mat-label>time</mat-label>
+          <textarea [(ngModel)]="inputTime" matInput name="time"></textarea>
+          <mat-hint> hhmm </mat-hint>
+
         </mat-form-field>
         <button (click)=onPressUpdate()>
           <mat-icon>update</mat-icon>
@@ -59,9 +69,10 @@
         <button (click)=onPressDelete()>
           <mat-icon>delete_forever</mat-icon>
         </button>
-      </p>
     </form>
   </div>
+
+  <!--</div>-->
 </body>
 
     

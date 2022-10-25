@@ -23,15 +23,19 @@ export class EventsComponent implements OnInit {
   movieEventsPerDay: MovieEvent[][] = [];
   safeSrc: SafeResourceUrl | undefined;
 
+  displayedColumns: string[] = ['room','date','time'];
+
+
 
     inputRoomid : number |undefined;
     inputMovieid : number |undefined;
     inputEventid : number |undefined;
     inputDate : Date |undefined;
-    inputHours : number |undefined;
     inputMinutes : number |undefined;
     inputWeekDay : string |undefined;
-    inputTime: Time |undefined;
+    inputTime: number |undefined;
+    timeWithSec: number | undefined;
+    id: number = -1;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,8 +57,8 @@ export class EventsComponent implements OnInit {
   getMovie() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const id = Number(this.route.snapshot.paramMap.get('id'));
-        this.movieService.getMovie(id).subscribe(movie =>{
+        this.id = Number(this.route.snapshot.paramMap.get('id'));
+        this.movieService.getMovie(this.id).subscribe(movie =>{
           this.movie = movie;
           resolve(0)
           })
@@ -77,7 +81,6 @@ export class EventsComponent implements OnInit {
     let tempArray : MovieEvent[] = [];
     this.movieEvents.forEach(movieEvent => {
       let tempDate: Date = new Date(movieEvent.date);
-      movieEvent.weekDay = this.weekDayIndexToString(tempDate.getDay());
       if(tempArray.length>0){
         if(tempArray[0].date == movieEvent.date){
           tempArray.push(movieEvent)
@@ -98,48 +101,43 @@ export class EventsComponent implements OnInit {
 
   }
 
-  weekDayIndexToString(dayOfWeek: number){
-    const weekDays: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    return weekDays[dayOfWeek];
-  }
-
   onPressUpdate(){
     let newEvent : MovieEvent;
     
-      if(this.inputEventid != undefined && this.inputDate != undefined &&  this.inputHours != undefined && this.inputMinutes != undefined &&  this.inputMovieid != undefined &&  this.inputRoomid != undefined &&  this.inputWeekDay != undefined){
-        this.inputTime = {hours: this.inputHours, minutes: this.inputMinutes};
+      if(this.inputEventid != undefined && this.inputDate != undefined &&  this.inputTime != undefined  &&  this.inputMovieid != undefined &&  this.inputRoomid != undefined &&  this.inputWeekDay != undefined){
+        this.timeWithSec = this.inputTime*100;
         newEvent = { id: this.inputEventid, date: this.inputDate, time: this.inputTime, movieId: this.inputMovieid, roomId: this.inputRoomid, weekDay: this.inputWeekDay}
         console.log(newEvent);
       }
   }
 
-  onPressCreate(){
-    let newEvent : MovieEvent;
-    
-      if(this.inputEventid != undefined && this.inputDate != undefined &&  this.inputHours != undefined && this.inputMinutes != undefined &&  this.inputMovieid != undefined &&  this.inputRoomid != undefined &&  this.inputWeekDay != undefined){
-        this.inputTime = {hours: this.inputHours, minutes: this.inputMinutes};
-        newEvent = { id: this.inputEventid, date: this.inputDate, time: this.inputTime, movieId: this.inputMovieid, roomId: this.inputRoomid, weekDay: this.inputWeekDay}
-        console.log(newEvent);
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            console.log(new Date())
-              this.movieService.addEvent({id:5, date: new Date(), time: 223000 , movieId: 5, roomId: 3}).subscribe(
-                data => {
-                  console.log(data)
-                  resolve(0);
-                }
-              );
-            
-          }, 0)
-        })
-      }
-      return;
+  onPressCreate(){    
+  
+    if( this.inputDate != undefined && this.inputTime != undefined &&  this.inputRoomid != undefined ){
+      this.timeWithSec = this.inputTime*100;
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log(new Date())
+          if(this.inputRoomid!= undefined && this.inputDate != undefined && this.timeWithSec != undefined){
+
+            this.movieService.addEvent({id:5, date: this.inputDate, time: this.timeWithSec , movieId: this.id, roomId: this.inputRoomid}).subscribe(
+              data => {
+                console.log(data)
+                resolve(0);
+              }
+            );
+          }
+          
+        }, 0)
+      })
+    }
+    return;
   }
 
   onPressDelete(){ 
-      if(this.inputEventid != undefined && this.inputDate == undefined &&  this.inputHours == undefined && this.inputMinutes == undefined &&  this.inputMovieid != undefined &&  this.inputRoomid == undefined &&  this.inputWeekDay == undefined){
+      /*if(this.inputEventid != undefined && this.inputDate == undefined &&  this.inputHours == undefined && this.inputMinutes == undefined &&  this.inputMovieid != undefined &&  this.inputRoomid == undefined &&  this.inputWeekDay == undefined){
         console.log("deleted: " + this.inputEventid);
-      }
+      }*/
   }
 
 }
