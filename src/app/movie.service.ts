@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 
 import { Movie } from './movie';
+import { MovieEventForBackend } from './MovieEventForBackend';
+
 import { MovieEvent } from './MovieEvent';
 import { MOVIES } from './mock-movies';
 import { SeatInEvent } from './seatInEvent';
@@ -72,8 +74,8 @@ export class MovieService {
     console.log("setting movie inactive");
     return this.http.post<String>("/api/SetMovieInactive", id);
   }
-  addEvent(event: MovieEvent){
-    console.log("adding Movie");
+  addEvent(event: MovieEventForBackend){
+    console.log("adding Event");
     return this.http.post<String>("/api/addEvent", event);
   }
 
