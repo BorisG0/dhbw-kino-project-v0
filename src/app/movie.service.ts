@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 
 import { Movie } from './movie';
+import { User } from './user';
+
 import { MovieEventForBackend } from './MovieEventForBackend';
 
 import { MovieEvent } from './MovieEvent';
@@ -19,6 +21,7 @@ import { StatusChange } from './statusChange';
   providedIn: 'root'
 })
 export class MovieService {
+  logUser: User | undefined;
 
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
@@ -78,6 +81,23 @@ export class MovieService {
     console.log("adding Event");
     return this.http.post<String>("/api/addEvent", event);
   }
+  login(user : User) : Observable<User> {
+    console.log("trying to login user");
+    console.log(user);
+    return this.http.post<User>("/api/user",user);
+  }
+
+  setUser(user : User){
+    this.logUser = user;
+    console.log(this.logUser);
+  }
+
+  getUser() {
+    if(this.logUser!=null){
+      return this.logUser;
+    }
+    return;
+  }
 
   //Booking Stuff Start
   newBooking(booking: BookingCreation){
@@ -93,5 +113,7 @@ export class MovieService {
     console.log("statusChange() called");
     return this.http.post<boolean>("/api/setStatusForTicket", statusChange);
   }
+
+
   //Booking Stuff End
 }

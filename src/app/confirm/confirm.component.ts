@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Booking } from '../booking';
+import { MovieService } from '../movie.service';
+
 
 
 
@@ -17,10 +19,13 @@ export class ConfirmComponent implements OnInit {
   @Input() bookingInfo: Booking | undefined;
 
   constructor(    private route: ActivatedRoute,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private movieService: MovieService
+
     ) { }
 
   ngOnInit(): void {
+    console.log(this.movieService.getUser());
     if(this.route.snapshot.routeConfig?.path!=undefined){
       this.link = this.route.snapshot.routeConfig?.path
     }

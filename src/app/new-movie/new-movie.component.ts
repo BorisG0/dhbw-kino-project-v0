@@ -112,6 +112,7 @@ export class NewMovieComponent implements OnInit {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           if (this.enteredduration != null) {
+            console.log(newMovie)
             this.movieService.addMovie(newMovie).subscribe(
               data => {
                 resolve(0);
