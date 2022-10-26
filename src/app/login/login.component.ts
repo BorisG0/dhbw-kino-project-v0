@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HeaderComponent } from '../header/header.component';
 import { MovieService } from '../movie.service';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
 inputMail : string ="";
 inputPassword : string="";
   constructor(    private movieService: MovieService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router
 
     ) { }
 
@@ -30,6 +31,12 @@ inputPassword : string="";
                   HeaderComponent.currentUser = data;
                   localStorage.setItem('currentUser', JSON.stringify(data));
                   this._snackBar.open("Anmeldung erfolgreich", "Okay")
+                  if(data.userType == "Employee"){
+                    this.router.navigate(['emprogram']);
+                  }
+                  else{
+                  }
+                  this.router.navigate(['dashboard']);
                 }
                 else{
                   this._snackBar.open("Kein Account zu den angegebenen Daten gefunden", "Okay")
