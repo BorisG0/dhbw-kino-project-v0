@@ -26,3 +26,11 @@ ul {
   .text_background_green {
     background-color: #04AA6D;
   }
+
+  .text_background_blue {
+    background-color: #2200ab;
+  }
+
+.text_background_red {
+  background-color: #7f0000;
+}
