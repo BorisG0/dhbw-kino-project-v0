@@ -46,3 +46,9 @@
     background-color: rgb(202, 202, 202);
     color: rgb(202, 202, 202);
   }
+
+.heading{
+  text-align: center;
+  font-size: xx-large;
+  color: white;
+}
