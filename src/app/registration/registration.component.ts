@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../app.component';
+import { Customer } from '../customer';
+import { MovieService } from '../movie.service';
+
 
 
 
@@ -16,6 +19,7 @@ export class RegistrationComponent implements OnInit {
   enteredName: String="";
   enteredEmail: String="";
   enteredPassword: String="";
+  movieService: any;
 
 
 
@@ -24,8 +28,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   onPressAddUser()  {
-    newCustomer: Customer;
-    this.onPressAddUser(this.enteredFirstName + this.selectedDate + this.enteredName + this.enteredEmail + this.enteredPassword)
+    let newCustomer: Customer;
+    this.movieService.addCustomer(this.enteredFirstName + this.selectedDate + this.enteredName + this.enteredEmail + this.enteredPassword+ ""+ "" + ""+ "" +"" )
     console.log(this.enteredFirstName + this.selectedDate + this.enteredName + this.enteredEmail + this.enteredPassword)
   }
 
