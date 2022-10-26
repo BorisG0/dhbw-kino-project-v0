@@ -18,6 +18,7 @@ import { Time } from '@angular/common';
 })
 export class EventsComponent implements OnInit {
   movies: Movie[] = [];
+  movieEvent : MovieEvent | undefined;
   movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: 'img0.png', description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: 'https://www.youtube.com/embed/6DxjJzmYsXo'};
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
@@ -30,12 +31,13 @@ export class EventsComponent implements OnInit {
     inputRoomid : number |undefined;
     inputMovieid : number |undefined;
     inputEventid : number |undefined;
-    inputDate : Date |undefined;
+    inputDate : Date = new Date();
     inputMinutes : number |undefined;
     inputWeekDay : string |undefined;
     inputTime: number |undefined;
     timeWithSec: number | undefined;
     id: number = -1;
+    inEditEvents: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,14 +46,42 @@ export class EventsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+     if(this.route.snapshot.routeConfig?.path?.includes('edit')){
+      this.inEditEvents = true
+     };
+     console.log(this.inEditEvents)
+     
+
     this.loadData();
   }
 
 
   async loadData(){
-    await this.getMovie();
-    await this.getMovieEvents(this.movie);
-    this.loadMovieEventsperDay();
+    if(this.inEditEvents==false){
+      await this.getMovie();
+      await this.getMovieEvents(this.movie);
+      //this.loadMovieEventsperDay();
+    }
+    else{
+      await this.getEvent();
+    }
+    console.log(this.movieEvents)
+    console.log(this.movieEvent)
+  }
+  
+  getEvent(){
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.id = Number(this.route.snapshot.paramMap.get('id'));
+        this.movieService.getEventById(this.id).subscribe(event =>{
+          this.movieEvent = event;
+          this.inputDate = event.date;
+          this.inputRoomid = event.roomId;
+          this.inputTime = event.time;
+          resolve(0)
+          })
+      }, 0)
+    })
   }
 
   getMovie() {
@@ -77,7 +107,7 @@ export class EventsComponent implements OnInit {
     })
   }
 
-  loadMovieEventsperDay() {
+  /*loadMovieEventsperDay() {
     let tempArray : MovieEvent[] = [];
     this.movieEvents.forEach(movieEvent => {
       let tempDate: Date = new Date(movieEvent.date);
@@ -99,7 +129,7 @@ export class EventsComponent implements OnInit {
       this.movieEventsPerDay.push(tempArray)
     }
 
-  }
+  }*/
 
   onPressUpdate(){
     let newEvent : MovieEvent;

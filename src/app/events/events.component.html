@@ -1,26 +1,31 @@
 <body>
-  <div id="movieDetails">
-<app-new-movie></app-new-movie>
+  <div *ngIf="inEditEvents==false; then thenBlock"></div>
+      <ng-template #thenBlock>
+        <div id="movieDetails">
+          <app-new-movie></app-new-movie>
+            </div>
+            <table id="table" mat-table [dataSource]="movieEvents">
+              <ng-container  matColumnDef="room" sticky>
+                <th mat-header-cell *matHeaderCellDef> Raum </th>
+                <td  mat-cell *matCellDef="let element"> {{element.roomId}} </td>
+              </ng-container>
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Datum </th>
+                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+              </ng-container>
+              <ng-container matColumnDef="time">
+                <th mat-header-cell *matHeaderCellDef> Uhrzeit </th>
+                <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+              </ng-container>
+          
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row routerLink="/editEvents/{{row.id}}" *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
 
-  </div>
-  <table id="table" mat-table [dataSource]="movieEvents">
-    <ng-container  matColumnDef="room" sticky>
-      <th mat-header-cell *matHeaderCellDef> Raum </th>
-      <td  mat-cell *matCellDef="let element"> {{element.roomId}} </td>
-    </ng-container>
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Datum </th>
-      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-    </ng-container>
-    <ng-container matColumnDef="time">
-      <th mat-header-cell *matHeaderCellDef> Uhrzeit </th>
-      <td mat-cell *matCellDef="let element"> {{element.time}} </td>
-    </ng-container>
+      </ng-template>
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row routerLink="/events/{{row.id}}" *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
   <!--<div id="eventDetails">
     <div *ngFor="let movieEventDay of movieEventsPerDay">
       <table *ngFor="let movieEvent of movieEventDay">
