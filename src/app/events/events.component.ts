@@ -33,8 +33,8 @@ export class EventsComponent implements OnInit {
     inputDate : Date = new Date();
     inputMinutes : number |undefined;
     inputWeekDay : string |undefined;
-    inputTime: number |undefined;
-    timeWithSec: number | undefined;
+    inputTime: string = "";
+    timeWithSec: string = "";
     movieId: number = -1;
     eventId: number = -1;
 
@@ -76,7 +76,9 @@ export class EventsComponent implements OnInit {
         this.movieService.getEventById(this.eventId).subscribe(event =>{
           this.inputDate = event.date;
           this.inputRoomid = event.roomId;
-          this.inputTime = event.time;
+          this.timeWithSec = event.time;
+          this.inputTime = event.time.slice(0,-3)
+          console.log(event.time)
           resolve(0)
           })
       }, 0)
@@ -132,7 +134,10 @@ export class EventsComponent implements OnInit {
 
   onPressUpdate(){ 
     if( this.inputDate != undefined && this.inputTime != undefined &&  this.inputRoomid != undefined ){
-      this.timeWithSec = this.inputTime*100;
+      this.timeWithSec = this.inputTime+":00";
+            if(this.timeWithSec.length){
+        this.timeWithSec = "0" + this.timeWithSec;
+      }
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           console.log(new Date())
@@ -155,10 +160,14 @@ export class EventsComponent implements OnInit {
   onPressCreate(){    
   
     if( this.inputDate != undefined && this.inputTime != undefined &&  this.inputRoomid != undefined ){
-      this.timeWithSec = this.inputTime*100;
+      this.timeWithSec = this.inputTime+":00";
+      console.log(this.timeWithSec.length)
+      if(this.timeWithSec.length){
+        this.timeWithSec = "0" + this.timeWithSec;
+      }
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log(new Date())
+          console.log(this.timeWithSec)
           if(this.inputRoomid!= undefined && this.inputDate != undefined && this.timeWithSec != undefined){
 
             this.movieService.addEvent({id:-1, date: this.inputDate, time: this.timeWithSec , movieId: this.movieId, roomId: this.inputRoomid}).subscribe(
