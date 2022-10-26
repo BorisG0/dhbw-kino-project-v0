@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
 import { MovieService } from '../movie.service';
 
 
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
             data => {
               this.movieService.setUser(data);
               console.log(this.movieService.getUser());
+              HeaderComponent.currentUser = data;
               console.log(data)
               resolve(0);
             }
