@@ -11,6 +11,7 @@ export interface Movie {
     regie: string;
     cast: string;
     trailerLink: string;
+    active : boolean;
     
     //studio: string;
     //discription: string;

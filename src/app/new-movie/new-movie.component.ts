@@ -18,7 +18,7 @@ import { ActivatedRoute } from '@angular/router';
 export class NewMovieComponent implements OnInit {
   url: string = "";
   id: number = 0;
-  movie: Movie = { id: 0, title: "", duration: 0, ageRestriction: 0, imageName: "", description: "", genre: "", startDate: new Date(), movieStudio: "", regie: "", cast: "", trailerLink: "" }
+  movie: Movie = { id: 0, title: "", duration: 0, ageRestriction: 0, imageName: "", description: "", genre: "", startDate: new Date(), movieStudio: "", regie: "", cast: "", trailerLink: "", active: true }
 
   //Variablen für die Input Felder
   selectedFile: File | undefined;
@@ -105,7 +105,8 @@ export class NewMovieComponent implements OnInit {
         movieStudio: this.enteredStudio,
         regie: this.enteredRegie,
         cast: this.enteredCast,
-        trailerLink: "\"" + this.enteredLink + "\""
+        trailerLink: "\"" + this.enteredLink + "\"",
+        active: true
       }
       //input Felder zurück setzen
       this.clearInputFields();
@@ -127,12 +128,12 @@ export class NewMovieComponent implements OnInit {
       return;
     }
   }
-  //Setzt Film auf inactive und entfernt ihn dadurch aus dem Programm
-  onPressSetMovieInactive() {
+  //Ändert die Film Aktivität
+  onPressChangeActivity() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (this.enteredduration != null) {
-          this.movieService.setMovieInactive(this.movie.id).subscribe(
+          this.movieService.changeMovieActivity(this.movie.id).subscribe(
             data => {
               resolve(0);
             }
@@ -165,7 +166,8 @@ export class NewMovieComponent implements OnInit {
                 movieStudio: this.enteredStudio,
                 regie: this.enteredRegie,
                 cast: this.enteredCast,
-                trailerLink: "\"" + this.enteredLink + "\""
+                trailerLink: "\"" + this.enteredLink + "\"",
+                active: true
               }).subscribe(
                 data => {
                   resolve(0);

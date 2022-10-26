@@ -81,9 +81,9 @@ export class MovieService {
     console.log("updating Movie");
     return this.http.post<String>("/api/updateMovie", movie);
   }
-  setMovieInactive(id: number){
+  changeMovieActivity(id: number){
     console.log("setting movie inactive");
-    return this.http.post<String>("/api/SetMovieInactive", id);
+    return this.http.post<String>("/api/SetMovieActivity", id);
   }
   addEvent(event: MovieEventForBackend){
     console.log("adding Event");
@@ -95,7 +95,7 @@ export class MovieService {
   }
   deleteEvent(id: number){
     console.log("deleting Event");
-    return this.http.post<String>("/api/deleteEvent", id);
+    return this.http.post<String>("/api/setEventInactive", id);
   }
   login(user : User) : Observable<User> {
     console.log("trying to login user");
