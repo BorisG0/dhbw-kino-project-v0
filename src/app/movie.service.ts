@@ -103,18 +103,6 @@ export class MovieService {
     return this.http.post<User>("/api/user",user);
   }
 
-  setUser(user : User){
-    this.logUser = user;
-    console.log(this.logUser);
-  }
-
-  getUser() {
-    if(this.logUser!=null){
-      return this.logUser;
-    }
-    return;
-  }
-
   //Booking Stuff Start
   newBooking(booking: BookingCreation){
     console.log("newBooking() called");

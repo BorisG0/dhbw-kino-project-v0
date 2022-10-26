@@ -21,8 +21,6 @@ inputPassword : string="";
       setTimeout(() => {
           this.movieService.login({userType: "Employee", mailAdress: this.inputMail, password:this.inputPassword, lastName: "", firstName: ""}).subscribe(
             data => {
-              this.movieService.setUser(data);
-              console.log(this.movieService.getUser());
               HeaderComponent.currentUser = data;
               console.log(data)
               localStorage.setItem('currentUser', JSON.stringify(data));
