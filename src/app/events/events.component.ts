@@ -45,13 +45,13 @@ export class EventsComponent implements OnInit {
   async loadData() {
     //In der Vorstellung hinzufügen Ansicht werden der aktuelle Film und die dazugehörigen Vorstellungen geladen
     if (this.inEditEvents == false) {
-      this.eventId = Number(this.route.snapshot.paramMap.get('eId'));
+      this.movieId = Number(this.route.snapshot.paramMap.get('mId'));
       await this.getMovie();
       await this.getMovieEvents(this.movie);
     }
     //In der Vorstellung bearbeiten Ansicht wird die ausgewählt Vorstellung geladen
     else {
-      this.movieId = Number(this.route.snapshot.paramMap.get('mId'));
+      this.eventId = Number(this.route.snapshot.paramMap.get('eId'));
       await this.getEvent();
     }
   }
@@ -102,7 +102,6 @@ export class EventsComponent implements OnInit {
       }
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log(new Date())
           if (this.inputRoomid != undefined && this.inputDate != undefined && this.timeWithSec != undefined) {
 
             this.movieService.updateEvent({ id: this.eventId, date: this.inputDate, time: this.timeWithSec, movieId: this.movieId, roomId: this.inputRoomid }).subscribe(
@@ -127,7 +126,6 @@ export class EventsComponent implements OnInit {
       }
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log(this.timeWithSec)
           if (this.inputRoomid != undefined && this.inputDate != undefined && this.timeWithSec != undefined) {
             this.movieService.addEvent({ id: -1, date: this.inputDate, time: this.timeWithSec, movieId: this.movieId, roomId: this.inputRoomid }).subscribe(
               data => {
