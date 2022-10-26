@@ -16,6 +16,7 @@ import { SeatInEvent } from './seatInEvent';
 import { BookingCreation } from './bookingCreation';
 import { Ticket } from './ticket';
 import { StatusChange } from './statusChange';
+import { Customer } from './customer';
 
 @Injectable({
   providedIn: 'root'
@@ -116,4 +117,9 @@ export class MovieService {
 
 
   //Booking Stuff End
+
+  addCustomer(customer: Customer){
+    console.log("adding Customer");
+    return this.http.post<String>("/api/addCustomer", customer);
+  }
 }
