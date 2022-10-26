@@ -10,6 +10,8 @@
     
     <li *ngIf="!currentUser.mailAdress" style="float:right"><a class="text_background_green" routerLink="/login">Einloggen</a></li>
 
-    <li *ngIf="currentUser.mailAdress" style="float:right"><a class="text_background_green">{{currentUser.firstName}}</a></li>
+    <li *ngIf="currentUser.mailAdress" style="float:right"><a class="text_background_green">{{currentUser.firstName}}</a>
+        <button mat-flat-button (click)="logout()">Logout</button>
+    </li>
 </ul>
   

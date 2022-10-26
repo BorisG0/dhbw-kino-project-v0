@@ -9,7 +9,7 @@ import { User } from '../user';
 export class HeaderComponent implements OnInit {
 
   user: User | undefined;
-  static currentUser: User = {userType: "not",
+  static currentUser: User = {userType: "",
     mailAdress: "",
     password: "",
     lastName: "",
@@ -27,6 +27,16 @@ export class HeaderComponent implements OnInit {
       if(localStorage.getItem('currentUser')!=null)
       HeaderComponent.currentUser = JSON.parse(mysString)
     }
+  }
+
+  logout(){
+    HeaderComponent.currentUser = {userType: "",
+    mailAdress: "",
+    password: "",
+    lastName: "",
+    firstName: ""};
+
+    localStorage.removeItem('currentUser');
   }
 
   get currentUser(){
