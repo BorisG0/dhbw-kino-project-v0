@@ -5,5 +5,6 @@
 
 <h2>Buchungen:</h2>
 <h3 *ngFor="let bookingInfo of bookingInfos">
-    ID:{{bookingInfo.id}} | Bezahlt: {{bookingInfo.pricePaid}},00€
+    ID:{{bookingInfo.id}} | Film: {{bookingInfo.movieTitle}}, am {{bookingInfo.date}} um {{bookingInfo.time}}, Bezahlt: {{bookingInfo.pricePaid}},00€
+    <p *ngFor="let seat of bookingInfo.seatPlaces">{{seat}}</p>
 </h3>
