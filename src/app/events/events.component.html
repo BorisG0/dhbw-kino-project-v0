@@ -65,15 +65,28 @@
           <mat-hint> hhmm </mat-hint>
 
         </mat-form-field>
-        <button (click)=onPressUpdate()>
-          <mat-icon>update</mat-icon>
-        </button>
+
+
+
+      <div *ngIf="inEditEvents==false; then then2Block else else2Block"></div>
+      <ng-template #then2Block>
+
+
         <button (click)=onPressCreate()>
           <mat-icon>create</mat-icon>
+        </button>
+
+      </ng-template>
+      <ng-template #else2Block>
+        <button (click)=onPressUpdate()>
+          <mat-icon>update</mat-icon>
         </button>
         <button (click)=onPressDelete()>
           <mat-icon>delete_forever</mat-icon>
         </button>
+      </ng-template>
+
+
     </form>
   </div>
 
