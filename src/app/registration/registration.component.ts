@@ -13,13 +13,16 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  selectedDate: any;
+  selectedDate: Date = new Date();
 
-  enteredFirstName: String = "";
-  enteredName: String="";
-  enteredEmail: String="";
-  enteredPassword: String="";
-  movieService: any;
+  enteredFirstName: string = "";
+  enteredName: string = "";
+  enteredEmail: string = "";
+  enteredPassword: string = "";
+
+  constructor(    private movieService: MovieService
+
+    ) { }
 
 
 
@@ -27,10 +30,22 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onPressAddUser()  {
-    let newCustomer: Customer;
-    this.movieService.addCustomer(this.enteredFirstName + this.selectedDate + this.enteredName + this.enteredEmail + this.enteredPassword+ ""+ "" + ""+ "" +"" )
+  onPressAddUser() {
     console.log(this.enteredFirstName + this.selectedDate + this.enteredName + this.enteredEmail + this.enteredPassword)
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.movieService.addCustomer({mailAdress: this.enteredEmail, password: this.enteredPassword, lastName : this.enteredName, date: this.selectedDate, postalcode: 67654, houseNumber: 4, location: "Osthofen", street: "myStreet", countryCode: "DE", mobileNumber: "0234324"}).subscribe(
+        data => {
+          console.log(data)
+
+          resolve(0);
+        }
+        )
+
+
+      }, 0)
+    })
+    let newCustomer: Customer;
   }
 
 }

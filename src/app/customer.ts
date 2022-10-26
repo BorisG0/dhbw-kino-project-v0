@@ -2,7 +2,7 @@ export interface Customer {
     mailAdress: string;
     password: string;
     lastName: string;
-    date: number;
+    date: Date;
     postalcode: number;
     houseNumber: number;
     location: string;

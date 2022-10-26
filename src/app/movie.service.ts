@@ -129,6 +129,7 @@ export class MovieService {
 
   addCustomer(customer: Customer){
     console.log("adding Customer");
+    console.log(customer)
     return this.http.post<String>("/api/addCustomer", customer);
   }
 }
