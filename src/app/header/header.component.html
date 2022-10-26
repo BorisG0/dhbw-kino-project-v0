@@ -1,13 +1,12 @@
 <ul>
+    <li *ngIf="currentUser.userType=='Employee'" class="text_background_red"><a>Mitarbeiteransicht</a></li>
     <li><a routerLink="/dashboard">Home</a></li>
     <li><a routerLink="/program">Programm</a></li>
     <li><a routerLink="/info">Info</a></li>
-    <li><a routerLink="/emprogram"> Mitarbeiter Programm</a></li>
-    <li><a routerLink="/newMovie"> Film hinzufügen </a></li>
+    <li *ngIf="currentUser.userType=='Employee'" class="text_background_red"><a routerLink="/emprogram"> Mitarbeiter Programm</a></li>
+    <li *ngIf="currentUser.userType=='Employee'" class="text_background_red"><a routerLink="/newMovie"> Film hinzufügen </a></li>
     
     <li *ngIf="!currentUser.mailAdress" style="float:right"><a class="text_background_green" routerLink="/login">Einloggen</a></li>
-
-    <button *ngIf="currentUser.mailAdress" mat-flat-button (click)="logout()">Logout</button>
-    <li *ngIf="currentUser.mailAdress" style="float:right" routerLink="/user"><a class="text_background_green">{{currentUser.firstName}}</a></li>
+    <li *ngIf="currentUser.mailAdress" style="float:right" routerLink="/user"><a class="text_background_blue">{{currentUser.firstName}}</a></li>
 </ul>
   
