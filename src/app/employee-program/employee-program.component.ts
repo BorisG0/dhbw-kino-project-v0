@@ -13,11 +13,11 @@ export class EmployeeProgramComponent implements OnInit {
   constructor(private movieService: MovieService) {
    }
   ngOnInit(): void {
-    this.getMovies();
+    this.getMoviesForEmployees();
   }
   //Alle Filme laden
-  getMovies(): void{
-    this.movieService.getMovies().subscribe(movies =>{
+  getMoviesForEmployees(): void{
+    this.movieService.getMoviesForEmployees().subscribe(movies =>{
       this.movies = movies;
     } );
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  user: User | undefined;
+  static currentUser: User = {userType: "",
+    mailAdress: "",
+    password: "",
+    lastName: "",
+    firstName: ""};
+
   constructor() { }
 
   ngOnInit(): void {
+    if(this.currentUser.firstName==""){
+      let myString = localStorage.getItem('currentUser');
+      let mysString : string = "";
+      if(myString != null){
+          mysString  = myString
+      }
+      if(localStorage.getItem('currentUser')!=null)
+      HeaderComponent.currentUser = JSON.parse(mysString)
+    }
+  }
+
+  logout(){
+    HeaderComponent.currentUser = {userType: "",
+    mailAdress: "",
+    password: "",
+    lastName: "",
+    firstName: ""};
+
+    localStorage.removeItem('currentUser');
+  }
+
+  get currentUser(){
+    return HeaderComponent.currentUser;
   }
 
 }

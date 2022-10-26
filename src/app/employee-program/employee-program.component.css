@@ -22,10 +22,11 @@ td.mat-column-Genre {
 }
 .mat-row .mat-cell {
   border-top: 1px solid grey;
-  cursor: pointer;
 }
 .mat-row:hover .mat-cell {
   background-color: rgb(70, 0, 0);
+  cursor: pointer;
+
 }
 th {
   color: rgb(202, 202, 202)

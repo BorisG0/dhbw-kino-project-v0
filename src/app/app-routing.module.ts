@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'emprogram', component: EmployeeProgramComponent},
   { path: 'confirm', component: ConfirmComponent},
   { path: 'events/:id', component: EventsComponent},
+  { path: 'editEvents/:miD/:eId', component: EventsComponent},
   { path: 'newMovie', component: NewMovieComponent},
   { path: 'overview', component: ConfirmComponent},
 

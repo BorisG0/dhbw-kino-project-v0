@@ -32,6 +32,12 @@ export class MovieService {
     this.messageService.add('MovieService: fetched Movies');
     return this.http.get<Movie[]>("/api/movies");
   }
+  getMoviesForEmployees(): Observable<Movie[]> {
+    //const movies = of(MOVIES);
+
+    this.messageService.add('MovieService: fetched Movies for Employees');
+    return this.http.get<Movie[]>("/api/empMovies");
+  }
 
   getMovie(id: number): Observable<Movie> {
     //const movie = MOVIES.find(m => m.id === id)!;
@@ -70,6 +76,7 @@ export class MovieService {
     console.log("adding Movie");
     return this.http.post<String>("/api/addMovie", movie);
   }
+  
   updateMovie(movie: Movie){
     console.log("updating Movie");
     return this.http.post<String>("/api/updateMovie", movie);
@@ -81,6 +88,14 @@ export class MovieService {
   addEvent(event: MovieEventForBackend){
     console.log("adding Event");
     return this.http.post<String>("/api/addEvent", event);
+  }
+  updateEvent(event: MovieEventForBackend){
+    console.log("updating Event");
+    return this.http.post<String>("/api/updateEvent", event);
+  }
+  deleteEvent(id: number){
+    console.log("deleting Event");
+    return this.http.post<String>("/api/deleteEvent", id);
   }
   login(user : User) : Observable<User> {
     console.log("trying to login user");
