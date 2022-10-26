@@ -82,9 +82,9 @@ export class MovieService {
     console.log("updating Movie");
     return this.http.post<String>("/api/updateMovie", movie);
   }
-  changeMovieActivity(id: number){
-    console.log("setting movie inactive");
-    return this.http.post<String>("/api/SetMovieActivity", id);
+  changeMovieActivity(movie: Movie){
+    console.log("changing movie activity");
+    return this.http.post<String>("/api/SetMovieActivity", movie);
   }
   addEvent(event: MovieEventForBackend){
     console.log("adding Event");

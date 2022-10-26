@@ -142,6 +142,7 @@ export class EventsComponent implements OnInit {
   onPressDelete() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        console.log(this.eventId)
         this.movieService.deleteEvent(this.eventId).subscribe(
           data => {
             resolve(0);

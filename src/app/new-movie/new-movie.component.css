@@ -57,7 +57,7 @@ mat-hint {
 #sixthContainer {
     display: flex;
     justify-content: center;
-    max-width: 10%;
+    max-width: 20%;
     min-width: unset;
     height: 5%;
     align-items: center;

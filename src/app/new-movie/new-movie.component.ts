@@ -33,6 +33,8 @@ export class NewMovieComponent implements OnInit {
   enteredTitle: string = "";
   enteredLink: string = "";
 
+  currentActive: boolean = true;
+
   //Notwendig für die Chip List von Angular -> Genre Auwahl
   separatorKeysCodes: number[] = [ENTER, COMMA];
   filteredGenres: Observable<string[]>;
@@ -78,6 +80,7 @@ export class NewMovieComponent implements OnInit {
           //FSk wird im select noch nicht augewählt
           this.selectedFSK = movie.ageRestriction;
           this.selectedGenres = movie.genre.split(',');
+          this.currentActive = movie.active;
           resolve(0)
         })
       }, 0)
@@ -132,8 +135,33 @@ export class NewMovieComponent implements OnInit {
   onPressChangeActivity() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        let activityForBackend : boolean;
+        activityForBackend = this.currentActive;
+        if(this.currentActive){
+          this.currentActive = false;
+        }
+        else{
+          this.currentActive = true;
+        }
+        let genreString = this.selectedGenres.toString()
+
         if (this.enteredduration != null) {
-          this.movieService.changeMovieActivity(this.movie.id).subscribe(
+          this.movieService.changeMovieActivity({
+            id: this.movie.id,
+            title: this.enteredTitle,
+            duration: this.durationAsNumber,
+            ageRestriction: this.selectedFSK,
+            imageName: this.movie.imageName,
+            //image: this.selectedFile,
+            description: this.enteredDescription,
+            genre: genreString,
+            startDate: this.selectedDate,
+            movieStudio: this.enteredStudio,
+            regie: this.enteredRegie,
+            cast: this.enteredCast,
+            trailerLink: "\"" + this.enteredLink + "\"",
+            active: this.currentActive
+          }).subscribe(
             data => {
               resolve(0);
             }
@@ -167,7 +195,7 @@ export class NewMovieComponent implements OnInit {
                 regie: this.enteredRegie,
                 cast: this.enteredCast,
                 trailerLink: "\"" + this.enteredLink + "\"",
-                active: true
+                active: this.currentActive
               }).subscribe(
                 data => {
                   resolve(0);

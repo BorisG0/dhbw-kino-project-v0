@@ -97,12 +97,12 @@
         <button id="pressMovieButton" title="Film wird hinzugefügt" mat-raised-button (click)="onPressAddMovie()"> Hinzufügen </button>
       </ng-template>
       <ng-template #elseBlock>
-        <div *ngIf="movie.active==true; then isActiveBlock else isInactiveBlock"> </div>
+        <div *ngIf="currentActive==true; then isActiveBlock else isInactiveBlock"> </div>
         <ng-template #isActiveBlock>
-          <button id="pressSetMovieInactive" title="Film wird aus dem Programm genommen" mat-raised-button (click)="onPressChangeActivity()"> Setze Inaktiv </button>
+          <button class="pressSetMovieactivity" title="Film wird aus dem Programm genommen" mat-raised-button (click)="onPressChangeActivity()"> Setze Inaktiv </button>
         </ng-template>
         <ng-template #isInactiveBlock>
-          <button id="pressSetMovieInactive" title="Film wird aus dem Programm genommen" mat-raised-button (click)="onPressChangeActivity()"> Setze Aktiv </button>
+          <button class="pressSetMovieactivity" title="Film wird aktiv gesetzt" mat-raised-button (click)="onPressChangeActivity()"> Setze Aktiv </button>
         </ng-template>
         <button id="pressUpdateMovieButton" title="Film wird geändert" mat-raised-button (click)="onPressUpdateMovie()"> Ändern </button>
       </ng-template>
