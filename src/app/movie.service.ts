@@ -92,6 +92,10 @@ export class MovieService {
     console.log("updating Event");
     return this.http.post<String>("/api/updateEvent", event);
   }
+  deleteEvent(id: number){
+    console.log("deleting Event");
+    return this.http.post<String>("/api/deleteEvent", id);
+  }
   login(user : User) : Observable<User> {
     console.log("trying to login user");
     console.log(user);
