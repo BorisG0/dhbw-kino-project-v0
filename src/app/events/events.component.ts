@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
-
 import { MovieService } from '../movie.service';
-
 import { Movie } from '../movie';
 import { MovieEvent } from '../MovieEvent';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { Time } from '@angular/common';
-
-
 
 @Component({
   selector: 'app-events',
@@ -22,11 +16,7 @@ export class EventsComponent implements OnInit {
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
   safeSrc: SafeResourceUrl | undefined;
-
   displayedColumns: string[] = ['room', 'date', 'time'];
-
-
-
   inputRoomid: number | undefined;
   inputMovieid: number | undefined;
   inputEventid: number | undefined;
@@ -37,7 +27,6 @@ export class EventsComponent implements OnInit {
   timeWithSec: string = "";
   movieId: number = -1;
   eventId: number = -1;
-
   inEditEvents: boolean = false;
 
   constructor(
@@ -51,17 +40,13 @@ export class EventsComponent implements OnInit {
       this.inEditEvents = true
     };
     console.log(this.inEditEvents)
-
-
     this.loadData();
   }
-
 
   async loadData() {
     if (this.inEditEvents == false) {
       await this.getMovie();
       await this.getMovieEvents(this.movie);
-      //this.loadMovieEventsperDay();
     }
     else {
       this.movieId = Number(this.route.snapshot.paramMap.get('mId'));
@@ -108,30 +93,6 @@ export class EventsComponent implements OnInit {
     })
   }
 
-  /*loadMovieEventsperDay() {
-    let tempArray : MovieEvent[] = [];
-    this.movieEvents.forEach(movieEvent => {
-      let tempDate: Date = new Date(movieEvent.date);
-      if(tempArray.length>0){
-        if(tempArray[0].date == movieEvent.date){
-          tempArray.push(movieEvent)
-        }
-        else{
-          this.movieEventsPerDay.push(tempArray)
-          tempArray = [];
-          tempArray.push(movieEvent);
-        }
-      }else{
-        tempArray.push(movieEvent)
-      }
-
-    })
-    if(tempArray.length>0){
-      this.movieEventsPerDay.push(tempArray)
-    }
-
-  }*/
-
   onPressUpdate() {
     if (this.inputDate != undefined && this.inputTime != undefined && this.inputRoomid != undefined) {
       this.timeWithSec = this.inputTime + ":00";
@@ -158,7 +119,6 @@ export class EventsComponent implements OnInit {
   }
 
   onPressCreate() {
-
     if (this.inputDate != undefined && this.inputTime != undefined && this.inputRoomid != undefined) {
       this.timeWithSec = this.inputTime + ":00";
       console.log(this.timeWithSec.length)
@@ -169,7 +129,6 @@ export class EventsComponent implements OnInit {
         setTimeout(() => {
           console.log(this.timeWithSec)
           if (this.inputRoomid != undefined && this.inputDate != undefined && this.timeWithSec != undefined) {
-
             this.movieService.addEvent({ id: -1, date: this.inputDate, time: this.timeWithSec, movieId: this.movieId, roomId: this.inputRoomid }).subscribe(
               data => {
                 console.log(data)
@@ -177,7 +136,6 @@ export class EventsComponent implements OnInit {
               }
             );
           }
-
         }, 0)
       })
     }
