@@ -17,6 +17,7 @@ import { BookingCreation } from './bookingCreation';
 import { Ticket } from './ticket';
 import { StatusChange } from './statusChange';
 import { Customer } from './customer';
+import { BookingInfo } from './bookingInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -118,6 +119,9 @@ export class MovieService {
     return this.http.post<boolean>("/api/setStatusForTicket", statusChange);
   }
 
+  getBookingsForEmail(email: string){
+    return this.http.post<BookingInfo[]>("/api/bookingsForUser", email);
+  }
 
   //Booking Stuff End
 

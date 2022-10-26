@@ -2,3 +2,8 @@
 <h3>Nutzertyp: {{user?.userType}}</h3>
 <h2>Email: {{user?.mailAdress}}</h2>
 <button mat-flat-button (click)="logout()" routerLink="/dashboard">Logout</button>
+
+<h2>Buchungen:</h2>
+<h3 *ngFor="let bookingInfo of bookingInfos">
+    ID:{{bookingInfo.id}} | Bezahlt: {{bookingInfo.pricePaid}},00€
+</h3>
