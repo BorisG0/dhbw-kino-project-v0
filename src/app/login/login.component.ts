@@ -9,7 +9,8 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+inputMail : string ="";
+inputPassword : string="";
   constructor(    private movieService: MovieService,
     ) { }
 
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   onPressLogin(){
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-          this.movieService.login({userType: "Employee", mailAdress: "aberger3@posterous.com", password:"MiBtueRSa", lastName: "", firstName: ""}).subscribe(
+          this.movieService.login({userType: "Employee", mailAdress: this.inputMail, password:this.inputPassword, lastName: "", firstName: ""}).subscribe(
             data => {
               this.movieService.setUser(data);
               console.log(this.movieService.getUser());

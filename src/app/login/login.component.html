@@ -7,11 +7,10 @@
         <form fxLayoutAlign="stretch" fxLayout="column" class="login-form">
             
             <mat-form-field >
-              <input matInput placeholder="Username or Email" >
+              <input [(ngModel)]="inputMail" matInput name="mailName" placeholder="Username or Email" >
             </mat-form-field>
-
             <mat-form-field >
-                <input matInput type="password" placeholder="Passwort" >
+                <input [(ngModel)]="inputPassword" matInput name="passwordName" type="password" placeholder="Passwort" >
             </mat-form-field>
             <mat-checkbox> Angemeldet bleiben </mat-checkbox>
             <button (click)="onPressLogin()" mat-raised-button type="submit" class="login-button">Login</button>
