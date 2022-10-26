@@ -12,6 +12,7 @@ import { EmployeeProgramComponent } from './employee-program/employee-program.co
 import { EventsComponent } from './events/events.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'editEvents/:miD/:eId', component: EventsComponent},
   { path: 'newMovie', component: NewMovieComponent},
   { path: 'overview', component: ConfirmComponent},
+  { path: 'user', component: UserDetailComponent}
 
 
 

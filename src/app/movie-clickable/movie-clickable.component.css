@@ -1,5 +1,5 @@
 .main:hover{
-    background-color: rgb(202, 202, 202);
+    background-color: rgb(170, 0, 0);
     color: black;
     transition: all 0.2s ease-out;
 }
