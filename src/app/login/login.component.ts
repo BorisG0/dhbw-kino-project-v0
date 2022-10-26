@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
               console.log(this.movieService.getUser());
               HeaderComponent.currentUser = data;
               console.log(data)
+              localStorage.setItem('currentUser', JSON.stringify(data));
               resolve(0);
             }
           );

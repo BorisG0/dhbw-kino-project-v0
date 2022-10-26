@@ -18,6 +18,15 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if(this.currentUser.firstName==""){
+      let myString = localStorage.getItem('currentUser');
+      let mysString : string = "";
+      if(myString != null){
+          mysString  = myString
+      }
+      if(localStorage.getItem('currentUser')!=null)
+      HeaderComponent.currentUser = JSON.parse(mysString)
+    }
   }
 
   get currentUser(){
