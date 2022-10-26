@@ -18,7 +18,6 @@ import { Time } from '@angular/common';
 })
 export class EventsComponent implements OnInit {
   movies: Movie[] = [];
-  movieEvent : MovieEvent | undefined;
   movie: Movie = {id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: 'img0.png', description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: 'https://www.youtube.com/embed/6DxjJzmYsXo'};
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
@@ -36,7 +35,9 @@ export class EventsComponent implements OnInit {
     inputWeekDay : string |undefined;
     inputTime: number |undefined;
     timeWithSec: number | undefined;
-    id: number = -1;
+    movieId: number = -1;
+    eventId: number = -1;
+
     inEditEvents: boolean = false;
 
   constructor(
@@ -63,18 +64,16 @@ export class EventsComponent implements OnInit {
       //this.loadMovieEventsperDay();
     }
     else{
+      this.movieId = Number(this.route.snapshot.paramMap.get('mId'));
       await this.getEvent();
     }
-    console.log(this.movieEvents)
-    console.log(this.movieEvent)
   }
   
   getEvent(){
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.id = Number(this.route.snapshot.paramMap.get('id'));
-        this.movieService.getEventById(this.id).subscribe(event =>{
-          this.movieEvent = event;
+        this.eventId = Number(this.route.snapshot.paramMap.get('eId'));
+        this.movieService.getEventById(this.eventId).subscribe(event =>{
           this.inputDate = event.date;
           this.inputRoomid = event.roomId;
           this.inputTime = event.time;
@@ -87,8 +86,8 @@ export class EventsComponent implements OnInit {
   getMovie() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.id = Number(this.route.snapshot.paramMap.get('id'));
-        this.movieService.getMovie(this.id).subscribe(movie =>{
+        this.movieId = Number(this.route.snapshot.paramMap.get('id'));
+        this.movieService.getMovie(this.movieId).subscribe(movie =>{
           this.movie = movie;
           resolve(0)
           })
@@ -131,14 +130,26 @@ export class EventsComponent implements OnInit {
 
   }*/
 
-  onPressUpdate(){
-    let newEvent : MovieEvent;
-    
-      if(this.inputEventid != undefined && this.inputDate != undefined &&  this.inputTime != undefined  &&  this.inputMovieid != undefined &&  this.inputRoomid != undefined &&  this.inputWeekDay != undefined){
-        this.timeWithSec = this.inputTime*100;
-        newEvent = { id: this.inputEventid, date: this.inputDate, time: this.inputTime, movieId: this.inputMovieid, roomId: this.inputRoomid, weekDay: this.inputWeekDay}
-        console.log(newEvent);
-      }
+  onPressUpdate(){ 
+    if( this.inputDate != undefined && this.inputTime != undefined &&  this.inputRoomid != undefined ){
+      this.timeWithSec = this.inputTime*100;
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log(new Date())
+          if(this.inputRoomid!= undefined && this.inputDate != undefined && this.timeWithSec != undefined){
+
+            this.movieService.updateEvent({id: this.eventId, date: this.inputDate, time: this.timeWithSec , movieId: this.movieId, roomId: this.inputRoomid}).subscribe(
+              data => {
+                console.log(data)
+                resolve(0);
+              }
+            );
+          }
+          
+        }, 0)
+      })
+    }
+    return;
   }
 
   onPressCreate(){    
@@ -150,7 +161,7 @@ export class EventsComponent implements OnInit {
           console.log(new Date())
           if(this.inputRoomid!= undefined && this.inputDate != undefined && this.timeWithSec != undefined){
 
-            this.movieService.addEvent({id:5, date: this.inputDate, time: this.timeWithSec , movieId: this.id, roomId: this.inputRoomid}).subscribe(
+            this.movieService.addEvent({id:-1, date: this.inputDate, time: this.timeWithSec , movieId: this.movieId, roomId: this.inputRoomid}).subscribe(
               data => {
                 console.log(data)
                 resolve(0);

@@ -20,7 +20,7 @@
           
           
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row routerLink="/editEvents/{{row.id}}" *matRowDef="let row; columns: displayedColumns;"></tr>
+              <tr mat-row routerLink="/editEvents/{{movie.id}}/{{row.id}}" *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
       </ng-template>
