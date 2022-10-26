@@ -13,6 +13,8 @@ import { Booking } from '../booking';
 import { BookingCreation } from '../bookingCreation';
 
 import { Ticket } from '../ticket';
+import { HeaderComponent } from '../header/header.component';
+import { User } from '../user';
 
 @Component({
   selector: 'app-booking',
@@ -20,6 +22,12 @@ import { Ticket } from '../ticket';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit {
+  user:User ={userType: "",
+  mailAdress: "",
+  password: "",
+  lastName: "",
+  firstName: ""};
+
   tickets: Ticket[] = [];
   ticketsByRow : Ticket [][] = [];
 
@@ -47,6 +55,7 @@ export class BookingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.user = HeaderComponent.currentUser;
     this.loadData();
   }
 
@@ -148,7 +157,7 @@ export class BookingComponent implements OnInit {
       ticketIds.push(ticket.id);
     })
 
-    let bookingCreation: BookingCreation = {email: "aberger3@posterous.com", ticketIds: ticketIds};
+    let bookingCreation: BookingCreation = {email: HeaderComponent.currentUser.mailAdress, ticketIds: ticketIds};
 
     return new Promise((resolve, reject) => {
       setTimeout(() => {

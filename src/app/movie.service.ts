@@ -17,6 +17,7 @@ import { BookingCreation } from './bookingCreation';
 import { Ticket } from './ticket';
 import { StatusChange } from './statusChange';
 import { Customer } from './customer';
+import { BookingInfo } from './bookingInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -81,9 +82,9 @@ export class MovieService {
     console.log("updating Movie");
     return this.http.post<String>("/api/updateMovie", movie);
   }
-  setMovieInactive(id: number){
-    console.log("setting movie inactive");
-    return this.http.post<String>("/api/SetMovieInactive", id);
+  changeMovieActivity(movie: Movie){
+    console.log("changing movie activity");
+    return this.http.post<String>("/api/SetMovieActivity", movie);
   }
   addEvent(event: MovieEventForBackend){
     console.log("adding Event");
@@ -95,24 +96,12 @@ export class MovieService {
   }
   deleteEvent(id: number){
     console.log("deleting Event");
-    return this.http.post<String>("/api/deleteEvent", id);
+    return this.http.post<String>("/api/setEventInactive", id);
   }
   login(user : User) : Observable<User> {
     console.log("trying to login user");
     console.log(user);
     return this.http.post<User>("/api/user",user);
-  }
-
-  setUser(user : User){
-    this.logUser = user;
-    console.log(this.logUser);
-  }
-
-  getUser() {
-    if(this.logUser!=null){
-      return this.logUser;
-    }
-    return;
   }
 
   //Booking Stuff Start
@@ -130,6 +119,9 @@ export class MovieService {
     return this.http.post<boolean>("/api/setStatusForTicket", statusChange);
   }
 
+  getBookingsForEmail(email: string){
+    return this.http.post<BookingInfo[]>("/api/bookingsForUser", email);
+  }
 
   //Booking Stuff End
 

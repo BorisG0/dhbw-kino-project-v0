@@ -9,7 +9,7 @@ import { Movie } from '../movie';
 })
 export class EmployeeProgramComponent implements OnInit {
   movies: Movie[] = [];
-  displayedColumns: string[] = ['title', 'duration', 'genre', 'fsk', 'cast', 'regie', 'studio', 'date', 'description', 'symbol'];
+  displayedColumns: string[] = ['title', 'duration', 'genre', 'fsk', 'cast', 'regie', 'studio', 'date', 'description', 'symbol','active'];
   constructor(private movieService: MovieService) {
    }
   ngOnInit(): void {

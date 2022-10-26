@@ -25,7 +25,6 @@ export class ConfirmComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.movieService.getUser());
     if(this.route.snapshot.routeConfig?.path!=undefined){
       this.link = this.route.snapshot.routeConfig?.path
     }

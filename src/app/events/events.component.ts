@@ -12,7 +12,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 })
 export class EventsComponent implements OnInit {
   movies: Movie[] = [];
-  movie: Movie = { id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: 'img0.png', description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: 'https://www.youtube.com/embed/6DxjJzmYsXo' };
+  movie: Movie = { id: 1, title: "placehold", duration: 10, ageRestriction: 0, imageName: 'img0.png', description: '', genre: '', startDate: new Date('0000-00-00'), movieStudio: '', regie: '', cast: '', trailerLink: 'https://www.youtube.com/embed/6DxjJzmYsXo', active: true };
   movieEvents: MovieEvent[] = [];
   movieEventsPerDay: MovieEvent[][] = [];
   safeSrc: SafeResourceUrl | undefined;
@@ -142,6 +142,7 @@ export class EventsComponent implements OnInit {
   onPressDelete() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        console.log(this.eventId)
         this.movieService.deleteEvent(this.eventId).subscribe(
           data => {
             resolve(0);

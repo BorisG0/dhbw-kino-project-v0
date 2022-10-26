@@ -18,7 +18,7 @@ import { ActivatedRoute } from '@angular/router';
 export class NewMovieComponent implements OnInit {
   url: string = "";
   id: number = 0;
-  movie: Movie = { id: 0, title: "", duration: 0, ageRestriction: 0, imageName: "", description: "", genre: "", startDate: new Date(), movieStudio: "", regie: "", cast: "", trailerLink: "" }
+  movie: Movie = { id: 0, title: "", duration: 0, ageRestriction: 0, imageName: "", description: "", genre: "", startDate: new Date(), movieStudio: "", regie: "", cast: "", trailerLink: "", active: true }
 
   //Variablen für die Input Felder
   selectedFile: File | undefined;
@@ -32,6 +32,8 @@ export class NewMovieComponent implements OnInit {
   durationAsNumber: number = -1;
   enteredTitle: string = "";
   enteredLink: string = "";
+
+  currentActive: boolean = true;
 
   //Notwendig für die Chip List von Angular -> Genre Auwahl
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -78,6 +80,7 @@ export class NewMovieComponent implements OnInit {
           //FSk wird im select noch nicht augewählt
           this.selectedFSK = movie.ageRestriction;
           this.selectedGenres = movie.genre.split(',');
+          this.currentActive = movie.active;
           resolve(0)
         })
       }, 0)
@@ -105,7 +108,8 @@ export class NewMovieComponent implements OnInit {
         movieStudio: this.enteredStudio,
         regie: this.enteredRegie,
         cast: this.enteredCast,
-        trailerLink: "\"" + this.enteredLink + "\""
+        trailerLink: "\"" + this.enteredLink + "\"",
+        active: true
       }
       //input Felder zurück setzen
       this.clearInputFields();
@@ -127,12 +131,37 @@ export class NewMovieComponent implements OnInit {
       return;
     }
   }
-  //Setzt Film auf inactive und entfernt ihn dadurch aus dem Programm
-  onPressSetMovieInactive() {
+  //Ändert die Film Aktivität
+  onPressChangeActivity() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        let activityForBackend : boolean;
+        activityForBackend = this.currentActive;
+        if(this.currentActive){
+          this.currentActive = false;
+        }
+        else{
+          this.currentActive = true;
+        }
+        let genreString = this.selectedGenres.toString()
+
         if (this.enteredduration != null) {
-          this.movieService.setMovieInactive(this.movie.id).subscribe(
+          this.movieService.changeMovieActivity({
+            id: this.movie.id,
+            title: this.enteredTitle,
+            duration: this.durationAsNumber,
+            ageRestriction: this.selectedFSK,
+            imageName: this.movie.imageName,
+            //image: this.selectedFile,
+            description: this.enteredDescription,
+            genre: genreString,
+            startDate: this.selectedDate,
+            movieStudio: this.enteredStudio,
+            regie: this.enteredRegie,
+            cast: this.enteredCast,
+            trailerLink: "\"" + this.enteredLink + "\"",
+            active: this.currentActive
+          }).subscribe(
             data => {
               resolve(0);
             }
@@ -165,7 +194,8 @@ export class NewMovieComponent implements OnInit {
                 movieStudio: this.enteredStudio,
                 regie: this.enteredRegie,
                 cast: this.enteredCast,
-                trailerLink: "\"" + this.enteredLink + "\""
+                trailerLink: "\"" + this.enteredLink + "\"",
+                active: this.currentActive
               }).subscribe(
                 data => {
                   resolve(0);
