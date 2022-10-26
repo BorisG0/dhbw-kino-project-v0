@@ -23,10 +23,10 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onPressAddUser()  {
+  onPressAddUser()  {/*
     newCustomer: Customer;
     this.onPressAddUser(this.enteredFirstName + this.selectedDate + this.enteredName + this.enteredEmail + this.enteredPassword)
     console.log(this.enteredFirstName + this.selectedDate + this.enteredName + this.enteredEmail + this.enteredPassword)
-  }
+*/}
 
 }
