@@ -11,6 +11,7 @@ import { map, startWith } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { User } from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-movie',
@@ -52,7 +53,9 @@ export class NewMovieComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
-    private _snackBar: MatSnackBar,) {
+    private _snackBar: MatSnackBar,
+    private router: Router,
+    ) {
     this.filteredGenres = this.genreCtrl.valueChanges.pipe(
       startWith(null),
       map((genre: string | null) => (genre ? this._filter(genre) : this.allGenres.slice())),
@@ -61,10 +64,15 @@ export class NewMovieComponent implements OnInit {
 
   //Es wird überprüft, ob die Componente über den Button "Film hinzufügen" oder durch die Auswahl eines bereits vorhanden Film aufgerufen wurde
   //Bei zweiterem wird das Movie Objekt des ausgewählten Films geladen
-  ngOnInit(): void {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.id) {
-      this.getMovie();
+  ngOnInit() {
+    if(HeaderComponent.currentUser.userType != 'Employee'){
+      this.router.navigate(['dashboard']);
+    }
+    else{
+      this.id = Number(this.route.snapshot.paramMap.get('id'));
+      if (this.id) {
+        this.getMovie();
+      }
     }
   }
   //Lädt den ausgewählten Film und befüllt die Input Felder mit dessen Attributen

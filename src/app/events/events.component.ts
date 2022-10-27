@@ -5,6 +5,9 @@ import { Movie } from '../movie';
 import { MovieEvent } from '../MovieEvent';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
+
 
 
 @Component({
@@ -36,16 +39,24 @@ export class EventsComponent implements OnInit {
     private route: ActivatedRoute,
     private movieService: MovieService,
     private sanitizer: DomSanitizer,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router,
+
 
   ) { }
 
   ngOnInit(): void {
+    if(HeaderComponent.currentUser.userType != 'Employee'){
+      this.router.navigate(['dashboard']);
+    }
+    else{
     //Schaut ob man sich in der Vorstellung bearbeiten oder Vorstellung hinzufügen Ansicht befindet
     if (this.route.snapshot.routeConfig?.path?.includes('edit')) {
       this.inEditEvents = true
     };
     this.loadData();
+    }
+
   }
 
   async loadData() {
