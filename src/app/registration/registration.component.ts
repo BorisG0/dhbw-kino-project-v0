@@ -5,6 +5,9 @@ import { Customer } from '../customer';
 import { MovieService } from '../movie.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
+import { User } from '../user';
+
 
 
 
@@ -42,9 +45,20 @@ export class RegistrationComponent implements OnInit {
     if(this.enteredEmail != "" && this.enteredFirstName != "" && this.enteredName != "" && this.enteredPassword != "" && this.selectedDate != new Date() && this.selectedDate != null && this.acceptedAGB == true){
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          this.movieService.addCustomer({mailAdress: this.enteredEmail, lastName : this.enteredName, firstName: this.enteredFirstName, birthDate: this.selectedDate, postalcode: 67654, houseNumber: 4, location: "Osthofen", street: "myStreet", countryCode: "DE", mobileNumber: "0234324", password: this.enteredPassword}).subscribe(
+          this.movieService.addCustomer({userType: "Customer", mailAdress: this.enteredEmail, lastName : this.enteredName, firstName: this.enteredFirstName, birthDate: this.selectedDate, postalCode: 67654, houseNumber: 4, location: "Osthofen", street: "myStreet", countryCode: "DE", mobileNumber: "0234324", password: this.enteredPassword}).subscribe(
           data => {
-            console.log(data)
+            if(data.userType == "UserExists"){
+              this._snackBar.open("Account zu dieser Email Adresse existiert bereits", "Okay")
+            }
+            else{
+              HeaderComponent.currentUser = data;
+              localStorage.setItem('currentUser', JSON.stringify(data));
+              this._snackBar.open("Registrierung und Anmeldung war erfolgreich", "Okay")
+              this.router.navigate(['dashboard']);
+              console.log(data)
+              console.log(HeaderComponent.currentUser)
+            }
+           
             resolve(0);
           }
           )

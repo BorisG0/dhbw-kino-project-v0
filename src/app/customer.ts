@@ -1,9 +1,11 @@
-export interface Customer {
+import { User } from "./user";
+export interface Customer extends User {
+    userType: string
     mailAdress: string;
     lastName: string;
     firstName: string;
     birthDate: Date;
-    postalcode: number;
+    postalCode: number;
     houseNumber: number;
     location: string;
     street: string;
