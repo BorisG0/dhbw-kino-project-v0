@@ -35,8 +35,8 @@ inputPassword : string="";
                     this.router.navigate(['emprogram']);
                   }
                   else{
+                    this.router.navigate(['dashboard']);
                   }
-                  this.router.navigate(['dashboard']);
                 }
                 else{
                   this._snackBar.open("Kein Account zu den angegebenen Daten gefunden", "Okay")
