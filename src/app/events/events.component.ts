@@ -4,6 +4,8 @@ import { MovieService } from '../movie.service';
 import { Movie } from '../movie';
 import { MovieEvent } from '../MovieEvent';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-events',
@@ -31,7 +33,9 @@ export class EventsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private _snackBar: MatSnackBar
+
   ) { }
 
   ngOnInit(): void {
@@ -107,6 +111,13 @@ export class EventsComponent implements OnInit {
 
             this.movieService.updateEvent({ id: this.eventId, date: this.inputDate, time: this.timeWithSec, movieId: this.movieId, roomId: this.inputRoomid }).subscribe(
               data => {
+                if(data){
+                  this._snackBar.open("Vorstellung wurde geändert", "okay")
+                  this.getMovieEvents(this.movie);
+                }
+                else{
+                  this._snackBar.open("Änderung Fehlgeschlagen. Der Saal ist bereits belegt", "okay")
+                }
                 resolve(0);
               }
             );
@@ -130,7 +141,16 @@ export class EventsComponent implements OnInit {
           if (this.inputRoomid != undefined && this.inputDate != undefined && this.timeWithSec != undefined) {
             this.movieService.addEvent({ id: -1, date: this.inputDate, time: this.timeWithSec, movieId: this.movieId, roomId: this.inputRoomid }).subscribe(
               data => {
-                console.log(data)
+                if(data){
+                  this._snackBar.open("Vorstellung wurde hinzugefügt", "okay")
+                  this.timeWithSec = "";
+                  this.inputTime = "";
+                  this.inputRoomid = undefined;
+                  this.getMovieEvents(this.movie);
+                }
+                else{
+                  this._snackBar.open("Hinzufügen Fehlgeschlagen. Der Saal ist bereits belegt", "okay")
+                }
                 resolve(0);
               }
             );
@@ -147,6 +167,7 @@ export class EventsComponent implements OnInit {
         console.log(this.eventId)
         this.movieService.deleteEvent(this.eventId).subscribe(
           data => {
+             this._snackBar.open("Vorstellung wurde entfernt", "okay")
             resolve(0);
           }
         );
