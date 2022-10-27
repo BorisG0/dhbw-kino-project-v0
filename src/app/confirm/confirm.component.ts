@@ -50,9 +50,7 @@ export class ConfirmComponent implements OnInit {
     this.getMovie()
 
   }
-  onClickPay(){
 
-  }
   getBookingInfos(email: string){
     this.movieService.getBookingsForEmail(email).subscribe(data =>{
       this.bookingInfos = data;

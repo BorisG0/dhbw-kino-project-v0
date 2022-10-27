@@ -78,7 +78,7 @@
 
                     <div *ngIf="link=='overview' then elseBlock else thenBlock"></div><!-- Hier habe ich die beiden Blöcke vorerst getauscht -->
                     <ng-template #thenBlock>
-                        <button id="" title="bestätigungsbutton" routerLink="/dashboard" mat-raised-button (click)="onClickPay()"> Bezahlen </button>
+                        <button id="" title="bestätigungsbutton" routerLink="/dashboard" mat-raised-button > Weiter zur Startseite </button>
                     </ng-template>
                     <ng-template #elseBlock>
                         <div id="qrCode">
