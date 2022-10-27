@@ -26,7 +26,7 @@
           </mat-form-field>
 
           <mat-form-field>
-            <input [(ngModel)]="enteredPassword" name="enteredPassword" matInput placeholder="Passwort">
+            <input [(ngModel)]="enteredPassword" name="enteredPassword" type="password" matInput placeholder="Passwort">
           </mat-form-field>
 
        
@@ -34,7 +34,7 @@
             <input  [(ngModel)]="enteredPassword" name="enteredPassword" matInput placeholder="Passwort wiederholen">
           </mat-form-field>-->
 
-        <mat-checkbox> Ich habe die <a href="https://dsgvo-gesetz.de/">AGB</a> gelesen und akzeptiere diese. </mat-checkbox>
+        <mat-checkbox [(ngModel)]="acceptedAGB" name="AGBName"> Ich habe die <a href="https://dsgvo-gesetz.de/">AGB</a> gelesen und akzeptiere diese. </mat-checkbox>
 
     </form>
 
