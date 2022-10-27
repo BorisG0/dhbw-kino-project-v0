@@ -21,7 +21,7 @@ export class NewMovieComponent implements OnInit {
   url: string = "";
   id: number = 0;
   movie: Movie = { id: 0, title: "", duration: 0, ageRestriction: 0, imageName: "", description: "", genre: "", startDate: new Date(), movieStudio: "", regie: "", cast: "", trailerLink: "", active: true }
-
+  movieForBackend : Movie | undefined;
   //Variablen für die Input Felder
   selectedFile: File | undefined;
   selectedFSK: number = -1;
@@ -92,39 +92,18 @@ export class NewMovieComponent implements OnInit {
   onPressAddMovie() {
     //Film nur hinzufügen wenn alle Eingaben korrekt sind
     if (this.inputsAreCorrect()) {
-      let newMovie: Movie;
-      let genreString = this.selectedGenres.toString()
-      //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
-      this._snackBar.open("Film wurde hinzugefügt", "okay")
-        //Film wird zwischengespeichert da aktuell bei der Methode eine Fehlermeldung ausgegeben wird, weshalb subscribe nicht ausgeführt wird und die inputFelder deshalb bereits vorher zurückgesetz werden müssen
-        newMovie = {
-        id: 18,
-        title: this.enteredTitle,
-        duration: this.durationAsNumber,
-        ageRestriction: this.selectedFSK,
-        imageName: "img0.png",
-        //image: this.selectedFile,
-        description: this.enteredDescription,
-        genre: genreString,
-        startDate: this.selectedDate,
-        movieStudio: this.enteredStudio,
-        regie: this.enteredRegie,
-        cast: this.enteredCast,
-        trailerLink: "\"" + this.enteredLink + "\"",
-        active: true
-      }
-      //input Felder zurück setzen
-      this.clearInputFields();
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          if (this.enteredduration != null) {
-            console.log(newMovie)
-            this.movieService.addMovie(newMovie).subscribe(
+
+            this.movieService.addMovie(this.getInputField()).subscribe(
               data => {
+                //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
+                //input Felder zurück setzen
+                this._snackBar.open("Film wurde hinzugefügt", "okay")
+                this.clearInputFields();
                 resolve(0);
               }
             );
-          }
         }, 0)
       })
       //else (wenn nicht alle eingaben korrekt sind)
@@ -135,71 +114,40 @@ export class NewMovieComponent implements OnInit {
   }
   //Ändert die Film Aktivität
   onPressChangeActivity() {
+    if(this.inputsAreCorrect()){
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        let activityForBackend : boolean;
-        activityForBackend = this.currentActive;
-        if(this.currentActive){
-          this.currentActive = false;
-        }
-        else{
-          this.currentActive = true;
-        }
-        let genreString = this.selectedGenres.toString()
-
-        if (this.enteredduration != null) {
-          this.movieService.changeMovieActivity({
-            id: this.movie.id,
-            title: this.enteredTitle,
-            duration: this.durationAsNumber,
-            ageRestriction: this.selectedFSK,
-            imageName: this.movie.imageName,
-            //image: this.selectedFile,
-            description: this.enteredDescription,
-            genre: genreString,
-            startDate: this.selectedDate,
-            movieStudio: this.enteredStudio,
-            regie: this.enteredRegie,
-            cast: this.enteredCast,
-            trailerLink: "\"" + this.enteredLink + "\"",
-            active: activityForBackend
-          }).subscribe(
+        
+          this.movieService.changeMovieActivity(this.getInputField()).subscribe(
             data => {
+              this.currentActive = !this.currentActive;
+              //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
+              let test : any = this._snackBar.open("Aktivität wurde geändert", "okay")
+              setTimeout(() => {
+                test.dismiss();
+              }, 1000)
               resolve(0);
             }
           );
-        }
       }, 0)
     })
+
+  }
+  return;
   }
   //Film welcher bereits existiert wird geändert
   onPressUpdateMovie() {
     if (this.id) {
       //Film nur ändern wenn alle Eingaben korrekt sind
       if (this.inputsAreCorrect()) {
-        let genreString = this.selectedGenres.toString()
-        //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
-        this._snackBar.open("Film wurde geändert", "okay")
+
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            if (this.enteredduration != null) {
-              this.movieService.updateMovie({
-                id: this.movie.id,
-                title: this.enteredTitle,
-                duration: this.durationAsNumber,
-                ageRestriction: this.selectedFSK,
-                imageName: this.movie.imageName,
-                //image: this.selectedFile,
-                description: this.enteredDescription,
-                genre: genreString,
-                startDate: this.selectedDate,
-                movieStudio: this.enteredStudio,
-                regie: this.enteredRegie,
-                cast: this.enteredCast,
-                trailerLink: "\"" + this.enteredLink + "\"",
-                active: this.currentActive
-              }).subscribe(
+            if (this.movieForBackend != null) {
+              this.movieService.updateMovie(this.getInputField()).subscribe(
                 data => {
+                  //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
+                 this._snackBar.open("Film wurde geändert", "okay")
                   resolve(0);
                 }
               );
@@ -212,6 +160,27 @@ export class NewMovieComponent implements OnInit {
       }
     }
     return;
+  }
+  //Liest alle Input Felder aus
+  getInputField(): Movie{
+    let genreString = this.selectedGenres.toString()
+    this.movieForBackend = {
+      id: this.movie.id,
+      title: this.enteredTitle,
+      duration: this.durationAsNumber,
+      ageRestriction: this.selectedFSK,
+      imageName: this.movie.imageName,
+      //image: this.selectedFile,
+      description: this.enteredDescription,
+      genre: genreString,
+      startDate: this.selectedDate,
+      movieStudio: this.enteredStudio,
+      regie: this.enteredRegie,
+      cast: this.enteredCast,
+      trailerLink: "\"" + this.enteredLink + "\"",
+      active: this.currentActive
+    }
+    return this.movieForBackend
   }
   //Eingabe Felder zurücksetzen
   clearInputFields() {
