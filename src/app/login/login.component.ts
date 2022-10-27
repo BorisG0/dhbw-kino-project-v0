@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 inputMail : string ="";
 inputPassword : string="";
+readonly snackBarDuration : number = 1500;
+
   constructor(    private movieService: MovieService,
     private _snackBar: MatSnackBar,
     private router: Router
@@ -30,7 +32,10 @@ inputPassword : string="";
                 if(data.userType != "NoUserFound"){
                   HeaderComponent.currentUser = data;
                   localStorage.setItem('currentUser', JSON.stringify(data));
-                  this._snackBar.open("Anmeldung erfolgreich", "Okay")
+                  let currentSnackbar : any = this._snackBar.open("Anmeldung erfolgreich", "Okay")
+                  setTimeout(() => {
+                    currentSnackbar.dismiss();
+                  }, this.snackBarDuration)
                   if(data.userType == "Employee"){
                     this.router.navigate(['emprogram']);
                   }

@@ -30,6 +30,8 @@ export class EventsComponent implements OnInit {
   eventId: number = -1;
   inEditEvents: boolean = false;
 
+  readonly snackBarDuration : number = 1500;
+
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
@@ -112,8 +114,11 @@ export class EventsComponent implements OnInit {
             this.movieService.updateEvent({ id: this.eventId, date: this.inputDate, time: this.timeWithSec, movieId: this.movieId, roomId: this.inputRoomid }).subscribe(
               data => {
                 if(data){
-                  this._snackBar.open("Vorstellung wurde geändert", "okay")
+                  let currentSnackbar : any = this._snackBar.open("Vorstellung wurde geändert", "okay")
                   this.getMovieEvents(this.movie);
+                  setTimeout(() => {
+                    currentSnackbar.dismiss();
+                  }, this.snackBarDuration)
                 }
                 else{
                   this._snackBar.open("Änderung Fehlgeschlagen. Der Saal ist bereits belegt", "okay")
@@ -142,11 +147,14 @@ export class EventsComponent implements OnInit {
             this.movieService.addEvent({ id: -1, date: this.inputDate, time: this.timeWithSec, movieId: this.movieId, roomId: this.inputRoomid }).subscribe(
               data => {
                 if(data){
-                  this._snackBar.open("Vorstellung wurde hinzugefügt", "okay")
+                  let currentSnackbar : any = this._snackBar.open("Vorstellung wurde hinzugefügt", "okay")
                   this.timeWithSec = "";
                   this.inputTime = "";
                   this.inputRoomid = undefined;
                   this.getMovieEvents(this.movie);
+                  setTimeout(() => {
+                    currentSnackbar.dismiss();
+                  }, this.snackBarDuration)
                 }
                 else{
                   this._snackBar.open("Hinzufügen Fehlgeschlagen. Der Saal ist bereits belegt", "okay")
@@ -167,7 +175,10 @@ export class EventsComponent implements OnInit {
         console.log(this.eventId)
         this.movieService.deleteEvent(this.eventId).subscribe(
           data => {
-             this._snackBar.open("Vorstellung wurde entfernt", "okay")
+            let currentSnackbar : any = this._snackBar.open("Vorstellung wurde entfernt", "okay")
+            setTimeout(() => {
+              currentSnackbar.dismiss();
+            }, this.snackBarDuration)
             resolve(0);
           }
         );

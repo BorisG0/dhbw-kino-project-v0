@@ -27,6 +27,9 @@ export class RegistrationComponent implements OnInit {
   enteredPassword: string = "";
   acceptedAGB: boolean = false;
 
+  readonly snackBarDuration : number = 1500;
+
+
   constructor(    private movieService: MovieService,
     private router: Router,
     private _snackBar: MatSnackBar,
@@ -53,7 +56,10 @@ export class RegistrationComponent implements OnInit {
             else{
               HeaderComponent.currentUser = data;
               localStorage.setItem('currentUser', JSON.stringify(data));
-              this._snackBar.open("Registrierung und Anmeldung waren erfolgreich", "Okay")
+              let currentSnackbar : any = this._snackBar.open("Registrierung und Anmeldung waren erfolgreich", "Okay")
+              setTimeout(() => {
+                currentSnackbar.dismiss();
+              }, this.snackBarDuration)
               this.router.navigate(['dashboard']);
               console.log(data)
               console.log(HeaderComponent.currentUser)

@@ -23,6 +23,9 @@ export class ConfirmComponent implements OnInit {
   currentBookingInfo : BookingInfo | undefined;
   movie : Movie | undefined;
 
+  readonly snackBarDuration : number = 1500;
+
+
   @Input() bookingInfo: Booking | undefined;
   @Input() movieEventInfo: MovieEvent | undefined;
 
@@ -41,9 +44,10 @@ export class ConfirmComponent implements OnInit {
       this.link = this.route.snapshot.routeConfig?.path
     }
     if(this.link=="dashboard"){
-      this._snackBar.open("Danke fürs buchen, eine Email wurde an Sie verschickt", "alles klar", {
-        verticalPosition: 'bottom'
-      });
+      let currentSnackbar : any = this._snackBar.open("Danke fürs buchen, eine Email wurde an Sie verschickt", "Okay");
+      setTimeout(() => {
+        currentSnackbar.dismiss();
+      }, this.snackBarDuration)
 
     }
     this.getBookingInfos(HeaderComponent.currentUser.mailAdress)

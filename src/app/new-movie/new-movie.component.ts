@@ -37,6 +37,8 @@ export class NewMovieComponent implements OnInit {
 
   currentActive: boolean = true;
   currentUserType : string = HeaderComponent.currentUser.userType;
+
+  readonly snackBarDuration : number = 1500;
   //Notwendig für die Chip List von Angular -> Genre Auwahl
   separatorKeysCodes: number[] = [ENTER, COMMA];
   filteredGenres: Observable<string[]>;
@@ -97,10 +99,12 @@ export class NewMovieComponent implements OnInit {
 
             this.movieService.addMovie(this.getInputField()).subscribe(
               data => {
-                //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
                 //input Felder zurück setzen
-                this._snackBar.open("Film wurde hinzugefügt", "okay")
+                let currentSnackbar : any = this._snackBar.open("Film wurde hinzugefügt", "okay")
                 this.clearInputFields();
+                setTimeout(() => {
+                  currentSnackbar.dismiss();
+                }, this.snackBarDuration)
                 resolve(0);
               }
             );
@@ -121,11 +125,10 @@ export class NewMovieComponent implements OnInit {
           this.movieService.changeMovieActivity(this.getInputField()).subscribe(
             data => {
               this.currentActive = !this.currentActive;
-              //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
-              let test : any = this._snackBar.open("Aktivität wurde geändert", "okay")
+              let currentSnackbar : any = this._snackBar.open("Aktivität wurde geändert", "okay")
               setTimeout(() => {
-                test.dismiss();
-              }, 1000)
+                currentSnackbar.dismiss();
+              }, this.snackBarDuration)
               resolve(0);
             }
           );
@@ -146,8 +149,10 @@ export class NewMovieComponent implements OnInit {
             if (this.movieForBackend != null) {
               this.movieService.updateMovie(this.getInputField()).subscribe(
                 data => {
-                  //Snack bar welche nach Dauer automatisch verschwnidet erwünscht
-                 this._snackBar.open("Film wurde geändert", "okay")
+                  let currentSnackbar : any = this._snackBar.open("Film wurde geändert", "okay")
+                 setTimeout(() => {
+                  currentSnackbar.dismiss();
+                }, this.snackBarDuration)
                   resolve(0);
                 }
               );
