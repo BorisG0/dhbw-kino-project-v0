@@ -58,6 +58,11 @@ export class MovieService {
     this.messageService.add(`getting events for movie ${movie.id}`);
     return this.http.post<MovieEvent[]>("/api/eventsformovie", movie);
   }
+  getCurrentEventsForMovie(movieId : number){
+    this.messageService.add(`getting events for movie ${movieId}`);
+
+    return this.http.post<MovieEvent[]>("/api/movieEvents", movieId);
+  }
 
   getEventById(id: number){
     console.log("getting event by id: " + id);

@@ -51,11 +51,11 @@ export class MovieDetailComponent implements OnInit {
       }, 0)
     })
   }
-//Lädt alle Movie Events für den Film
+//Lädt alle Movie Events für den Film, welche innerhalb der nächsten 14 Tage liegen
   getMovieEvents(movie: Movie) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.movieService.getEventsForMovie(movie).subscribe(data =>{
+        this.movieService.getCurrentEventsForMovie(movie.id).subscribe(data =>{
           this.movieEvents = data;
           resolve(0)
         })
