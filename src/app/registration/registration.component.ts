@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
     console.log(this.enteredFirstName + this.selectedDate + this.enteredName + this.enteredEmail + this.enteredPassword)
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        this.movieService.addCustomer({mailAdress: this.enteredEmail, password: this.enteredPassword, lastName : this.enteredName, date: this.selectedDate, postalcode: 67654, houseNumber: 4, location: "Osthofen", street: "myStreet", countryCode: "DE", mobileNumber: "0234324"}).subscribe(
+        this.movieService.addCustomer({mailAdress: this.enteredEmail, lastName : this.enteredName, firstName: this.enteredFirstName, birthDate: this.selectedDate, postalcode: 67654, houseNumber: 4, location: "Osthofen", street: "myStreet", countryCode: "DE", mobileNumber: "0234324", password: this.enteredPassword}).subscribe(
         data => {
           console.log(data)
 
