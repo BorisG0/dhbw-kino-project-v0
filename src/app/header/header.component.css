@@ -22,6 +22,10 @@ ul {
   li a:hover:not(.active) {
     background-color: #111;
   }
+
+  li a:hover{
+    cursor: pointer;
+  }
   
   .text_background_green {
     background-color: #04AA6D;
