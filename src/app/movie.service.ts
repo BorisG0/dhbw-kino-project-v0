@@ -84,6 +84,7 @@ export class MovieService {
   }
   changeMovieActivity(movie: Movie){
     console.log("changing movie activity");
+    console.log(movie)
     return this.http.post<String>("/api/SetMovieActivity", movie);
   }
   addEvent(event: MovieEventForBackend){

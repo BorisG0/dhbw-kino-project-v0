@@ -160,7 +160,7 @@ export class NewMovieComponent implements OnInit {
             regie: this.enteredRegie,
             cast: this.enteredCast,
             trailerLink: "\"" + this.enteredLink + "\"",
-            active: this.currentActive
+            active: activityForBackend
           }).subscribe(
             data => {
               resolve(0);
