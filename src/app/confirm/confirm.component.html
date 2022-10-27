@@ -2,7 +2,7 @@
     <div id="filmcover">
         <mat-card class="card">
             <mat-card-content>
-                <!--<img src="">-->
+                <img src="\assets\images\{{this.movie?.imageName}}">
             </mat-card-content>
         </mat-card>
     </div>
@@ -20,13 +20,11 @@
                             <mat-card-content>
                                 <div class="text-left">
                                     <p>Film:</p>
-                                    <p>Dauer:</p>
-                                    <p>Fassung:</p>
+                                    <p>Saal:</p>
                                 </div>
                                 <div class="text-right">
-                                    <p>Hier steht der Filmtitel</p>
-                                    <p>Hier steht die Dauer</p>
-                                    <p>Und hier die Fassung</p>
+                                    <p>{{currentBookingInfo?.movieTitle}}</p>
+                                    <p>{{movieEventInfo?.roomId}}</p>
                                 </div>
                             </mat-card-content>
                         </div>
@@ -34,12 +32,12 @@
                             <mat-card-content>
                                 <div class="text-left">
                                     <p>Datum:</p>
-                                    <p>Saal:</p>
+                                    <p>Uhrzeit:</p>
                                     <p>Plätze:</p>
                                 </div>
                                 <div class="text-right">
-                                    <p>Hier steht das Datum</p>
-                                    <p>Hier steht der Saal</p>
+                                    <p>{{currentBookingInfo?.date}}</p>
+                                    <p>{{currentBookingInfo?.time}}</p>
                                     <p class="selectedSeat" *ngFor="let ticket of bookingInfo?.tickets">
                                         {{ticket.row}} {{ticket.numberInRow}}
                                     </p>
@@ -65,13 +63,11 @@
                                 <mat-card-title>Kundeninformationen:</mat-card-title>
                                 <div class="text-left">
                                     <p>Name:</p>
-                                    <p>Alter:</p>
                                     <p>E-Mail:</p>
                                 </div>
                                 <div class="text-right">
-                                    <p>Hier steht Ihr Name</p>
-                                    <p>Hier steht Ihr Alter</p>
-                                    <p>Hier nochmal Ihre E-mail</p>
+                                    <p>{{currentuser.lastName}}, {{currentuser.firstName}}</p>
+                                    <p>{{currentuser.mailAdress}}</p>
                                 </div>
                             </mat-card-content>
                         </div>

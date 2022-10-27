@@ -3,9 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Booking } from '../booking';
 import { MovieService } from '../movie.service';
-
-
-
+import { HeaderComponent } from '../header/header.component';
+import { User } from '../user';
+import { BookingInfo } from '../bookingInfo';
+import { MovieEvent } from '../MovieEvent';
+import { Movie } from '../movie';
 
 
 @Component({
@@ -15,8 +17,15 @@ import { MovieService } from '../movie.service';
 })
 export class ConfirmComponent implements OnInit {
   link : string = "";
+  currentuser : User = HeaderComponent.currentUser;
+  eventid : number = -1;
+  bookingInfos: BookingInfo[] = [];
+  currentBookingInfo : BookingInfo | undefined;
+  movie : Movie | undefined;
 
   @Input() bookingInfo: Booking | undefined;
+  @Input() movieEventInfo: MovieEvent | undefined;
+
 
   constructor(    private route: ActivatedRoute,
     private _snackBar: MatSnackBar,
@@ -25,6 +34,9 @@ export class ConfirmComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    if(this.bookingInfo != undefined){
+      this.eventid = this.bookingInfo?.eventId;
+    }
     if(this.route.snapshot.routeConfig?.path!=undefined){
       this.link = this.route.snapshot.routeConfig?.path
     }
@@ -34,10 +46,29 @@ export class ConfirmComponent implements OnInit {
       });
 
     }
+    this.getBookingInfos(HeaderComponent.currentUser.mailAdress)
+    this.getMovie()
 
   }
   onClickPay(){
 
+  }
+  getBookingInfos(email: string){
+    this.movieService.getBookingsForEmail(email).subscribe(data =>{
+      this.bookingInfos = data;
+      this.currentBookingInfo = data[data.length-1];
+    });
+  }
+  getMovie() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if(this.movieEventInfo!=null)        
+        this.movieService.getMovie(this.movieEventInfo?.movieId).subscribe(movie =>{
+          this.movie = movie;
+          resolve(0)
+          })
+      }, 0)
+    })
   }
 
 }
