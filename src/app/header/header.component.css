@@ -26,6 +26,9 @@ ul {
   li a:hover{
     cursor: pointer;
   }
+  .noButton:hover{
+    cursor: default !important;
+  }
   
   .text_background_green {
     background-color: #04AA6D;
