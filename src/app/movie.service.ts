@@ -80,31 +80,31 @@ export class MovieService {
 
   addMovie(movie: Movie){
     console.log("adding Movie");
-    return this.http.post<String>("/api/addMovie", movie);
+    return this.http.post<boolean>("/api/addMovie", movie);
   }
   
   updateMovie(movie: Movie){
     console.log("updating Movie");
-    return this.http.post<String>("/api/updateMovie", movie);
+    return this.http.post<boolean>("/api/updateMovie", movie);
   }
   changeMovieActivity(movie: Movie){
     console.log("changing movie activity");
     console.log(movie)
-    return this.http.post<String>("/api/SetMovieActivity", movie);
+    return this.http.post<boolean>("/api/SetMovieActivity", movie);
   }
-  addEvent(event: MovieEventForBackend){
+  addEvent(event: MovieEventForBackend)  {
     console.log("adding Event");
     console.log(event)
-    return this.http.post<String>("/api/addEvent", event);
+    return this.http.post<boolean>("/api/addEvent", event);
   }
   updateEvent(event: MovieEventForBackend){
     console.log("updating Event");
     console.log(event)
-    return this.http.post<String>("/api/updateEvent", event);
+    return this.http.post<boolean>("/api/updateEvent", event);
   }
   deleteEvent(id: number){
     console.log("deleting Event");
-    return this.http.post<String>("/api/setEventInactive", id);
+    return this.http.post<boolean>("/api/setEventInactive", id);
   }
   login(user : User) : Observable<User> {
     console.log("trying to login user");

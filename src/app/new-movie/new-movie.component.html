@@ -1,4 +1,4 @@
-<body>
+<body *ngIf="currentUserType == 'Employee'">
   <div id="main">
     <div class="container" id="firstContainer">
       <form class="form">
@@ -108,4 +108,7 @@
       </ng-template>
     </div>
   </div>
+</body>
+<body *ngIf="currentUserType != 'Employee'" >
+  <button routerLink="/dashboard"  id="errorPartButton"> Zurück zur Startseite </button>
 </body>

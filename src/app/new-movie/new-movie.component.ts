@@ -9,6 +9,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { map, startWith } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
+import { User } from '../user';
 
 @Component({
   selector: 'app-new-movie',
@@ -34,7 +36,7 @@ export class NewMovieComponent implements OnInit {
   enteredLink: string = "";
 
   currentActive: boolean = true;
-
+  currentUserType : string = HeaderComponent.currentUser.userType;
   //Notwendig für die Chip List von Angular -> Genre Auwahl
   separatorKeysCodes: number[] = [ENTER, COMMA];
   filteredGenres: Observable<string[]>;

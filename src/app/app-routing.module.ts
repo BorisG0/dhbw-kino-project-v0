@@ -13,6 +13,7 @@ import { EventsComponent } from './events/events.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { HeaderComponent } from './header/header.component';
 
 
 const routes: Routes = [

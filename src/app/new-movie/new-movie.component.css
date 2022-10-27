@@ -95,3 +95,20 @@ input {
     width: 100%;
     margin-top: 30px;
 }
+.errorPart{
+    height: 20%;
+    background-color: rgb(50, 0, 0);
+    color: rgb(202, 202, 202) !important;
+}
+#errorPartButton{
+    background-color: rgb(70, 0, 0) !important;
+    margin-top: 20px;
+    height: 10%;
+    width: 20%;
+    margin-left: 40%;
+    color: rgb(202, 202, 202) !important;
+    font-size: 50;
+    text-align: center;
+
+
+}

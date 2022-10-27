@@ -130,6 +130,7 @@ export class EventsComponent implements OnInit {
           if (this.inputRoomid != undefined && this.inputDate != undefined && this.timeWithSec != undefined) {
             this.movieService.addEvent({ id: -1, date: this.inputDate, time: this.timeWithSec, movieId: this.movieId, roomId: this.inputRoomid }).subscribe(
               data => {
+                console.log(data)
                 resolve(0);
               }
             );

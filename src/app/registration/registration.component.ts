@@ -53,7 +53,7 @@ export class RegistrationComponent implements OnInit {
             else{
               HeaderComponent.currentUser = data;
               localStorage.setItem('currentUser', JSON.stringify(data));
-              this._snackBar.open("Registrierung und Anmeldung war erfolgreich", "Okay")
+              this._snackBar.open("Registrierung und Anmeldung waren erfolgreich", "Okay")
               this.router.navigate(['dashboard']);
               console.log(data)
               console.log(HeaderComponent.currentUser)
