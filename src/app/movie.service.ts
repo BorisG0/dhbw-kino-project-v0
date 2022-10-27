@@ -88,10 +88,12 @@ export class MovieService {
   }
   addEvent(event: MovieEventForBackend){
     console.log("adding Event");
+    console.log(event)
     return this.http.post<String>("/api/addEvent", event);
   }
   updateEvent(event: MovieEventForBackend){
     console.log("updating Event");
+    console.log(event)
     return this.http.post<String>("/api/updateEvent", event);
   }
   deleteEvent(id: number){
@@ -127,6 +129,7 @@ export class MovieService {
 
   addCustomer(customer: Customer){
     console.log("adding Customer");
+    console.log(customer)
     return this.http.post<String>("/api/addCustomer", customer);
   }
 }

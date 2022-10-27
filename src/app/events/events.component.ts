@@ -60,6 +60,7 @@ export class EventsComponent implements OnInit {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         this.movieService.getEventById(this.eventId).subscribe(event => {
+          this.movieId = event.movieId;
           this.inputDate = event.date;
           this.inputRoomid = event.roomId;
           this.timeWithSec = event.time;
@@ -97,7 +98,7 @@ export class EventsComponent implements OnInit {
     if (this.inputDate != undefined && this.inputTime != undefined && this.inputRoomid != undefined) {
       this.timeWithSec = this.inputTime + ":00";
       //Zeiten mit Einstelligen Werten für die Stunde werden eine Null vorangestellt
-      if (this.timeWithSec.length) {
+      if (this.timeWithSec.length == 7) {
         this.timeWithSec = "0" + this.timeWithSec;
       }
       return new Promise((resolve, reject) => {
@@ -121,7 +122,7 @@ export class EventsComponent implements OnInit {
     if (this.inputDate != undefined && this.inputTime != undefined && this.inputRoomid != undefined) {
       this.timeWithSec = this.inputTime + ":00";
       //Zeiten mit Einstelligen Werten für die Stunde werden eine Null vorangestellt
-      if (this.timeWithSec.length) {
+      if (this.timeWithSec.length == 7) {
         this.timeWithSec = "0" + this.timeWithSec;
       }
       return new Promise((resolve, reject) => {
