@@ -1,10 +1,29 @@
-<h1>{{user?.firstName}} {{user?.lastName}}</h1>
-<h3>Nutzertyp: {{user?.userType}}</h3>
-<h2>Email: {{user?.mailAdress}}</h2>
-<button mat-flat-button (click)="logout()" routerLink="/dashboard">Logout</button>
-
-<h2>Buchungen:</h2>
-<h3 *ngFor="let bookingInfo of bookingInfos">
-    ID:{{bookingInfo.id}} | Film: {{bookingInfo.movieTitle}}, am {{bookingInfo.date}} um {{bookingInfo.time}}, Bezahlt: {{bookingInfo.pricePaid}},00€
-    <p *ngFor="let seat of bookingInfo.seatPlaces">{{seat}}</p>
-</h3>
+<body>
+    <div id="obj1">
+        <mat-card class="card">
+            <h1>Nutzerinfos:</h1>
+            <mat-card class="inner-card">
+                <mat-card-content class="text-left">
+                    <h3>Name:</h3>
+                    <h4>Nutzertyp:</h4>
+                    <h3>Email:</h3>
+                </mat-card-content>
+                <mat-card-content class="text-right">
+                    <h3>{{user?.firstName}} {{user?.lastName}}</h3>
+                    <h4>{{user?.userType}}</h4>
+                    <h3>{{user?.mailAdress}}</h3>
+                </mat-card-content>
+            </mat-card>
+            <div id="button-position">
+                <button mat-flat-button (click)="logout()" routerLink="/dashboard">Logout</button>
+            </div>
+            <mat-card class="inner-card2">
+                <h3>Ihre Buchungen:</h3>
+                <h4 *ngFor="let bookingInfo of bookingInfos">
+                    ID:{{bookingInfo.id}} | Film: {{bookingInfo.movieTitle}}, am {{bookingInfo.date}} um {{bookingInfo.time}}, Bezahlt: {{bookingInfo.pricePaid}},00€
+                    <p *ngFor="let seat of bookingInfo.seatPlaces">{{seat}}</p>
+                </h4>
+            </mat-card>
+        </mat-card>
+    </div>
+</body>

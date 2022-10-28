@@ -1,7 +1,46 @@
 *{
     color: white;
 }
-
+#obj1{
+    float: left;
+    height: auto;
+    width: 30%;
+    margin-top: 2%;
+    margin-left: 5%;
+}
 button{
     color:black;
+}
+.card{
+    width: auto;
+    height: 100%;
+    background-color: rgb(70, 0, 0);
+    color: rgb(202, 202, 202);
+    margin-bottom: 2%;
+}
+.inner-card{
+    width: auto;
+    height: 120px;
+    background-color: rgb(60, 0, 0);
+    color: rgb(202, 202, 202);
+}
+.text-left{
+    float: left;
+    margin-left: 20px;
+}
+.text-right{
+    float: right;
+    margin-right: 20px;
+}
+#button-position{
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.inner-card2{
+    width: auto;
+    height: auto;
+    background-color: rgb(60, 0, 0);
+    color: rgb(202, 202, 202);
+    margin-top: 75px;
 }
