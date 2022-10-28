@@ -163,6 +163,7 @@ export class BookingComponent implements OnInit {
       setTimeout(() => {
         this.movieService.newBooking(bookingCreation).subscribe(
           data => {
+            
             this.statusChangeSuccessfull = data;
             resolve(0);
           }

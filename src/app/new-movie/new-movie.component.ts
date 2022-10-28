@@ -182,7 +182,7 @@ export class NewMovieComponent implements OnInit {
       title: this.enteredTitle,
       duration: this.durationAsNumber,
       ageRestriction: this.selectedFSK,
-      imageName: this.movie.imageName,
+      imageName: "img0.png",
       //image: this.selectedFile,
       description: this.enteredDescription,
       genre: genreString,
