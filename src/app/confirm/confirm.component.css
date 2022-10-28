@@ -40,9 +40,6 @@
     width: 50%;
     height: 100%;
 }
-#filminfo{
-
-}
 #buchungsinfo{
 margin-top: 40%;
 }
@@ -54,6 +51,10 @@ margin-top: 80%;
     height: 100%;
     background-color: rgb(70, 0, 0);
     color: rgb(202, 202, 202);
+    overflow: hidden;
+}
+.img{
+   width: 100%;
 }
 .text-left{
     float: left;
@@ -62,4 +63,9 @@ margin-top: 80%;
 .text-right{
     float: right;
     margin-right: 20px;
+}
+.button{
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
 }
