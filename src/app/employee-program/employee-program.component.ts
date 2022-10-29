@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class EmployeeProgramComponent implements OnInit {
   movies: Movie[] = [];
-  displayedColumns: string[] = ['title', 'duration', 'genre', 'fsk', 'cast', 'regie', 'studio', 'date', 'description', 'symbol','active'];
+  displayedColumns: string[] = ['title', 'duration', 'genre', 'fsk', 'cast', 'regie', 'studio', 'date', 'description' ,'active' , 'symbol'];
   constructor(private movieService: MovieService,
     private router: Router,
     ) {
