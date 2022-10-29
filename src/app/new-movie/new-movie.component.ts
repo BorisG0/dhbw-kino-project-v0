@@ -154,7 +154,6 @@ export class NewMovieComponent implements OnInit {
 
         return new Promise((resolve, reject) => {
           setTimeout(() => {
-            if (this.movieForBackend != null) {
               this.movieService.updateMovie(this.getInputField()).subscribe(
                 data => {
                   let currentSnackbar : any = this._snackBar.open("Film wurde geändert", "okay")
@@ -164,7 +163,6 @@ export class NewMovieComponent implements OnInit {
                   resolve(0);
                 }
               );
-            }
           }, 0)
         })
         //else wenn nicht alle eingaben korrekt sind

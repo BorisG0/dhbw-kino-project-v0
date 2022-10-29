@@ -32,6 +32,18 @@ mat-hint {
 ::ng-deep .mat-select-value {
     color: rgb(202, 202, 202) !important;
 }
+::ng-deep .description .mat-form-field-wrapper  {
+    height: 80%;
+}
+::ng-deep .description .mat-form-field-flex{
+    height: 80%;
+}
+::ng-deep .description .mat-form-field-infix{
+    height: 100%;
+}
+::ng-deep .description .mat-input-element{
+    height: 100% !important;
+}
 #firstContainer mat-form-field {
     height: 33%;
 }
