@@ -3,19 +3,19 @@
     height: 60%;
     width: 20%;
     margin-top: 7%;
-    margin-left: 5%;
+    margin-left: 15%;
 }
 #bestellübersicht{
     float: right;
-    height: 60%;
-    width: 69%;
+    height: auto;
+    width: 49%;
     margin-top: 7%;
-    margin-right: 5%;
+    margin-right: 15%;
 }
 #bestellinfos{
     float: left;
     height: 90%;
-    width: 60%;
+    width: 100%;
 }
 #containerRight{
     float: right;
@@ -27,7 +27,8 @@
 }
 .outro{
     margin-top: 42%;
-    margin-left: 35%;
+    margin-left: 30%;
+    margin-bottom: 1%;
 }
 .inner-card{
     width: auto;
@@ -41,14 +42,14 @@
     height: 100%;
 }
 #buchungsinfo{
-margin-top: 40%;
+margin-top: 20%;
 }
 #übersicht{
-margin-top: 80%;
+margin-top: 60%;
 }
 .card{
     width: auto;
-    height: 100%;
+    height: auto;
     background-color: rgb(70, 0, 0);
     color: rgb(202, 202, 202);
     overflow: hidden;
@@ -62,10 +63,15 @@ margin-top: 80%;
 }
 .text-right{
     float: right;
-    margin-right: 20px;
+    margin-right: 90px;
 }
 .button{
     float: left;
     margin-top: 20px;
     margin-left: 20px;
+}
+#button-position{
+    float: right;
+    margin-top: 30%;
+    margin-right: 5%;
 }

@@ -15,7 +15,7 @@
                 <mat-card-content>
                     <mat-card class="inner-card">
                         <div id="filminfobox">
-                        <div id="filminfo">
+                            <div id="filminfo">
                             <mat-card-title>Filminformationen:</mat-card-title>
                             <mat-card-content>
                                 <div class="text-left">
@@ -44,8 +44,8 @@
                                 </div>
                             </mat-card-content>
                         </div>
-                        <div id="übersicht">
-                            <mat-card-title>Übersicht:</mat-card-title>
+                        <div>
+                            <mat-card-title id="übersicht">Übersicht:</mat-card-title>
                             <mat-card-content>
                                 <div class="text-left">
                                     <p class="selectedSeat" *ngFor="let ticket of bookingInfo?.tickets">
@@ -58,7 +58,7 @@
                             </mat-card-content>
                         </div>
                         </div>
-                        <div id="Kundeninfobox">
+                        <div id="kundeninfobox">
                             <mat-card-content>
                                 <mat-card-title>Kundeninformationen:</mat-card-title>
                                 <div class="text-left">
@@ -71,22 +71,27 @@
                                 </div>
                             </mat-card-content>
                         </div>
+                        <div id="button-position">
+                            <button title="bestätigungsbutton" routerLink="/dashboard" mat-raised-button > Weiter zur Startseite </button>
+                        </div>
                     </mat-card>
                 </mat-card-content>
             </diV>
-            <div id="containerRight">
+            <!--<div id="containerRight">
 
-                    <!--<div *ngIf="link=='confirm' then elseBlock else thenBlock"></div>
+                    <div *ngIf="link=='confirm' then elseBlock else thenBlock"></div>
                     <ng-template #thenBlock>-->
-                        <button id="button" title="bestätigungsbutton" routerLink="/dashboard" mat-raised-button > Weiter zur Startseite </button>
-                    <!--</ng-template>                                       oder Bestellung abschließen (<-- macht innhaltlich keinen Sinn)
+                        <!--<div id="button-position">
+                            <button title="bestätigungsbutton" routerLink="/dashboard" mat-raised-button > Weiter zur Startseite </button>
+                        </div>-->
+                        <!--</ng-template>                                       oder Bestellung abschließen (<-- macht innhaltlich keinen Sinn)
                     <ng-template #elseBlock>
                         <div id="qrCode">
                         Hier QR Code
                     </div>
-                    </ng-template>-->
+                    </ng-template>
 
-            </div>
+            </div>-->
             <mat-card-footer class="outro">
                 <!--<div *ngIf="link=='confirm' then goodbye else continue"></div>
                     <ng-template #goodbye>
