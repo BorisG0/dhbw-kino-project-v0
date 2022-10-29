@@ -65,7 +65,6 @@ export class MovieService {
   }
 
   getEventById(id: number){
-    console.log("getting event by id: " + id);
     return this.http.post<MovieEvent>("/api/eventById", id);
   }
 
@@ -74,47 +73,34 @@ export class MovieService {
   }
 
   setSeatInEventStatus(seatInEvent: SeatInEvent){
-    console.log("setting status");
     return this.http.post<boolean>("/api/setStatusForSeatInEvent", seatInEvent);
   }
 
   addMovie(movie: Movie){
-    console.log("adding Movie");
     return this.http.post<boolean>("/api/addMovie", movie);
   }
   
   updateMovie(movie: Movie){
-    console.log("updating Movie");
     return this.http.post<boolean>("/api/updateMovie", movie);
   }
   changeMovieActivity(movie: Movie){
-    console.log("changing movie activity");
-    console.log(movie)
     return this.http.post<boolean>("/api/SetMovieActivity", movie);
   }
   addEvent(event: MovieEventForBackend)  {
-    console.log("adding Event");
-    console.log(event)
     return this.http.post<boolean>("/api/addEvent", event);
   }
   updateEvent(event: MovieEventForBackend){
-    console.log("updating Event");
-    console.log(event)
     return this.http.post<boolean>("/api/updateEvent", event);
   }
   deleteEvent(id: number){
-    console.log("deleting Event");
     return this.http.post<boolean>("/api/setEventInactive", id);
   }
   login(user : User) : Observable<User> {
-    console.log("trying to login user");
-    console.log(user);
     return this.http.post<User>("/api/user",user);
   }
 
   //Booking Stuff Start
   newBooking(booking: BookingCreation){
-    console.log("newBooking() called");
     return this.http.post<boolean>("/api/newBooking", booking);
   }
 
@@ -123,7 +109,6 @@ export class MovieService {
   }
 
   setStatusForTicket(statusChange: StatusChange){
-    console.log("statusChange() called");
     return this.http.post<boolean>("/api/setStatusForTicket", statusChange);
   }
 
@@ -134,8 +119,7 @@ export class MovieService {
   //Booking Stuff End
 
   addCustomer(customer: Customer){
-    console.log("adding Customer");
-    console.log(customer)
+
     return this.http.post<Customer>("/api/addCustomer", customer);
   }
 }

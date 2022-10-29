@@ -61,8 +61,6 @@ export class RegistrationComponent implements OnInit {
                 currentSnackbar.dismiss();
               }, this.snackBarDuration)
               this.router.navigate(['dashboard']);
-              console.log(data)
-              console.log(HeaderComponent.currentUser)
             }
            
             resolve(0);

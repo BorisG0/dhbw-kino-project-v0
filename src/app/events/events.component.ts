@@ -183,7 +183,6 @@ export class EventsComponent implements OnInit {
   onPressDelete() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        console.log(this.eventId)
         this.movieService.deleteEvent(this.eventId).subscribe(
           data => {
             let currentSnackbar : any = this._snackBar.open("Vorstellung wurde entfernt", "okay")

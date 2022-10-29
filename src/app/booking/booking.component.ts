@@ -74,13 +74,11 @@ export class BookingComponent implements OnInit {
 
 
   getTickets(){
-    console.log("getTickets() called");
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const id = Number(this.route.snapshot.paramMap.get('id'))
         this.movieService.getTicketsInEventId(id).subscribe(data =>{
           this.tickets = data;
-          console.log(data);
           resolve(0);
         });
       }, 0)
@@ -88,7 +86,6 @@ export class BookingComponent implements OnInit {
   }
 
   splitTicketsByRow(){
-    console.log("splitSeatsByRows");
     this.ticketsByRow = [];
     let tempArray: Ticket[] = [];
 
@@ -132,7 +129,6 @@ export class BookingComponent implements OnInit {
 
   async bookSeatsClicked(){
     if(this.selectedTickets.length == 0){
-      console.log("no selected tickets");
       return;
     }
 
@@ -145,9 +141,7 @@ export class BookingComponent implements OnInit {
   }
 
   createBooking(){
-    console.log("creating booking");
     if(this.selectedTickets.length == 0){
-      console.log("no selected seats");
       return;
     }
     

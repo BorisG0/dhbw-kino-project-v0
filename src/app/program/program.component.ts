@@ -19,10 +19,8 @@ export class ProgramComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.selectedGenre == null){
-      console.log("getMovies");
       this.getMovies();
     } else{
-      console.log("genre");
       this.getMoviesByGenre(this.selectedGenre);
     }
     
@@ -34,11 +32,9 @@ export class ProgramComponent implements OnInit {
 
   applyGenres(){
     if(this.selectedGenre != null && !(this.selectedGenre === "")){
-      console.log("genre Change " + this.selectedGenre);
       this.movies = [];
       this.getMoviesByGenre(this.selectedGenre);
     }else if(this.selectedGenre === ""){
-      console.log("movies change");
       this.movies = [];
       this.getMovies();
     }
