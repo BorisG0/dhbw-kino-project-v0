@@ -70,3 +70,8 @@ hr.solid {
     position: absolute;
     bottom: 0;
 }
+
+.card{
+    background-color: rgb(70, 0, 0);
+    color: rgb(202, 202, 202);
+}
