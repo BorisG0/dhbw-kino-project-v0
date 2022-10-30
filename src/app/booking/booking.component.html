@@ -1,7 +1,14 @@
-<h2 *ngIf="bookingToConfirm == null">Sitze</h2>
-<h2 *ngIf="bookingToConfirm == null">Vorstellung {{movieEvent?.id}} am {{movieEvent?.date}} um {{movieEvent?.time}}<br>
-    Saal: {{movieEvent?.roomId}}</h2>
-<button *ngIf="bookingToConfirm == null" mat-flat-button (click)="clearSelectedSeats()">clear selected seats (admin feature)</button>
+<mat-card *ngIf="bookingToConfirm == null" class="card">
+    <mat-card-header >
+        <mat-card-title>
+            Sitze
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="text">
+        Vorstellung {{movieEvent?.id}} am {{movieEvent?.date}} um {{movieEvent?.time}}<br>
+            Saal: {{movieEvent?.roomId}}
+     </mat-card-content>
+ </mat-card>
 
 <div class="seatManagment" *ngIf="bookingToConfirm == null">
     <div class="seatSelection">
