@@ -36,6 +36,38 @@ export class BookingComponent implements OnInit {
 
   bookingToConfirm: Booking | undefined;
 
+  exampleFree: Ticket = {
+    id: 0,
+    row: "A",
+    numberInRow: 0,
+    status: 0,
+    defaultPrice: 0
+  };
+
+  exampleOccupied: Ticket = {
+    id: 0,
+    row: "A",
+    numberInRow: 0,
+    status: 1,
+    defaultPrice: 0
+  };
+
+  exampleBlocked: Ticket = {
+    id: 0,
+    row: "A",
+    numberInRow: 0,
+    status: 2,
+    defaultPrice: 0
+  };
+
+  exampleSelected: Ticket = {
+    id: 0,
+    row: "A",
+    numberInRow: 0,
+    status: 3,
+    defaultPrice: 0
+  };
+
   seats: SeatInEvent[][] = SEATS;
   eventId: number = 1;
   movieEvent: MovieEvent | undefined;
