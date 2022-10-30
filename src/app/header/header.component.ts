@@ -29,16 +29,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  logout(){
-    HeaderComponent.currentUser = {userType: "",
-    mailAdress: "",
-    password: "",
-    lastName: "",
-    firstName: ""};
-
-    localStorage.removeItem('currentUser');
-  }
-
   get currentUser(){
     return HeaderComponent.currentUser;
   }
