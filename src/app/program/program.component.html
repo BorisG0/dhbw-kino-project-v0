@@ -4,19 +4,6 @@
         <h2 style="color:White">Genreauswahl</h2>
         <br>
 
-        <!--
-        <ng-select [(ngModel)]="selectedGenre" (change)="applyGenres()" style="background-color: rgb(224, 224, 224); border-radius: 5px;">
-            <ng-option value="">None</ng-option>
-            <ng-option value="Action">Action</ng-option>
-            <ng-option value="Animation">Animation</ng-option>
-            <ng-option value="Fantasy">Fantasy</ng-option>
-            <ng-option value="Horror">Horror</ng-option>
-            <ng-option value="Komödie">Komödie</ng-option>
-            <ng-option value="Science Fiction">Science Fiction</ng-option>
-            <ng-option value="Thriller">Thriller</ng-option>
-        </ng-select>
-        -->
-
         <mat-form-field appearance="fill" class="filter">
             <mat-label>Filter</mat-label>
             <mat-select [(ngModel)]="selectedGenre" (selectionChange)="applyGenres()">
@@ -34,8 +21,8 @@
     </mat-card>
 
 <div class="parent">
-    <div  *ngFor="let movie of movies">
-        <a  routerLink="/detail/{{movie.id}}" class="child">
+    <div *ngFor="let movie of movies">
+        <a routerLink="/detail/{{movie.id}}" class="child">
             <img src="\assets\images\{{movie.imageName}}">
         </a>
     <div>
